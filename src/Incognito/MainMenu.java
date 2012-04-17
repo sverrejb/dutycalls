@@ -12,8 +12,6 @@ public class MainMenu extends BasicGameState {
 	TiledMap map;
 
 	@Override
-	public void init(GameContainer gc, StateBasedGame sbg)
-			throws SlickException {
 		// TODO Auto-generated method stub
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException{
 		map = new TiledMap("Resources/untitled.tmx", "Resources");
@@ -21,8 +19,6 @@ public class MainMenu extends BasicGameState {
 	}
 
 	@Override
-	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
-			throws SlickException {
 		// TODO Auto-generated method stub
 	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2) throws SlickException{
 		map.render(0, 0);
