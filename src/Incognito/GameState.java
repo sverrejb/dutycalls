@@ -5,6 +5,9 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class GameState extends StateBasedGame{
+	
+	public static final int MAINMENUSTATE = 1;
+	public static final int GAMEPLAYSTATE = 0;
 
 	public GameState(String name) {
 		super(name);
