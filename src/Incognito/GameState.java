@@ -7,11 +7,10 @@ import org.newdawn.slick.state.StateBasedGame;
 public class GameState extends StateBasedGame{
 	
 	public static final int MAINMENUSTATE = 1;
-	public static final int GAMEPLAYSTATE = 0;
+	//public static final int GAMEPLAYSTATE = 0;
 
 	public GameState(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 		this.addState(new MainMenu(MAINMENUSTATE));
 		//this.addState(new GameplayState(GAMEPLAYSTATE));
 		this.enterState(MAINMENUSTATE);
@@ -19,9 +18,8 @@ public class GameState extends StateBasedGame{
 
 	@Override
 	public void initStatesList(GameContainer gameContainer) throws SlickException {
-		// TODO Auto-generated method stub
 		this.getState(MAINMENUSTATE).init(gameContainer, this);
-		this.getState(GAMEPLAYSTATE).init(gameContainer, this);
+		//this.getState(GAMEPLAYSTATE).init(gameContainer, this);
 	}
 	
 }
