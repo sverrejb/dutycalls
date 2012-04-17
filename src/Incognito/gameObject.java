@@ -1,5 +1,7 @@
 package Incognito;
 
+import java.awt.Point;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -15,15 +17,22 @@ public abstract class gameObject implements IGameObject{
 	 */
 	private final float scale = 1f;
 	
+	//Not necessary in abtract? Use more specific instead?
 	private TiledMap map;
+	
+	private static double gravityForce = 9.81; //Use formula instead
 	
 	/*
 	 * Variables
 	 */
-	private float pointX = 0;
-	private float pointY = 0;
+	//Placement
+	private float pointX = 0f;
+	private float pointY = 0f;
+	private float rotation = 0f; // In degrees
 	
-	private float velocity = 0;
+	//Physics
+	private float velocity = 0f;
+	private float mass = 0f;
 	
 	//Only render if the object is placed on the screen
 	private boolean onScreen = false;
