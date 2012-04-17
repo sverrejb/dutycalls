@@ -1,5 +1,6 @@
 package Incognito;
 
+import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -14,12 +15,14 @@ public class MainMenu extends BasicGameState {
 	public MainMenu(int stateID) {
 		// TODO Auto-generated constructor stub
 		this.stateID = stateID;
+		
+		//System.out.println(GL11.glGetInteger(GL11.GL_MAX_TEXTURE_SIZE));
 	}
 
 	@Override
 		// TODO Auto-generated method stub
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException{
-		map = new TiledMap("Resources/maps/untitled.tmx", "Resources");
+		map = new TiledMap("resources/maps/untitled.tmx", "resources");
 		
 	}
 
