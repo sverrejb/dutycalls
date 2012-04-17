@@ -11,10 +11,12 @@ import org.newdawn.slick.tiled.TiledMap;
 
 public class MainMenu extends BasicGameState {
 	
-	Image background = null;
-	Image startGameOption = null;
-	Image exitOption = null;
-	private String versionName = "Incognito InDev";
+	private Image background = null;
+	private Image startGameOption = null;
+	private Image exitOption = null;
+	
+	private final String versionName = "Incognito InDev";
+	
 	private int stateID = -1;
 	private float menuX = 120;
 	private float menuY = 160;
@@ -26,7 +28,7 @@ public class MainMenu extends BasicGameState {
 
 	@Override
 		// TODO Auto-generated method stub
-	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException{
+	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException{
 		background = new Image("img/background.png");
 		Image menuOptions = new Image("img/menuOptions.png");
 		startGameOption = menuOptions.getSubImage(0, 0, 377, 71); 
@@ -34,7 +36,7 @@ public class MainMenu extends BasicGameState {
 	}
 
 	@Override
-	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
+	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException{
 		background.draw(0, 0);
 		g.drawString(versionName, 600, 10);
 		
@@ -43,7 +45,7 @@ public class MainMenu extends BasicGameState {
 	}
 
 	@Override
-	public void update(GameContainer gc, StateBasedGame sbg, int delta)
+	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta)
 			throws SlickException {
 		// TODO Auto-generated method stub
 		
