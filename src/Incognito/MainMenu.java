@@ -10,17 +10,22 @@ import org.newdawn.slick.tiled.TiledMap;
 public class MainMenu extends BasicGameState {
 	
 	TiledMap map;
+	int stateID = -1;
+	public MainMenu(int stateID) {
+		// TODO Auto-generated constructor stub
+		this.stateID = stateID;
+	}
 
 	@Override
 		// TODO Auto-generated method stub
-	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException{
-		map = new TiledMap("Resources/untitled.tmx", "Resources");
+	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException{
+		map = new TiledMap("Resources/maps/untitled.tmx", "Resources");
 		
 	}
 
 	@Override
 		// TODO Auto-generated method stub
-	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2) throws SlickException{
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		map.render(0, 0);
 		
 	}
@@ -35,7 +40,7 @@ public class MainMenu extends BasicGameState {
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return 0;
+		return stateID;
 	}
 
 }

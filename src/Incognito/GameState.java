@@ -12,12 +12,16 @@ public class GameState extends StateBasedGame{
 	public GameState(String name) {
 		super(name);
 		// TODO Auto-generated constructor stub
+		this.addState(new MainMenu(MAINMENUSTATE));
+		//this.addState(new GameplayState(GAMEPLAYSTATE));
+		this.enterState(MAINMENUSTATE);
 	}
 
 	@Override
-	public void initStatesList(GameContainer arg0) throws SlickException {
+	public void initStatesList(GameContainer gameContainer) throws SlickException {
 		// TODO Auto-generated method stub
-		
+		this.getState(MAINMENUSTATE).init(gameContainer, this);
+		this.getState(GAMEPLAYSTATE).init(gameContainer, this);
 	}
 	
 }
