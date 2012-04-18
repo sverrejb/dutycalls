@@ -25,7 +25,6 @@ public class MainMenu extends BasicGameState {
 	private float ExitbuttonScale = 1;
 	
 	public MainMenu(int stateID) {
-		// TODO Auto-generated constructor stub
 		this.stateID = stateID;
 	}
 
@@ -72,7 +71,7 @@ public class MainMenu extends BasicGameState {
 			    StartbuttonScale += scaleStep * delta;
 			 
 			  if ( input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) ){
-			    //stateBasedGame.enterState(GameState.GAMEPLAYSTATE);
+			    stateBasedGame.enterState(GameState.GAMEPLAYSTATE);
 			  }
 			}else{
 			  if(StartbuttonScale > 1.0f)
