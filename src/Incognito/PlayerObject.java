@@ -15,4 +15,9 @@ public class PlayerObject extends GameObject {
 	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException{
 		//gameContainer.set
 	}
+	
+	@Override
+	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
+		
+	}
 }

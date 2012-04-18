@@ -62,7 +62,7 @@ public abstract class GameObject implements IGameObject{
 	/*
 	 * Updates the object accordingly
 	 */
-	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta){
+	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException{
 		
 	}
 	
@@ -75,6 +75,16 @@ public abstract class GameObject implements IGameObject{
 		}
 	}
 	
+	/*
+	 * Coallision detection
+	 * @Para1 other object to check for coallision with
+	 * @Return true/false if coallision
+	 */
+	public boolean coallision(GameObject other){
+		//
+		
+		return false;
+	}
 	
 	
 	

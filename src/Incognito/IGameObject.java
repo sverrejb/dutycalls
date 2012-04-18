@@ -13,11 +13,13 @@ public interface IGameObject {
 	
 	public void unLoad();
 	
-	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta);
+	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException;
 	
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException;
 	
 	/*
 	 * Coallision detection
 	 */
+	
+	public boolean coallision(GameObject other);
 }
