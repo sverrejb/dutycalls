@@ -1,6 +1,5 @@
 package Incognito;
 
-import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -8,7 +7,6 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.tiled.TiledMap;
 
 public class MainMenu extends BasicGameState {
 	
@@ -21,9 +19,10 @@ public class MainMenu extends BasicGameState {
 	private int stateID = -1;
 	private float menuX = 120;
 	private float menuY = 160;
-	private float scaleStep = 0.0001f;
+	private float scaleStep = 0.001f;
 	private int buttonSpace = 80;
-	private float buttonScale = 1;
+	private float StartbuttonScale = 1;
+	private float ExitbuttonScale = 1;
 	
 	public MainMenu(int stateID) {
 		// TODO Auto-generated constructor stub
@@ -44,8 +43,8 @@ public class MainMenu extends BasicGameState {
 		background.draw(0, 0);
 		g.drawString(versionName, 600, 10);
 		
-		startGameOption.draw(menuX, menuY, buttonScale); 
-		exitOption.draw(menuX, menuY+buttonSpace, buttonScale);
+		startGameOption.draw(menuX, menuY, StartbuttonScale); 
+		exitOption.draw(menuX, menuY+buttonSpace, ExitbuttonScale);
 	}
 
 	@Override
@@ -69,15 +68,15 @@ public class MainMenu extends BasicGameState {
 		}
 		
 		if(insideStartGame){
-			  if(buttonScale < 1.05f)
-			    buttonScale += scaleStep * delta;
+			  if(StartbuttonScale < 1.05f)
+			    StartbuttonScale += scaleStep * delta;
 			 
 			  if ( input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) ){
 			    //stateBasedGame.enterState(GameState.GAMEPLAYSTATE);
 			  }
 			}else{
-			  if(buttonScale > 1.0f)
-			    buttonScale -= scaleStep * delta;
+			  if(StartbuttonScale > 1.0f)
+			    StartbuttonScale -= scaleStep * delta;
 			 
 			  if ( input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) )
 			    gameContainer.exit();
@@ -85,17 +84,16 @@ public class MainMenu extends BasicGameState {
 			 
 			if(insideExit)
 			{
-			   if(buttonScale < 1.05f)
-			     buttonScale +=  scaleStep * delta;
+			   if(ExitbuttonScale < 1.05f)
+				   ExitbuttonScale +=  scaleStep * delta;
 			}else{
-			  if(buttonScale > 1.0f)
-				  buttonScale -= scaleStep * delta;
+			  if(ExitbuttonScale > 1.0f)
+				  ExitbuttonScale -= scaleStep * delta;
 			}
 	}
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
 		return stateID;
 	}
 
