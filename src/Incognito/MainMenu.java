@@ -20,6 +20,7 @@ public class MainMenu extends BasicGameState {
 	private int stateID = -1;
 	private float menuX = 120;
 	private float menuY = 160;
+	private float scaleStep = 0.0001f;
 	
 	public MainMenu(int stateID) {
 		// TODO Auto-generated constructor stub
@@ -45,9 +46,7 @@ public class MainMenu extends BasicGameState {
 	}
 
 	@Override
-	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta)
-			throws SlickException {
-		// TODO Auto-generated method stub
+	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta)throws SlickException {
 		
 	}
 
