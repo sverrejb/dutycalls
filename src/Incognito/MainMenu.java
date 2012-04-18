@@ -17,6 +17,7 @@ public class MainMenu extends BasicGameState {
 	private Image exitOption = null;
 	
 	private final String versionName = "Incognito InDev";
+	MainMenuSound sound = new MainMenuSound();
 	
 	private int stateID = -1;
 	private float menuX = 140;
