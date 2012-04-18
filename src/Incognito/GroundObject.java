@@ -1,5 +1,6 @@
 package Incognito;
 
+import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -19,6 +20,10 @@ public class GroundObject extends GameObject {
 	
 	@Override
 	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException{
+		System.out.println(GL11.glGetInteger(GL11.GL_MAX_TEXTURE_SIZE));
+		
+		//System.exit(0);
+		
 		ground = new TiledMap("tiles/testLevel.tmx");
 		
 	}
