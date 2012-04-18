@@ -77,15 +77,14 @@ public class MainMenu extends BasicGameState {
 			}else{
 			  if(StartbuttonScale > 1.0f)
 			    StartbuttonScale -= scaleStep * delta;
-			 
-			  if ( input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) )
-			    gameContainer.exit();
 			}
 			 
 			if(insideExit)
 			{
 			   if(ExitbuttonScale < 1.05f)
 				   ExitbuttonScale +=  scaleStep * delta;
+			   if ( input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) )
+				    gameContainer.exit();
 			}else{
 			  if(ExitbuttonScale > 1.0f)
 				  ExitbuttonScale -= scaleStep * delta;
