@@ -11,14 +11,15 @@ import org.newdawn.slick.state.StateBasedGame;
 public class MainMenu extends BasicGameState {
 	
 	private Image background = null;
+	private Image title = null;
 	private Image startGameOption = null;
 	private Image exitOption = null;
 	
 	private final String versionName = "Incognito InDev";
 	
 	private int stateID = -1;
-	private float menuX = 120;
-	private float menuY = 160;
+	private float menuX = 140;
+	private float menuY = 300;
 	private float scaleStep = 0.001f;
 	private int buttonSpace = 80;
 	private float StartbuttonScale = 1;
@@ -32,16 +33,17 @@ public class MainMenu extends BasicGameState {
 		// TODO Auto-generated method stub
 	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException{
 		background = new Image("img/background.png");
-		Image menuOptions = new Image("img/menuOptions.png");
-		startGameOption = menuOptions.getSubImage(0, 0, 377, 71); 
-		exitOption = menuOptions.getSubImage(0, 71, 377, 71);
+		Image menuOptions = new Image("img/menu.png");
+		title = menuOptions.getSubImage(50, 50, 570, 100);
+		startGameOption = menuOptions.getSubImage(290, 180, 319, 66); 
+		exitOption = menuOptions.getSubImage(290, 246, 150, 66);
 	}
 
 	@Override
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException{
 		background.draw(0, 0);
 		g.drawString(versionName, 600, 10);
-		
+		title.draw(120,150);
 		startGameOption.draw(menuX, menuY, StartbuttonScale); 
 		exitOption.draw(menuX, menuY+buttonSpace, ExitbuttonScale);
 	}
