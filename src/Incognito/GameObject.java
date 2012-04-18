@@ -5,6 +5,8 @@ import java.awt.Point;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
@@ -26,9 +28,15 @@ public abstract class GameObject implements IGameObject{
 	 * Variables
 	 */
 	//Placement
-	private float pointX = 0f;
-	private float pointY = 0f;
+	protected float pointX = 0f;
+	protected float pointY = 0f;
+	protected float width = 0f;
+	protected float height = 0f;
+	
 	private float rotation = 0f; // In degrees
+	protected Vector2f velocityVector;
+	protected float dx = 0;
+	protected float dy = 0;
 	
 	//Physics
 	private float velocity = 0f;
@@ -36,12 +44,12 @@ public abstract class GameObject implements IGameObject{
 	
 	//Only render if the object is placed on the screen
 	private boolean onScreen = false;
-	
+	protected boolean onGround = false;
 	/*
 	 * Constructor
 	 */
 	public GameObject(){
-		
+		velocityVector = new Vector2f(0,0);
 	}
 	
 	/*
@@ -63,7 +71,16 @@ public abstract class GameObject implements IGameObject{
 	 * Updates the object accordingly
 	 */
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException{
+		dy += gravityForce/delta;
+	}
+	
+	public void applyGravitation(){
+		if(!onGround){
+		pointX += dx;
+		pointY += dy;}
 		
+		//dx = 0;
+		//dy = 0;
 	}
 	
 	/*
@@ -80,8 +97,17 @@ public abstract class GameObject implements IGameObject{
 	 * @Para1 other object to check for coallision with
 	 * @Return true/false if coallision
 	 */
-	public boolean coallision(GameObject other){
+	public boolean collision(GameObject other){
 		//
+		
+		Rectangle first = new Rectangle(pointX, pointY, width, height);
+		
+		if(other instanceof GroundObject){
+			
+		}
+		//Get other
+		//Check intersection
+		//On collision, run pixel perfect collision detection
 		
 		return false;
 	}

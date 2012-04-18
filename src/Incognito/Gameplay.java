@@ -22,7 +22,7 @@ public class Gameplay extends BasicGameState{
 	public Gameplay(int stateID) {
 		this.stateID = stateID;
 		
-		player = new PlayerObject();
+		player = new PlayerObject(100f, 300f);
 		ground = new GroundObject();
 	}
 
@@ -56,10 +56,15 @@ public class Gameplay extends BasicGameState{
 		//Hente keyboard input
 		//--> gi til player
 		
-		//legge til gravitasjon
+		
 		
 		//sjekke for kollisjon
+		//Opdatere onGround hvis nødvednigt
+		player.collision(ground);
 		
+		//legge til gravitasjon
+		player.applyGravitation();
+				
 		ground.update(gameContainer, stateBasedGame, delta);
 		player.update(gameContainer, stateBasedGame, delta);
 		

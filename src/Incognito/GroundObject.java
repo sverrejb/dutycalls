@@ -10,7 +10,7 @@ import org.newdawn.slick.tiled.TiledMap;
  * Controls the ground
  */
 public class GroundObject extends GameObject {
-	private TiledMap ground;
+	public TiledMap ground;
 	
 	public GroundObject() {
 		super();

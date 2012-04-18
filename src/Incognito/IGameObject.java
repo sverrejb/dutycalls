@@ -18,8 +18,13 @@ public interface IGameObject {
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException;
 	
 	/*
+	 * Physicse
+	 */
+	
+	public void applyGravitation();
+	/*
 	 * Coallision detection
 	 */
 	
-	public boolean coallision(GameObject other);
+	public boolean collision(GameObject other);
 }
