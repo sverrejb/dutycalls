@@ -14,13 +14,14 @@ public class Gameplay extends BasicGameState{
 
 	public Gameplay(int stateID) {
 		this.stateID = stateID;
+		player = new PlayerObject();
 	}
 
 	@Override
-	public void init(GameContainer arg0, StateBasedGame arg1)
+	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
 			throws SlickException {
+		player.init(gameContainer, stateBasedGame);
 		
-		player = new PlayerObject();
 		
 	}
 
