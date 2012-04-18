@@ -2,10 +2,15 @@
 <map version="1.0" orientation="orthogonal" width="100" height="37" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="pokemon-tileset" tilewidth="16" tileheight="16">
   <image source="tileset-advance.png" width="128" height="15971"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="level1" width="100" height="37">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2aWwrDIBBF3Zpp8pG07n87NdCBIKNOElqv9h4YaK3o1KPmuTjnQowlxiPG/PlM2rCPvfiYHJ20hj6wCE7fr+ijDcf1cfQRWib1x+TWB2mD7E27E/poj6wP7VjuM+Xke2hrQ8Z9jbHFeMZ4OR5TfoHmg+PeDhl/nudikPrg2mgLz3OxoA8seN8KC/rAgj6woA8s6AML+sCCPrCgDyzoAwv6wII+sKAPLEZ7z6f3Z8yjvefT+zNm3m/Hokcfve9JJXr00fueVKJHHyOD6mPkPakE6vXHyHtSiX38fSXEl6XOfKK92dC/pV1rfrW8LFHqK801/Z9aTEndvWw9hFe+e6U8DWs9bd5b2iy1e/f3MyG513LVXAQltoyPXD9X86uNfW0eWtoSruRrnQt3vUk/IdPvltR/A9LFK3jQOQAA
+   H4sIAAAAAAAAC+3RsQ3AMAzAMPv/p7vkgwSoBhLQBdqZ2RP/2/GjxI8WP1r8aPGjxY8WP1r8aPGjxY8WP1r8aPGjxY8WP1r8aPGjxY8WP1r8aPGjxY8WP1r8aPGjxY8WP1r8aPGjxY8WP1r8aPGjxY8WP1pW1730AT0jHcXQOQAA
   </data>
  </layer>
 </map>
