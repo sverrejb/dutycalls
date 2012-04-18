@@ -10,8 +10,10 @@ public class PlayerObject extends GameObject {
 	
 	Image playerSprite = null;
 	
-	public PlayerObject(){
+	public PlayerObject(float pointX, float pointY ){
 		super();
+		this.pointX = pointX;
+		this.pointY = pointY;
 		
 	} 
 	
@@ -23,11 +25,12 @@ public class PlayerObject extends GameObject {
 	}
 	@Override
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException{
-		playerSprite.draw(400,550);
+		playerSprite.draw(pointX,pointY);
+		System.out.println(pointX + "  " + pointY);
 	}
 	
 	@Override
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
-		
+		super.update(gameContainer, stateBasedGame, delta);
 	}
 }
