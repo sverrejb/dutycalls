@@ -4,6 +4,7 @@ import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -21,6 +22,8 @@ public class MainMenu extends BasicGameState {
 	private float menuX = 120;
 	private float menuY = 160;
 	private float scaleStep = 0.0001f;
+	private int buttonSpace = 80;
+	private float buttonScale = 1;
 	
 	public MainMenu(int stateID) {
 		// TODO Auto-generated constructor stub
@@ -41,13 +44,53 @@ public class MainMenu extends BasicGameState {
 		background.draw(0, 0);
 		g.drawString(versionName, 600, 10);
 		
-		startGameOption.draw(menuX, menuY, 1); 
-		exitOption.draw(menuX, menuY+80, 1);
+		startGameOption.draw(menuX, menuY, buttonScale); 
+		exitOption.draw(menuX, menuY+buttonSpace, buttonScale);
 	}
 
 	@Override
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta)throws SlickException {
 		
+		Input input = gameContainer.getInput();
+		
+		int mouseX = input.getMouseX();
+		int mouseY = input.getMouseY();
+		
+		boolean insideStartGame = false;
+		boolean insideExit = false;
+		
+		if( ( mouseX >= menuX && mouseX <= menuX + startGameOption.getWidth()) &&
+				( mouseY >= menuY && mouseY <= menuY + startGameOption.getHeight()) ){
+			insideStartGame = true;
+		}
+		else if( ( mouseX >= menuX && mouseX <= menuX+ exitOption.getWidth()) &&
+	          ( mouseY >= menuY+buttonSpace && mouseY <= menuY+buttonSpace + exitOption.getHeight()) ){
+			insideExit = true;
+		}
+		
+		if(insideStartGame){
+			  if(buttonScale < 1.05f)
+			    buttonScale += scaleStep * delta;
+			 
+			  if ( input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) ){
+			    //stateBasedGame.enterState(GameState.GAMEPLAYSTATE);
+			  }
+			}else{
+			  if(buttonScale > 1.0f)
+			    buttonScale -= scaleStep * delta;
+			 
+			  if ( input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) )
+			    gameContainer.exit();
+			}
+			 
+			if(insideExit)
+			{
+			   if(buttonScale < 1.05f)
+			     buttonScale +=  scaleStep * delta;
+			}else{
+			  if(buttonScale > 1.0f)
+				  buttonScale -= scaleStep * delta;
+			}
 	}
 
 	@Override
