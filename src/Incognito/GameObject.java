@@ -11,7 +11,7 @@ import org.newdawn.slick.tiled.TiledMap;
 /*
  * This class defines everything for all collideable objects in the game
  */
-public abstract class gameObject implements IGameObject{
+public abstract class GameObject implements IGameObject{
 	/*
 	 * Constants
 	 */
@@ -40,7 +40,7 @@ public abstract class gameObject implements IGameObject{
 	/*
 	 * Constructor
 	 */
-	public gameObject(){
+	public GameObject(){
 		
 	}
 	

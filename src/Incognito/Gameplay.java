@@ -9,6 +9,8 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Gameplay extends BasicGameState{
 
 	private int stateID = -1;
+	
+	private PlayerObject player;
 
 	public Gameplay(int stateID) {
 		this.stateID = stateID;
@@ -17,21 +19,22 @@ public class Gameplay extends BasicGameState{
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1)
 			throws SlickException {
-		// TODO Auto-generated method stub
+		
+		player = new PlayerObject();
 		
 	}
 
 	@Override
-	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2)
+	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g)
 			throws SlickException {
-		// TODO Auto-generated method stub
+		player.render(gameContainer, stateBasedGame, g);
 		
 	}
 
 	@Override
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2)
+	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta)
 			throws SlickException {
-		// TODO Auto-generated method stub
+		player.update(gameContainer, stateBasedGame, delta);
 		
 	}
 

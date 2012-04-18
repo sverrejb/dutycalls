@@ -16,4 +16,8 @@ public interface IGameObject {
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta);
 	
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException;
+	
+	/*
+	 * Coallision detection
+	 */
 }
