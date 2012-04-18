@@ -18,7 +18,7 @@ public abstract class GameObject implements IGameObject{
 	private final float scale = 1f;
 	
 	//Not necessary in abtract? Use more specific instead?
-	private TiledMap map;
+	//private TiledMap map;
 	
 	private static double gravityForce = 9.81; //Use formula instead
 	
@@ -56,7 +56,7 @@ public abstract class GameObject implements IGameObject{
 	 * Garbage throwing
 	 */
 	public void unLoad(){
-		map = null;
+		//map = null;
 	}
 	
 	/*
