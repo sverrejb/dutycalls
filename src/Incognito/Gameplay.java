@@ -62,7 +62,7 @@ public class Gameplay extends BasicGameState{
 		player.collision(ground);
 		
 		//legge til gravitasjon
-		player.applyGravitation();
+		//player.applyGravitation();
 				
 		ground.update(gameContainer, stateBasedGame, delta);
 		player.update(gameContainer, stateBasedGame, delta);
