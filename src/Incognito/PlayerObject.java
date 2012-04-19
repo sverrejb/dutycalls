@@ -1,5 +1,6 @@
 package Incognito;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -8,7 +9,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class PlayerObject extends GameObject {
 	
-	Image playerSprite = null;
+	Animation playerSprite = null;
 	
 	public PlayerObject(float pointX, float pointY ){
 		super();
@@ -20,7 +21,11 @@ public class PlayerObject extends GameObject {
 	@Override
 	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException{
 		//gameContainer.set
-		playerSprite = new Image("img/sprite.png");
+		
+		Image[] right = {new Image("img/anim/r1.png"), new Image("img/anim/r2.png"), new Image("img/anim/r3.png"), new Image("img/anim/r4.png"), new Image("img/anim/r5.png"), new Image("img/anim/r6.png")};
+		int [] duration = {300, 300, 300, 300, 300, 300};
+		Animation walk = new Animation (right, duration, true);
+		playerSprite = walk;
 		
 	}
 	@Override
