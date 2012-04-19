@@ -74,6 +74,7 @@ public class MainMenu extends BasicGameState {
 			    StartbuttonScale += scaleStep * delta;
 			 
 			  if ( input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) ){
+				  //This will run init on Gameplay state
 				  stateBasedGame.enterState(GameState.GAMEPLAYSTATE);
 			  }
 			}else{

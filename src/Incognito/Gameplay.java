@@ -1,5 +1,6 @@
 package Incognito;
 
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -31,8 +32,6 @@ public class Gameplay extends BasicGameState{
 			throws SlickException {
 		player.init(gameContainer, stateBasedGame);
 		ground.init(gameContainer, stateBasedGame);
-		
-		
 	}
 
 	@Override

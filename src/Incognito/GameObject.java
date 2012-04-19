@@ -38,6 +38,10 @@ public abstract class GameObject implements IGameObject{
 	protected float dx = 0;
 	protected float dy = 0;
 	
+	protected int pixelX;
+	protected int pixelY;
+	
+	
 	//Physics
 	private float velocity = 0f;
 	private float mass = 0f;
@@ -103,7 +107,19 @@ public abstract class GameObject implements IGameObject{
 		Rectangle first = new Rectangle(pointX, pointY, width, height);
 		
 		if(other instanceof GroundObject){
+			int x = (int) (pointX/other.pixelX);
+			int y = (int) (pointY/other.pixelY);
 			
+			System.out.println(x);
+			System.out.println(y);
+			
+			if(((GroundObject) other).blocked[x][y] == true){
+				System.out.println("collision");
+				onGround = true;
+			}
+			
+			//Rectangle second = new Rectangle();
+			//((GroundObject) other).ground.
 		}
 		//Get other
 		//Check intersection

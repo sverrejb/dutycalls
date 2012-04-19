@@ -11,7 +11,10 @@ import org.newdawn.slick.tiled.TiledMap;
  * Controls the ground
  */
 public class GroundObject extends GameObject {
-	public TiledMap ground;
+	protected TiledMap ground;
+	
+	//Two dim array representing each tiles blocked value
+	protected boolean[][] blocked;
 	
 	public GroundObject() {
 		super();
@@ -19,12 +22,30 @@ public class GroundObject extends GameObject {
 	
 	
 	@Override
-	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException{
-		System.out.println(GL11.glGetInteger(GL11.GL_MAX_TEXTURE_SIZE));
-		
-		//System.exit(0);
-		
+	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException{		
 		ground = new TiledMap("tiles/testLevel.tmx");
+		blocked = new boolean[ground.getWidth()][ground.getHeight()];
+		
+		pixelX = ground.getTileWidth();
+		pixelY = ground.getTileHeight();
+		
+		for (int x = 0; x < ground.getWidth(); x++) 
+			for (int y = 0; y < ground.getHeight(); y++) {
+				//ID of the tile on x, y position layer 0
+				int ID = ground.getTileId(x, y, 0);
+				
+				String value = ground.getTileProperty(ID, "blocked", "false");
+				
+				if("true".equals(value)){
+					blocked[x][y] = true;
+					System.out.println("BLOCKING");
+				}
+				else
+				{
+					System.out.println("NOT BLOCKING");
+				}
+			}
+		
 		
 	}
 	@Override

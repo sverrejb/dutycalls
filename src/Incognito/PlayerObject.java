@@ -26,7 +26,6 @@ public class PlayerObject extends GameObject {
 	@Override
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException{
 		playerSprite.draw(pointX,pointY);
-		System.out.println(pointX + "  " + pointY);
 	}
 	
 	@Override
