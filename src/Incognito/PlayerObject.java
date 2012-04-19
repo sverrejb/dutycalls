@@ -23,7 +23,7 @@ public class PlayerObject extends GameObject {
 		//gameContainer.set
 		
 		Image[] right = {new Image("img/anim/r1.png"), new Image("img/anim/r2.png"), new Image("img/anim/r3.png"), new Image("img/anim/r4.png"), new Image("img/anim/r5.png"), new Image("img/anim/r6.png")};
-		int [] duration = {300, 300, 300, 300, 300, 300};
+		int [] duration = {150, 150, 150, 150, 150, 150};
 		Animation walk = new Animation (right, duration, true);
 		playerSprite = walk;
 		
