@@ -116,6 +116,7 @@ public abstract class GameObject implements IGameObject{
 			if(((GroundObject) other).blocked[x][y] == true){
 				System.out.println("collision");
 				onGround = true;
+				return true;
 			}
 			
 			//Rectangle second = new Rectangle();
