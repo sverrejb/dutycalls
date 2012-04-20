@@ -51,12 +51,16 @@ public class Gameplay extends BasicGameState{
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta)
 			throws SlickException {
 		
-
+		Input input = gameContainer.getInput();
+		
+		//tilbake til mainmenu
+		if(input.isKeyDown(input.KEY_ESCAPE))
+			stateBasedGame.enterState(GameState.MAINMENUSTATE);
 		
 		//Hente keyboard input
 		//--> gi til player
 		
-		Input input = gameContainer.getInput();
+		
 		
 		if(input.isKeyDown(input.KEY_A)){
 			player.pointX += -5;
