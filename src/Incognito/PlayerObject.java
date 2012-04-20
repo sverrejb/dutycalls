@@ -54,6 +54,8 @@ public class PlayerObject extends GameObject {
 	}
 	
 	public void movePlayer(Action action){
-		
+		if(action == Action.SHOOT){
+			System.out.println("pewpew");
+		}
 	}
 }

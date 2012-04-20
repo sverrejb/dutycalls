@@ -77,6 +77,9 @@ public class Gameplay extends BasicGameState{
 		}
 		
 		if(input.isKeyDown(input.KEY_S)){
+		}
+		
+		if(input.isKeyDown(input.KEY_SPACE)){
 			player.movePlayer(Action.SHOOT);
 		}
 		
