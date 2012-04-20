@@ -2,11 +2,14 @@ package Incognito;
 
 import java.awt.Point;
 
-public enum Action {
-	LEFT(-1, 0, -3),
-	RIGHT(1, 0, 3),
+public enum Action {	
+	LEFT(-1, 0, 30),
+	RIGHT(1, 0, 30),
 	JUMP(0, -1, 6),
 	SHOOT(0, 0, 0);
+	
+	public static final int MOVE_SPEED = 10;
+	public static final int JUMP_SPEED = 60;
 	
 	private final int xDir, yDir, value;
 	

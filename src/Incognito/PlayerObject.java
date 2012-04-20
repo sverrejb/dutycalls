@@ -9,9 +9,12 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class PlayerObject extends GameObject {
 	
-	Animation walkRight;
+	Animation walkRight = null;
 	
 	Animation playerSprite = null;
+	
+	float moveX = 0f;
+	float moveY = 0f;
 	
 	public PlayerObject(float pointX, float pointY ){
 		super();
@@ -43,6 +46,17 @@ public class PlayerObject extends GameObject {
 	
 	@Override
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
+		
+		double newX = moveX/delta;
+		pointX += newX;
+		
+		moveX -= newX;
+		
+		double newY = moveY/delta;
+		pointY += newY;
+		
+		moveY -= newY;
+		
 		super.update(gameContainer, stateBasedGame, delta);
 	}
 	
@@ -56,6 +70,14 @@ public class PlayerObject extends GameObject {
 	public void movePlayer(Action action){
 		if(action == Action.SHOOT){
 			System.out.println("pewpew");
+		}
+		
+		if(action == action.LEFT){
+			moveX = action.getDir().x * action.getValue();
+		}
+		
+		if(action == action.RIGHT){
+			moveX = action.getDir().x * action.getValue();
 		}
 	}
 }
