@@ -26,8 +26,8 @@ public class GroundObject extends GameObject {
 		ground = new TiledMap("tiles/testLevel.tmx");
 		blocked = new boolean[ground.getWidth()][ground.getHeight()];
 		
-		pixelX = ground.getTileWidth();
-		pixelY = ground.getTileHeight();
+		pixelsX = ground.getTileWidth();
+		pixelsY = ground.getTileHeight();
 		
 		for (int x = 0; x < ground.getWidth(); x++) 
 			for (int y = 0; y < ground.getHeight(); y++) {
