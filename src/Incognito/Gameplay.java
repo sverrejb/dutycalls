@@ -8,6 +8,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import Incognito.Action;
+
 public class Gameplay extends BasicGameState{
 
 	private int stateID = -1;
@@ -59,13 +61,20 @@ public class Gameplay extends BasicGameState{
 		Input input = gameContainer.getInput();
 		
 		if(input.isKeyDown(input.KEY_A)){
-			player.pointX += -5;
+			player.movePlayer(Action.LEFT);
 		}
+		
 		if(input.isKeyDown(input.KEY_D)){
-			player.pointX += 5;
+			player.movePlayer(Action.RIGHT);
 		}
-		if(input.isKeyDown(input.KEY_W)){}
-		if(input.isKeyDown(input.KEY_S)){}
+		
+		if(input.isKeyDown(input.KEY_W)){
+			player.movePlayer(Action.JUMP);
+		}
+		
+		if(input.isKeyDown(input.KEY_S)){
+			player.movePlayer(Action.SHOOT);
+		}
 		
 		
 		//sjekke for kollisjon

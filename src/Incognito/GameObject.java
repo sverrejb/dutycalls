@@ -80,8 +80,9 @@ public abstract class GameObject implements IGameObject{
 	
 	public void applyGravitation(){
 		if(!onGround){
-		pointX += dx;
-		pointY += dy;}
+			pointX += dx;
+			pointY += dy;
+		}
 		
 		//dx = 0;
 		//dy = 0;
@@ -114,7 +115,7 @@ public abstract class GameObject implements IGameObject{
 			//Pixel perfect collision detection
 			int x = (int) (pointX/other.pixelsX);
 			int y = (int) (pointY/other.pixelsY);
-			
+			 
 			for (int _x = x; _x < (pointX + width)/other.pixelsX; _x++)
 				for (int _y = y; _y < (pointY + height)/other.pixelsY; _y++)
 					if(((GroundObject) other).blocked[_x][_y]){

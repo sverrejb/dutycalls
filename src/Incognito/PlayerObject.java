@@ -53,7 +53,7 @@ public class PlayerObject extends GameObject {
 		playerSprite = null;
 	}
 	
-	public void movePlayer(){
+	public void movePlayer(Action action){
 		
 	}
 }
