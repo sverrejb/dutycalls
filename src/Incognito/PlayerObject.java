@@ -72,12 +72,16 @@ public class PlayerObject extends GameObject {
 			System.out.println("pewpew");
 		}
 		
-		if(action == action.LEFT){
+		if(action == Action.LEFT){
 			moveX = action.getDir().x * action.getValue();
 		}
 		
-		if(action == action.RIGHT){
+		if(action == Action.RIGHT){
 			moveX = action.getDir().x * action.getValue();
+		}
+		
+		if(action == Action.JUMP){
+			moveY = action.getDir().y * action.getValue();
 		}
 	}
 }

@@ -5,7 +5,7 @@ import java.awt.Point;
 public enum Action {	
 	LEFT(-1, 0, 30),
 	RIGHT(1, 0, 30),
-	JUMP(0, -1, 6),
+	JUMP(0, -1, 120),
 	SHOOT(0, 0, 0);
 	
 	public static final int MOVE_SPEED = 10;
