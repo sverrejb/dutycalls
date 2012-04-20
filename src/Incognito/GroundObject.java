@@ -36,14 +36,8 @@ public class GroundObject extends GameObject {
 				
 				String value = ground.getTileProperty(ID, "blocked", "false");
 				
-				if("true".equals(value)){
+				if("true".equals(value))
 					blocked[x][y] = true;
-					System.out.println("BLOCKING");
-				}
-				else
-				{
-					System.out.println("NOT BLOCKING");
-				}
 			}
 		
 		

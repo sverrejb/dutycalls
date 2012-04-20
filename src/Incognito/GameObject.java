@@ -124,6 +124,8 @@ public abstract class GameObject implements IGameObject{
 						if (first.intersects(second)){
 							onGround = true;
 							return true;
+							
+							//getSubImage
 						}
 					}
 			

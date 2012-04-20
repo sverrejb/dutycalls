@@ -3,6 +3,7 @@ package Incognito;
 import org.lwjgl.opengl.Display;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -55,6 +56,16 @@ public class Gameplay extends BasicGameState{
 		//Hente keyboard input
 		//--> gi til player
 		
+		Input input = gameContainer.getInput();
+		
+		if(input.isKeyDown(input.KEY_A)){
+			player.pointX += -5;
+		}
+		if(input.isKeyDown(input.KEY_D)){
+			player.pointX += 5;
+		}
+		if(input.isKeyDown(input.KEY_W)){}
+		if(input.isKeyDown(input.KEY_S)){}
 		
 		
 		//sjekke for kollisjon
