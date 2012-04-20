@@ -84,4 +84,9 @@ public class PlayerObject extends GameObject {
 			moveY = action.getDir().y * action.getValue();
 		}
 	}
+
+	public void shoot(int mouseX, int mouseY) {
+		// TODO Auto-generated method stub
+		
+	}
 }

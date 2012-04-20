@@ -54,6 +54,8 @@ public class Gameplay extends BasicGameState{
 			throws SlickException {
 		
 		Input input = gameContainer.getInput();
+		int mouseX = input.getMouseX();
+		int mouseY = input.getMouseY();
 		
 		//tilbake til mainmenu
 		if(input.isKeyDown(input.KEY_ESCAPE))
@@ -81,6 +83,9 @@ public class Gameplay extends BasicGameState{
 		
 		if(input.isKeyDown(input.KEY_SPACE)){
 			player.movePlayer(Action.SHOOT);
+		}
+		if(input.isKeyPressed(input.MOUSE_LEFT_BUTTON)){
+			player.shoot(mouseX, mouseY);
 		}
 		
 		
