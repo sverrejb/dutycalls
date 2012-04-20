@@ -38,8 +38,8 @@ public abstract class GameObject implements IGameObject{
 	protected float dx = 0;
 	protected float dy = 0;
 	
-	protected int pixelX;
-	protected int pixelY;
+	protected int pixelsX;
+	protected int pixelsY;
 	
 	
 	//Physics
@@ -107,17 +107,26 @@ public abstract class GameObject implements IGameObject{
 		Rectangle first = new Rectangle(pointX, pointY, width, height);
 		
 		if(other instanceof GroundObject){
-			int x = (int) (pointX/other.pixelX);
-			int y = (int) (pointY/other.pixelY);
 			
-			System.out.println(x);
-			System.out.println(y);
+			//Loope igjennom first med henhold til blocked
+			//Hvis blocked, så lage ett rectangel av den plassen med grafikk
+			//Pixel perfect collision detection
+			int x = (int) (pointX/other.pixelsX);
+			int y = (int) (pointY/other.pixelsY);
 			
-			if(((GroundObject) other).blocked[x][y] == true){
-				System.out.println("collision");
-				onGround = true;
-				return true;
-			}
+			for (int _x = x; _x < (pointX + width)/other.pixelsX; _x++)
+				for (int _y = y; _y < (pointY + height)/other.pixelsY; _y++)
+					if(((GroundObject) other).blocked[_x][_y]){
+						onGround = true;
+						return true;
+					}
+			/*
+			//lage fire for loops som looper igjennom alle runder rundt boksen.
+			Rectangle second = new Rectangle(x * other.pixelsX, y * other.pixelsY, other.pixelsX, other.pixelsY);
+			
+			if(first.intersects(second) && ((GroundObject) other).blocked[x][y] == true){
+
+			}*/
 			
 			//Rectangle second = new Rectangle();
 			//((GroundObject) other).ground.
