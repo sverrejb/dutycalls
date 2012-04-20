@@ -105,6 +105,7 @@ public abstract class GameObject implements IGameObject{
 		//
 		
 		Rectangle first = new Rectangle(pointX, pointY, width, height);
+		Rectangle second;
 		
 		if(other instanceof GroundObject){
 			
@@ -117,19 +118,15 @@ public abstract class GameObject implements IGameObject{
 			for (int _x = x; _x < (pointX + width)/other.pixelsX; _x++)
 				for (int _y = y; _y < (pointY + height)/other.pixelsY; _y++)
 					if(((GroundObject) other).blocked[_x][_y]){
-						onGround = true;
-						return true;
+						
+						second = new Rectangle(_x * other.pixelsX, _y * other.pixelsY, other.pixelsX, other.pixelsY);
+						
+						if (first.intersects(second)){
+							onGround = true;
+							return true;
+						}
 					}
-			/*
-			//lage fire for loops som looper igjennom alle runder rundt boksen.
-			Rectangle second = new Rectangle(x * other.pixelsX, y * other.pixelsY, other.pixelsX, other.pixelsY);
 			
-			if(first.intersects(second) && ((GroundObject) other).blocked[x][y] == true){
-
-			}*/
-			
-			//Rectangle second = new Rectangle();
-			//((GroundObject) other).ground.
 		}
 		//Get other
 		//Check intersection
