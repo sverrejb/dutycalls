@@ -1,9 +1,11 @@
 package Incognito;
 
 import org.newdawn.slick.GameContainer;
+
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+
 
 /*
  * Interface for the GameObject
@@ -26,5 +28,5 @@ public interface IGameObject {
 	 * Coallision detection
 	 */
 	
-	public boolean collision(GameObject other);
+	public boolean collision(StandardObject other);
 }

@@ -3,8 +3,8 @@ package Incognito;
 import java.awt.Point;
 
 public enum Action {	
-	LEFT(-1, 0, 30),
-	RIGHT(1, 0, 30),
+	LEFT(-1, 0, 300),
+	RIGHT(1, 0, 300),
 	JUMP(0, -1, 6),
 	SHOOT(0, 0, 0);
 	
