@@ -1,6 +1,6 @@
 package Incognito;
 
-public class EnemyObject extends StandardObject{
+public class EnemyObject extends GameObject{
 	public EnemyObject(){
 		super();		
 	}
