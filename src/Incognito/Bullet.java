@@ -15,8 +15,8 @@ public class Bullet extends GameObject {
 	float moveX = 0f;
 	float moveY = 0f;
 	float totalSpeed = 10f;
-	float speedX;
-	float sppedY;
+	float speedX = 0;
+	float speedY = 0;
 	
 	
 	Bullet(float pointX, float pointY){
@@ -39,7 +39,8 @@ public class Bullet extends GameObject {
 	}
 	@Override
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
-		
+		pointX += speedX;
+		pointY += speedY;
 	}
 	
 	@Override
@@ -49,9 +50,16 @@ public class Bullet extends GameObject {
 	public void shoot(int mouseX, int mouseY, float pointX, float pointY) {
 		this.pointX = pointX;
 		this.pointY = pointY;
-		double angle = Math.toDegrees(Math.atan2(mouseY - pointY, mouseX - pointX));
+		float angle = (float) Math.toDegrees(Math.atan2(mouseY - pointY, mouseX - pointX));
+		if(angle < 90 && angle > -90)
+			speedY = (angle/90) * totalSpeed;
+		else
+			speedY = (angle/120) * totalSpeed;
+		System.out.println(speedY);
+		speedX = totalSpeed - speedY;
 		
-		System.out.println(angle);
+		
+		//System.out.println(angle);
 	}
 	
 	
