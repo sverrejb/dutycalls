@@ -15,7 +15,6 @@ public class Gameplay extends BasicGameState{
 	private int stateID = -1;
 	
 	private PlayerObject player;
-	private PlayerObject player2;
 	private GroundObject ground;
 	Bullet bullet;
 	//Enemy i list
@@ -27,9 +26,9 @@ public class Gameplay extends BasicGameState{
 	public Gameplay(int stateID) {
 		this.stateID = stateID;
 		
-		player = new PlayerObject(100f, 300f);
+		player = new PlayerObject(100f, 400f);
 		ground = new GroundObject();
-		bullet = new Bullet(500f,500f);
+		bullet = new Bullet(100f,100f);
 	}
 
 	@Override

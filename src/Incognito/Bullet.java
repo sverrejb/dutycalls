@@ -30,7 +30,7 @@ public class Bullet extends GameObject {
 	
 	@Override
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException{
-		bullet.draw(pointX,pointY);
+		bullet.draw(this.pointX,this.pointY);
 	}
 	
 	@Override
@@ -43,6 +43,7 @@ public class Bullet extends GameObject {
 	
 	}
 	public void shoot(int mouseX, int mouseY, float pointX, float pointY) {
+		System.out.println("WTF");
 		this.pointX = pointX;
 		this.pointY = pointY;
 		double angle = Math.toDegrees(Math.atan2(mouseY - pointY, mouseX - pointX));
