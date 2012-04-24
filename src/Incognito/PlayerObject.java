@@ -4,8 +4,10 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.RotateTransition;
 
 public class PlayerObject extends GameObject {
 	
@@ -47,6 +49,7 @@ public class PlayerObject extends GameObject {
 	@Override
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
 		
+		Input input = gameContainer.getInput();
 		double newX = moveX/delta;
 		pointX += newX;
 		
@@ -58,13 +61,35 @@ public class PlayerObject extends GameObject {
 		moveY -= newY;
 		
 		super.update(gameContainer, stateBasedGame, delta);
+		
+		if(input.isKeyDown(input.KEY_A)){
+			movePlayer(Action.LEFT);
+		}
+		
+		if(input.isKeyDown(input.KEY_D)){
+			movePlayer(Action.RIGHT);
+		}
+		
+		if(input.isKeyDown(input.KEY_W)){
+			movePlayer(Action.JUMP);
+		}
+		
+		if(input.isKeyDown(input.KEY_S)){
+		}
+		
+		if(input.isKeyDown(input.KEY_SPACE)){
+			movePlayer(Action.SHOOT);
+		}
 	}
 	
 	@Override
 	public void unLoad() {
-		walkRight = null;
+		//walkRight = null;
+		//playerSprite = null;
 		
-		playerSprite = null;
+	}
+	public void reset(){
+		
 	}
 	
 	public void movePlayer(Action action){
@@ -83,10 +108,5 @@ public class PlayerObject extends GameObject {
 		if(action == Action.JUMP){
 			moveY = action.getDir().y * action.getValue();
 		}
-	}
-
-	public void shoot(int mouseX, int mouseY) {
-		// TODO Auto-generated method stub
-		
 	}
 }

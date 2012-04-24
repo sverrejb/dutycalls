@@ -15,8 +15,9 @@ public class Gameplay extends BasicGameState{
 	private int stateID = -1;
 	
 	private PlayerObject player;
+	private PlayerObject player2;
 	private GroundObject ground;
-	
+	Bullet bullet;
 	//Enemy i list
 	
 	//våpen i list
@@ -28,6 +29,7 @@ public class Gameplay extends BasicGameState{
 		
 		player = new PlayerObject(100f, 300f);
 		ground = new GroundObject();
+		bullet = new Bullet(500f,500f);
 	}
 
 	@Override
@@ -35,6 +37,7 @@ public class Gameplay extends BasicGameState{
 			throws SlickException {
 		player.init(gameContainer, stateBasedGame);
 		ground.init(gameContainer, stateBasedGame);
+		bullet.init(gameContainer, stateBasedGame);
 	}
 
 	@Override
@@ -43,6 +46,7 @@ public class Gameplay extends BasicGameState{
 		//Background
 		ground.render(gameContainer, stateBasedGame, g);
 		player.render(gameContainer, stateBasedGame, g);
+		bullet.render(gameContainer, stateBasedGame, g);
 		//enemies
 		//weapons
 		//shots
@@ -58,34 +62,17 @@ public class Gameplay extends BasicGameState{
 		int mouseY = input.getMouseY();
 		
 		//tilbake til mainmenu
-		if(input.isKeyDown(input.KEY_ESCAPE))
+		if(input.isKeyDown(input.KEY_ESCAPE)){
 			stateBasedGame.enterState(GameState.MAINMENUSTATE);
+			//player.unLoad();
+		}
+			
 		
 		//Hente keyboard input
 		//--> gi til player
 		
-		
-		
-		if(input.isKeyDown(input.KEY_A)){
-			player.movePlayer(Action.LEFT);
-		}
-		
-		if(input.isKeyDown(input.KEY_D)){
-			player.movePlayer(Action.RIGHT);
-		}
-		
-		if(input.isKeyDown(input.KEY_W)){
-			player.movePlayer(Action.JUMP);
-		}
-		
-		if(input.isKeyDown(input.KEY_S)){
-		}
-		
-		if(input.isKeyDown(input.KEY_SPACE)){
-			player.movePlayer(Action.SHOOT);
-		}
-		if(input.isKeyPressed(input.MOUSE_LEFT_BUTTON)){
-			player.shoot(mouseX, mouseY);
+		if(input.isMousePressed(input.MOUSE_LEFT_BUTTON)){
+			bullet.shoot(mouseX, mouseY, player.pointX, player.pointY);
 		}
 		
 		
