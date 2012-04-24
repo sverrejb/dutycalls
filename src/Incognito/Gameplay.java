@@ -1,5 +1,9 @@
 package Incognito;
 
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+
 import org.lwjgl.opengl.Display;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -12,11 +16,13 @@ import Incognito.Action;
 
 public class Gameplay extends BasicGameState{
 
+
+
 	private int stateID = -1;
 	
 	private PlayerObject player;
 	private GroundObject ground;
-	Bullet bullet;
+	List<Bullet> ammo = new LinkedList<Bullet>();
 	//Enemy i list
 	
 	//våpen i list
@@ -28,7 +34,6 @@ public class Gameplay extends BasicGameState{
 		
 		player = new PlayerObject(100f, 400f);
 		ground = new GroundObject();
-		bullet = new Bullet(100f,100f);
 	}
 
 	@Override
@@ -36,7 +41,7 @@ public class Gameplay extends BasicGameState{
 			throws SlickException {
 		player.init(gameContainer, stateBasedGame);
 		ground.init(gameContainer, stateBasedGame);
-		bullet.init(gameContainer, stateBasedGame);
+		
 	}
 
 	@Override
@@ -45,7 +50,10 @@ public class Gameplay extends BasicGameState{
 		//Background
 		ground.render(gameContainer, stateBasedGame, g);
 		player.render(gameContainer, stateBasedGame, g);
-		bullet.render(gameContainer, stateBasedGame, g);
+		
+		if(!ammo.isEmpty())
+			for(Bullet bullet : ammo)
+				bullet.render(gameContainer, stateBasedGame, g);
 		//enemies
 		//weapons
 		//shots
@@ -65,16 +73,12 @@ public class Gameplay extends BasicGameState{
 			stateBasedGame.enterState(GameState.MAINMENUSTATE);
 			//player.unLoad();
 		}
-			
-		
-		//Hente keyboard input
-		//--> gi til player
-		
+
 		if(input.isMousePressed(input.MOUSE_LEFT_BUTTON)){
-			bullet.shoot(mouseX, mouseY, player.pointX, player.pointY);
+			ammo.add(new Bullet(player.pointX, player.pointY));
+			ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);
+			ammo.get(ammo.size() -1).shoot(mouseX, mouseY, player.pointX, player.pointY);
 		}
-		
-		
 		//sjekke for kollisjon
 		//Opdatere onGround hvis nødvednigt
 		player.collision(ground);
@@ -84,6 +88,10 @@ public class Gameplay extends BasicGameState{
 				
 		ground.update(gameContainer, stateBasedGame, delta);
 		player.update(gameContainer, stateBasedGame, delta);
+		
+		if(!ammo.isEmpty())
+			for(Bullet bullet : ammo)
+				bullet.update(gameContainer, stateBasedGame, delta);
 		
 	}
 
