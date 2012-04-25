@@ -84,7 +84,6 @@ public class MainMenu extends World {
 			 
 			  if ( input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) ){
 				  //This will run init on Gameplay state
-				  System.out.println(Globals.game.getStateCount());
 				  Globals.game.enterState(Constants.INGAME_STATE, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
 				 
 			  }
