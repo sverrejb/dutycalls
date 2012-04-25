@@ -3,14 +3,14 @@ package Incognito.states;
 import java.util.LinkedList;
 import java.util.List;
 
+import it.marteEngine.Camera;
 import it.marteEngine.World;
 
-import org.lwjgl.opengl.Display;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
@@ -26,7 +26,6 @@ public class Gameplay extends World{
 	private PlayerObject player;
 	private GroundObject ground;
 	
-	
 	//Enemy i list
 	
 	//våpen i list
@@ -41,12 +40,10 @@ public class Gameplay extends World{
 	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
 			throws SlickException {
 		super.init(gameContainer, stateBasedGame);
-
-		//player.init(gameContainer, stateBasedGame);
-		//ground.init(gameContainer, stateBasedGame);
-		
 		
 		player = new PlayerObject(100, 300);
+		
+		
 		//ground = new GroundObject(0, 0);
 		
 		/*
@@ -71,17 +68,21 @@ public class Gameplay extends World{
 				if("true".equals(value)){
 					GroundObject groundObject = new GroundObject(x*pixelsX, y*pixelsY, ground.getTileImage(x, y, 0));
 					add(groundObject);
-				}
-					//GroundObject groundObject = new GroundObject();
-				
+				}				
 				
 			}
+		
+		/*
+		 * Add camera
+		 */		
+		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * pixelsX, ground.getHeight() * pixelsY, new Vector2f(32,32)));
 	}
 
 	@Override
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g)
 			throws SlickException {
 		super.render(gameContainer, stateBasedGame, g);
+		
 		//Background
 		//ground.render(gameContainer, stateBasedGame, g);
 		//player.render(gameContainer, stateBasedGame, g);
