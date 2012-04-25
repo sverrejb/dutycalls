@@ -62,6 +62,7 @@ public class Gameplay extends World{
 		//enemies
 		//weapons
 		//shots
+		g.drawString("Ammo: " + currentAmmo, 700, 10);
 		
 	}
 
@@ -104,7 +105,7 @@ public class Gameplay extends World{
 		
 		
 		if(input.isMousePressed(input.MOUSE_LEFT_BUTTON)){
-			if(ammo.size() < currentAmmo){
+			if(ammo.size() < maxAmmo){
 				ammo.add(new Bullet((int)player.getX(), (int)player.getY()));
 				ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);
 				ammo.get(ammo.size() -1).shoot(mouseX, mouseY, player.getX(), player.getY());
