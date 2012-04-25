@@ -40,10 +40,13 @@ public class PlayerObject extends PlatformerEntity {
 		//mage test = new Image("img/anim/r1.png");
 		SpriteSheet test = new SpriteSheet("img/anim/playerRightTest.png", pixelsPerPicX, pixelsPerPicY);
 		setGraphic(test);
-		duration = 100;		
-		addAnimation("WALK_RIGHT", true, 0, 0, 1, 2, 3, 4, 5);
-		addFlippedAnimation("WALK_LEFT", false, false, true, 0, 0, 1, 2, 3, 4, 5);
-
+		duration = Constants.ANIMATION_SPEED;		
+		addAnimation(Constants.STAND_STILL_RIGHT, false, 0, 1);
+		addFlippedAnimation(Constants.STAND_STILL_LEFT, true, true, false, 0, 1);
+		addAnimation(ME.WALK_RIGHT, true, 0, 0, 1, 2, 3, 4, 5);
+		addFlippedAnimation(ME.WALK_LEFT, true, true, false, 0, 0, 1, 2, 3, 4, 5);
+		
+		lastDirection = ME.WALK_RIGHT;
 		
 		setHitBox(0, 0, pixelsPerPicX, pixelsPerPicY, true);
 		

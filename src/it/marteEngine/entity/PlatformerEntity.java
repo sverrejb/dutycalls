@@ -8,6 +8,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import Incognito.utils.Constants;
+
 public class PlatformerEntity extends PhysicsEntity {
 
 	protected static final String CMD_LEFT = "left";
@@ -17,6 +19,9 @@ public class PlatformerEntity extends PhysicsEntity {
 	private int moveSpeed = 1;
 	private int jumpSpeed = 6;
 
+	/* Stores last walking direction */
+	protected String lastDirection;
+	
 	/**
 	 * Create a new PlatformerEntity able to jump and move around. Create a
 	 * default hitbox on image
@@ -78,14 +83,26 @@ public class PlatformerEntity extends PhysicsEntity {
 		// increase acceeration, if we're not going too fast
 		if (check(CMD_LEFT) && speed.x > -maxSpeed.x) {
 			acceleration.x = -moveSpeed;
-			//currentAnim = ME.WALK_LEFT;
+			currentAnim = ME.WALK_LEFT;
+			lastDirection = ME.WALK_LEFT;
 		}
 		if (check(CMD_RIGHT) && speed.x < maxSpeed.x) {
 			acceleration.x = moveSpeed;
+			currentAnim = ME.WALK_RIGHT;
+			lastDirection = ME.WALK_RIGHT;
+			
+		}
+		
+		if ((!check(CMD_LEFT) && !check(CMD_RIGHT))){
+			if(lastDirection == ME.WALK_RIGHT)
+				currentAnim = "STAND_STILL_RIGHT";
+			else if(lastDirection == ME.WALK_LEFT)
+				currentAnim = Constants.STAND_STILL_LEFT;
 		}
 
 		// friction (apply if we're not moving, or if our speed.x is larger than
 		// maxspeed)
+		
 		if ((!check(CMD_LEFT) && !check(CMD_RIGHT))
 				|| Math.abs(speed.x) > maxSpeed.x) {
 			friction(true, false);

@@ -15,4 +15,10 @@ public class Constants {
 	
 	public static int MAXAMMO = 40;
 	
+	/* PlayerObject constants for walking animation*/
+	public static final int ANIMATION_SPEED = 100; 
+	public static final String STAND_STILL_RIGHT = "STAND_STILL_RIGHT";
+	public static final String STAND_STILL_LEFT = "STAND_STILL_LEFT";
+	
+	
 }
