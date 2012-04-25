@@ -9,6 +9,8 @@ public class Constants {
 	public static final int GAME_WIDTH = 800;
 	public static final int GAME_HEIGHT = 600;
 	
-	public static final float GRAVITY = 9.81f; 
+	public static final float GRAVITY = 9.81f;
+	
+	public static float BULLET_SPEED = 10f;
 	
 }
