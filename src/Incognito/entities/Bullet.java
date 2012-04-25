@@ -14,8 +14,8 @@ public class Bullet extends PhysicsEntity {
 	private static Image bullet;
 	
 	
-	public Bullet(int pointX, int pointY) throws SlickException{
-		super(pointX, pointY);
+	public Bullet(float x, float y) throws SlickException{
+		super(x, y);
 		
 		if(bullet == null)
 			bullet = new Image("img/bullet.png");
@@ -40,7 +40,7 @@ public class Bullet extends PhysicsEntity {
 		bullet = null;
 	}
 	
-	public void shoot(int mouseX, int mouseY, float pointX, float pointY) {
+	public void shoot(float mouseX, float mouseY, float pointX, float pointY) {
 		Vector2f movment = new Vector2f(mouseX - pointX,mouseY - pointY);
 		movment.normalise();
 		float speedX = movment.getX() * Constants.BULLET_SPEED;

@@ -13,6 +13,9 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import Incognito.utils.Constants;
+
+
 public class PlayerObject extends PlatformerEntity {
 	
 	Animation walkRight = null;
@@ -22,8 +25,7 @@ public class PlayerObject extends PlatformerEntity {
 	float moveX = 0f;
 	float moveY = 0f;
 	List<Bullet> ammo = new LinkedList<Bullet>();
-	int maxAmmo = 40;
-	int currentAmmo; 
+	int currentAmmo = Constants.MAXAMMO; 
 
 	
 	public PlayerObject(int pointX, int pointY ) throws SlickException{
@@ -35,7 +37,7 @@ public class PlayerObject extends PlatformerEntity {
 		
 		this.addType(Entity.PLAYER);
 		
-		//define("SHOOT", Input.MOUSE_LEFT_BUTTON);
+		define("SHOOT", Input.MOUSE_LEFT_BUTTON);
 		
 		//gameContainer.set
 		
@@ -89,7 +91,7 @@ public class PlayerObject extends PlatformerEntity {
 		/*
 		 * SKYTING
 		 */
-		/*
+		
 		Input input = gameContainer.getInput();
 		
 		float mouseX;
@@ -98,10 +100,10 @@ public class PlayerObject extends PlatformerEntity {
 		if(check("SHOOT")){
 			mouseX = input.getMouseX();
 			mouseY = input.getMouseY();
-			if(ammo.size() < maxAmmo){
-				ammo.add(new Bullet((int)this.getX(), (int)this.getY()));
-				ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);
-				ammo.get(ammo.size() -1).shoot(mouseX, mouseY, this.getX(), this.getY());
+			if(ammo.size() < Constants.MAXAMMO){
+				ammo.add(new Bullet((int)this.x, (int)this.y));
+				//ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);
+				ammo.get(ammo.size() -1).shoot(mouseX, mouseY, this.x, this.y);
 				currentAmmo--;
 			}
 			
@@ -109,7 +111,7 @@ public class PlayerObject extends PlatformerEntity {
 		
 		if(!ammo.isEmpty())
 			for(Bullet bullet : ammo)
-				bullet.update(gameContainer, delta);*/
+				bullet.update(gameContainer, delta);
 
 		
 	}
