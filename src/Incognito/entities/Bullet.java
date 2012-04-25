@@ -13,8 +13,6 @@ import Incognito.utils.Constants;
 public class Bullet extends PhysicsEntity {
 	
 	private static Image bullet;
-	private float moveX;
-	private float moveY;
 	
 	public Bullet(float x, float y) throws SlickException{
 		super(x, y);
@@ -37,8 +35,7 @@ public class Bullet extends PhysicsEntity {
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
 		super.update(gameContainer, delta);
-		x += moveX;
-		y += moveY;
+		
 	}
 	
 
@@ -49,8 +46,8 @@ public class Bullet extends PhysicsEntity {
 	public void shoot(float mouseX, float mouseY, float pointX, float pointY) {
 		Vector2f movment = new Vector2f(mouseX - pointX,mouseY - pointY);
 		movment.normalise();
-		moveX = movment.getX() * Constants.BULLET_SPEED;
-		moveY = movment.getY() * Constants.BULLET_SPEED;
+		speed.set(movment.getX() * Constants.BULLET_SPEED, movment.getY() * Constants.BULLET_SPEED);
+
 	}
 	
 	
