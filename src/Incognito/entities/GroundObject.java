@@ -1,6 +1,6 @@
 package Incognito.entities;
 
-import it.randomtower.engine.entity.Entity;
+import it.marteEngine.entity.Entity;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

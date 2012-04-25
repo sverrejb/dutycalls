@@ -1,5 +1,7 @@
 package Incognito.entities;
 
+import it.marteEngine.entity.PhysicsEntity;
+
 import javax.swing.text.Position;
 
 import org.newdawn.slick.Animation;
@@ -13,7 +15,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import Incognito.entities.GameObject;
 
-public class Bullet extends GameObject {
+public class Bullet extends PhysicsEntity {
 	
 	Image bullet = null;
 	
@@ -29,12 +31,6 @@ public class Bullet extends GameObject {
 		super(pointX, pointY);
 		this.pointX = pointX;
 		this.pointY = pointY;
-	}
-	
-
-	
-	@Override
-	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException{
 		bullet = new Image("img/bullet.png");
 	}
 	
