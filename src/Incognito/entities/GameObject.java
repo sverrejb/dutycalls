@@ -1,6 +1,6 @@
 package Incognito.entities;
 
-import it.randomtower.engine.entity.Entity;
+import it.marteEngine.entity.Entity;
 
 import java.awt.Point;
 
@@ -11,6 +11,12 @@ import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
+
+/*
+ * CLASS IS OUTDATED!!!
+ * 
+ * 
+ */
 
 /*
  * This class defines everything for all collideable objects in the game
@@ -109,7 +115,7 @@ public abstract class GameObject extends Entity{
 		
 		Rectangle first = new Rectangle(pointX, pointY, width, height);
 		Rectangle second;
-		
+		/*
 		if(other instanceof GroundObject){
 			
 			//Loope igjennom first med henhold til blocked
@@ -132,7 +138,7 @@ public abstract class GameObject extends Entity{
 						}
 					}
 			
-		}
+		}*/
 		//Get other
 		//Check intersection
 		//On collision, run pixel perfect collision detection
