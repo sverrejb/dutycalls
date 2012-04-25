@@ -47,7 +47,6 @@ public class Bullet extends PhysicsEntity {
 		Vector2f movment = new Vector2f(mouseX - pointX,mouseY - pointY);
 		movment.normalise();
 		speed.set(movment.getX() * Constants.BULLET_SPEED, movment.getY() * Constants.BULLET_SPEED);
-
 	}
 	
 	
