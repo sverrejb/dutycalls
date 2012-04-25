@@ -3,6 +3,8 @@ package Incognito.entities;
 import it.randomtower.engine.entity.Entity;
 import it.randomtower.engine.entity.PhysicsEntity;
 import it.randomtower.engine.entity.PlatformerEntity;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
@@ -22,6 +24,9 @@ public class PlayerObject extends PhysicsEntity {
 	
 	float moveX = 0f;
 	float moveY = 0f;
+	List<Bullet> ammo = new LinkedList<Bullet>();
+	int maxAmmo = 40;
+	int currentAmmo; 
 	
 
 	private static final String CMD_LEFT = "left";
@@ -39,7 +44,8 @@ public class PlayerObject extends PhysicsEntity {
 		//this.pointY = pointY;
 		
 		this.addType(Entity.PLAYER);
-		//curr
+		
+		define("SHOOT", Input.MOUSE_LEFT_BUTTON);
 		
 		//gameContainer.set
 		
@@ -62,7 +68,9 @@ public class PlayerObject extends PhysicsEntity {
 		define(CMD_JUMP, Input.KEY_UP, Input.KEY_X, Input.KEY_W);
 		define(CMD_RIGHT, Input.KEY_RIGHT, Input.KEY_D);
 		define(CMD_LEFT, Input.KEY_LEFT, Input.KEY_A);
+		currentAmmo = maxAmmo;
 	} 
+	
 	/*
 	@Override
 	public void init(GameContainer gameContainer) throws SlickException{
@@ -90,8 +98,7 @@ public class PlayerObject extends PhysicsEntity {
 	@Override
 	public void render(GameContainer gameContainer, Graphics g) throws SlickException{
 		super.render(gameContainer, g);
-		
-		//playerSprite.draw(pointX,pointY);
+		g.drawString("Ammo: " + currentAmmo, 700, 10);
 	}
 	
 	@Override
@@ -103,6 +110,7 @@ public class PlayerObject extends PhysicsEntity {
 		{ 
 			onGround = true;
 		}
+		
 		
 		//set acceleration to nothing
 		acceleration.x = 0;
@@ -150,6 +158,33 @@ public class PlayerObject extends PhysicsEntity {
 		
 		previousx = x;
 		previousy = y;
+		
+		/*
+		 * SKYTING
+		 */
+		/*
+		Input input = gameContainer.getInput();
+		
+		float mouseX;
+		float mouseY;
+		
+		if(check("SHOOT")){
+			mouseX = input.getMouseX();
+			mouseY = input.getMouseY();
+			if(ammo.size() < maxAmmo){
+				ammo.add(new Bullet((int)this.getX(), (int)this.getY()));
+				ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);
+				ammo.get(ammo.size() -1).shoot(mouseX, mouseY, this.getX(), this.getY());
+				currentAmmo--;
+			}
+			
+		}
+		
+		if(!ammo.isEmpty())
+			for(Bullet bullet : ammo)
+				bullet.update(gameContainer, delta);*/
+
+		
 	}
 	
 

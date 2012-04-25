@@ -26,9 +26,6 @@ public class Gameplay extends World{
 	private PlayerObject player;
 	private GroundObject ground;
 	
-	List<Bullet> ammo = new LinkedList<Bullet>();
-	int maxAmmo = 40;
-	int currentAmmo; 
 	
 	//Enemy i list
 	
@@ -48,7 +45,6 @@ public class Gameplay extends World{
 		//player.init(gameContainer, stateBasedGame);
 		//ground.init(gameContainer, stateBasedGame);
 		
-		currentAmmo = maxAmmo;
 		
 		player = new PlayerObject(100, 300);
 		//ground = new GroundObject(0, 0);
@@ -101,9 +97,6 @@ public class Gameplay extends World{
 		super.update(gameContainer, stateBasedGame, delta);
 		
 		Input input = gameContainer.getInput();
-		int mouseX = input.getMouseX();
-		int mouseY = input.getMouseY();
-		
 		//tilbake til mainmenu
 		if(input.isKeyDown(input.KEY_ESCAPE))
 			stateBasedGame.enterState(Constants.INGAME_STATE);
@@ -125,7 +118,6 @@ public class Gameplay extends World{
 		
 		if(input.isKeyDown(input.KEY_S)){
 		}
-		
 		if(input.isKeyDown(input.KEY_SPACE)){
 			player.movePlayer(Action.SHOOT);
 		}*/
@@ -140,7 +132,6 @@ public class Gameplay extends World{
 			}
 			
 		}*/
-		
 		//sjekke for kollisjon
 		////Opdatere onGround hvis nødvednigt
 		//player.collision(ground);
@@ -151,9 +142,6 @@ public class Gameplay extends World{
 		//ground.update(gameContainer, stateBasedGame, delta);
 		//player.update(gameContainer, stateBasedGame, delta);
 		
-		if(!ammo.isEmpty())
-			for(Bullet bullet : ammo)
-				bullet.update(gameContainer, stateBasedGame, delta);
 		
 	}
 
