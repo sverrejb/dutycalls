@@ -8,6 +8,7 @@ import it.marteEngine.World;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
@@ -52,6 +53,7 @@ public class Gameplay extends World{
 		 * Add the world
 		 */
 		TiledMap ground = new TiledMap("tiles/testLevel.tmx");
+		GroundObject groundObject;
 		
 		int pixelsX = ground.getTileWidth();
 		int pixelsY = ground.getTileHeight();
@@ -64,10 +66,19 @@ public class Gameplay extends World{
 				String value = ground.getTileProperty(ID, "blocked", "false");
 				
 				if("true".equals(value)){
-					GroundObject groundObject = new GroundObject(x*pixelsX, y*pixelsY, ground.getTileImage(x, y, 0));
+					groundObject = new GroundObject(x*pixelsX, y*pixelsY, ground.getTileImage(x, y, 0));
 					add(groundObject);
-				}				
-				
+				}
+				else{
+					//Render not collideable images
+					Image temp = ground.getTileImage(x, y, 0);
+					
+					if(temp != null){
+						groundObject = new GroundObject(x*pixelsX, y*pixelsY, temp);
+						groundObject.collidable = false;
+						add(groundObject);
+					}
+				}
 			}
 		
 		/*

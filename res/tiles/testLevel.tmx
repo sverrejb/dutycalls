@@ -7,10 +7,20 @@
     <property name="blocked" value="true"/>
    </properties>
   </tile>
+  <tile id="4798">
+   <properties>
+    <property name="blocked" value="false"/>
+   </properties>
+  </tile>
+  <tile id="4807">
+   <properties>
+    <property name="blocked" value="false"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="level1" width="100" height="37">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3XMQ6DMBAAQfv/n05DTRCFM3Z2pOsNK85ijjHmNfm9OeohqYelHpZ6WOphqYelHpZ6WOphqYelHpZ6WOphqYelHpYTesyb2c3OZz9RPSz1sNTDUg9LPSz1sNTDUo/7/8nV76UelnpY6mGph+XkHtI9/ZR+vn9TD8vTHsK3v9PeeevU59pVPSzf9lCzdld/AEOmUivQOQAA
+   H4sIAAAAAAAAC+3XOQ7CMBQG4ecr5P7XYGlYGpaG5Ui8gjIKUYTM2MxIf52QTw5QIqK8Z7+vhB6k9GClBys9WOnBSg9WerDSg5UerPRgpQcrPVjpwUoPVnqw6sGjTKy1Wr73HtODlR6s9GClBys9WOnBSg9Wekz/n6z9XPRgpQcrPVjpwapnD9L39Nzo9/dv1fRYDRHr3Ca3HSpcsMHmenzj7O/SYJ875I4LPFp67yyt5uc6pcE5d8ldPR+j1fS4pcE998g99Rjt03vI1f2d9gLWQCHJ0DkAAA==
   </data>
  </layer>
 </map>
