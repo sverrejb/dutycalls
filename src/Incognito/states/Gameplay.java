@@ -12,6 +12,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.tiled.TiledMap;
 
 import Incognito.entities.Bullet;
 import Incognito.entities.GroundObject;
@@ -35,10 +36,8 @@ public class Gameplay extends World{
 	
 	//skudd i list
 
-	public Gameplay(int id) {
+	public Gameplay(int id) throws SlickException{
 		super(id);
-		player = new PlayerObject(100, 300);
-		ground = new GroundObject(0, 0);
 	}
 
 	@Override
@@ -46,10 +45,41 @@ public class Gameplay extends World{
 			throws SlickException {
 		super.init(gameContainer, stateBasedGame);
 
-		player.init(gameContainer, stateBasedGame);
-		ground.init(gameContainer, stateBasedGame);
+		//player.init(gameContainer, stateBasedGame);
+		//ground.init(gameContainer, stateBasedGame);
 		
 		currentAmmo = maxAmmo;
+		
+		player = new PlayerObject(100, 300);
+		//ground = new GroundObject(0, 0);
+		
+		/*
+		 * Add to MarteEngine world
+		 */
+		add(player);
+		//add(ground);
+		
+		TiledMap ground = new TiledMap("tiles/testLevel.tmx");
+		//blocked = new boolean[ground.getWidth()][ground.getHeight()];
+		
+		int pixelsX = ground.getTileWidth();
+		int pixelsY = ground.getTileHeight();
+		
+		for (int x = 0; x < ground.getWidth(); x++) 
+			for (int y = 0; y < ground.getHeight(); y++) {
+				//ID of the tile on x, y position layer 0
+				int ID = ground.getTileId(x, y, 0);
+				
+				String value = ground.getTileProperty(ID, "blocked", "false");
+				
+				if("true".equals(value)){
+					GroundObject groundObject = new GroundObject(x*pixelsX, y*pixelsY, ground.getTileImage(x, y, 0));
+					add(groundObject);
+				}
+					//GroundObject groundObject = new GroundObject();
+				
+				
+			}
 	}
 
 	@Override
@@ -57,8 +87,8 @@ public class Gameplay extends World{
 			throws SlickException {
 		super.render(gameContainer, stateBasedGame, g);
 		//Background
-		ground.render(gameContainer, stateBasedGame, g);
-		player.render(gameContainer, stateBasedGame, g);
+		//ground.render(gameContainer, stateBasedGame, g);
+		//player.render(gameContainer, stateBasedGame, g);
 		//enemies
 		//weapons
 		//shots
@@ -80,9 +110,7 @@ public class Gameplay extends World{
 		
 		//Hente keyboard input
 		//--> gi til player
-		
-		
-		
+		/*
 		if(input.isKeyDown(input.KEY_A)){
 			player.movePlayer(Action.LEFT);
 		}
@@ -100,9 +128,9 @@ public class Gameplay extends World{
 		
 		if(input.isKeyDown(input.KEY_SPACE)){
 			player.movePlayer(Action.SHOOT);
-		}
+		}*/
 		
-		
+		/*
 		if(input.isMousePressed(input.MOUSE_LEFT_BUTTON)){
 			if(ammo.size() < currentAmmo){
 				ammo.add(new Bullet((int)player.getX(), (int)player.getY()));
@@ -111,17 +139,17 @@ public class Gameplay extends World{
 				currentAmmo--;
 			}
 			
-		}
+		}*/
 		
 		//sjekke for kollisjon
-		//Opdatere onGround hvis nødvednigt
-		player.collision(ground);
+		////Opdatere onGround hvis nødvednigt
+		//player.collision(ground);
 		
 		//legge til gravitasjon
-		player.applyGravitation();
+		//player.applyGravitation();
 				
-		ground.update(gameContainer, stateBasedGame, delta);
-		player.update(gameContainer, stateBasedGame, delta);
+		//ground.update(gameContainer, stateBasedGame, delta);
+		//player.update(gameContainer, stateBasedGame, delta);
 		
 		if(!ammo.isEmpty())
 			for(Bullet bullet : ammo)

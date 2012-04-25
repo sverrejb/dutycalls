@@ -63,7 +63,6 @@ public abstract class GameObject extends Entity{
 	 * Initializes the data in the object
 	 */
 	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException{
-		
 	}
 	
 	/*

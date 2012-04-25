@@ -1,54 +1,49 @@
 package Incognito.entities;
 
-import org.lwjgl.opengl.GL11;
+import it.randomtower.engine.entity.Entity;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 /*
  * Controls the ground
  */
-public class GroundObject extends GameObject {
+public class GroundObject extends Entity {
 	protected TiledMap ground;
 	
 	//Two dim array representing each tiles blocked value
 	protected boolean[][] blocked;
 	
-	public GroundObject(int x, int y) {
+	public GroundObject(int x, int y, Image image) {
 		super(x, y);
+		
+		setGraphic(image);
+		
+		setHitBox(0, 0, image.getWidth(), image.getHeight(), true);
+		
+		depth = 0;
+		
+		addType(Entity.SOLID);
+	}
+	
+	@Override
+	public void render(GameContainer gameContainer, Graphics g) throws SlickException{
+		super.render(gameContainer, g);
+		
+		//ground.render(0, 0);
+	}
+	
+	@Override
+	public void update(GameContainer gameContainer, int delta) throws SlickException {
+		super.update(gameContainer, delta);
 	}
 	
 	
 	@Override
-	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException{		
-		ground = new TiledMap("tiles/testLevel.tmx");
-		blocked = new boolean[ground.getWidth()][ground.getHeight()];
-		
-		pixelsX = ground.getTileWidth();
-		pixelsY = ground.getTileHeight();
-		
-		for (int x = 0; x < ground.getWidth(); x++) 
-			for (int y = 0; y < ground.getHeight(); y++) {
-				//ID of the tile on x, y position layer 0
-				int ID = ground.getTileId(x, y, 0);
-				
-				String value = ground.getTileProperty(ID, "blocked", "false");
-				
-				if("true".equals(value))
-					blocked[x][y] = true;
-			}
-		
-		
-	}
-	@Override
-	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException{
-		ground.render(0, 0);
-	}
-	
-	@Override
-	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
-		
+	public void collisionResponse(Entity other) {
+		// called when colliding with another entity
 	}
 }
