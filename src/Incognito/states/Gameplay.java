@@ -8,12 +8,14 @@ import it.marteEngine.World;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
+import Incognito.entities.BackgroundObject;
 import Incognito.entities.Bullet;
 import Incognito.entities.GroundObject;
 import Incognito.entities.PlayerObject;
@@ -25,6 +27,7 @@ public class Gameplay extends World{
 	
 	private PlayerObject player;
 	private GroundObject ground;
+	private BackgroundObject bg;
 	
 	//Enemy i list
 	
@@ -54,6 +57,8 @@ public class Gameplay extends World{
 		
 		TiledMap ground = new TiledMap("tiles/testLevel.tmx");
 		//blocked = new boolean[ground.getWidth()][ground.getHeight()];
+		Image jungle = new Image("res/img/jungle.png");
+		bg = new BackgroundObject(0, 0, jungle);
 		
 		int pixelsX = ground.getTileWidth();
 		int pixelsY = ground.getTileHeight();
@@ -81,7 +86,9 @@ public class Gameplay extends World{
 	@Override
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g)
 			throws SlickException {
+		bg.render(gameContainer, g);
 		super.render(gameContainer, stateBasedGame, g);
+		
 		
 		//Background
 		//ground.render(gameContainer, stateBasedGame, g);
