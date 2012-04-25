@@ -75,7 +75,6 @@ public class Gameplay extends World{
 		/*
 		 * Add camera
 		 */		
-		
 		setWidth(ground.getWidth() * pixelsX);
 		setHeight(ground.getHeight() * pixelsY);
 		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * pixelsX, ground.getHeight() * pixelsY, new Vector2f(32,32)));
