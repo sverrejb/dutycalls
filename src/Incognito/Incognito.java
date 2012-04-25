@@ -14,7 +14,7 @@ public class Incognito {
 	private static final int FPS = 60; 
 	
 	public static void main(String[] args) throws SlickException {
-		System.setProperty("org.lwjgl.librarypath", new File(new File(System.getProperty("user.dir"), "lib/anative"), LWJGLUtil.getPlatformName()).getAbsolutePath());
+		System.setProperty("org.lwjgl.librarypath", new File(new File(System.getProperty("user.dir"), "lib/native"), LWJGLUtil.getPlatformName()).getAbsolutePath());
 		System.setProperty("net.java.games.input.librarypath", System.getProperty("org.lwjgl.librarypath"));
 		
 		AppGameContainer app = new AppGameContainer(new GameState("Incognito"));
