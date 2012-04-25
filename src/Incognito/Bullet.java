@@ -1,11 +1,14 @@
 package Incognito;
 
+import javax.swing.text.Position;
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Bullet extends GameObject {
@@ -17,6 +20,7 @@ public class Bullet extends GameObject {
 	float totalSpeed = 10f;
 	float speedX = 0;
 	float speedY = 0;
+	Position pos = null;
 	
 	
 	Bullet(float pointX, float pointY){
@@ -48,18 +52,10 @@ public class Bullet extends GameObject {
 	
 	}
 	public void shoot(int mouseX, int mouseY, float pointX, float pointY) {
-		this.pointX = pointX;
-		this.pointY = pointY;
-		float angle = (float) Math.toDegrees(Math.atan2(mouseY - pointY, mouseX - pointX));
-		if(angle < 90 && angle > -90)
-			speedY = (angle/90) * totalSpeed;
-		else
-			speedY = (angle/120) * totalSpeed;
-		System.out.println(speedY);
-		speedX = totalSpeed - speedY;
-		
-		
-		//System.out.println(angle);
+		Vector2f movment = new Vector2f(mouseX - pointX,mouseY - pointY);
+		movment.normalise();
+		speedX = movment.getX()*totalSpeed;
+		speedY = movment.getY()*totalSpeed;
 	}
 	
 	
