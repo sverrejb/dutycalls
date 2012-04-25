@@ -23,6 +23,8 @@ public class Gameplay extends BasicGameState{
 	private PlayerObject player;
 	private GroundObject ground;
 	List<Bullet> ammo = new LinkedList<Bullet>();
+	int maxAmmo = 40;
+	int currentAmmo; 
 	//Enemy i list
 	
 	//våpen i list
@@ -41,6 +43,7 @@ public class Gameplay extends BasicGameState{
 			throws SlickException {
 		player.init(gameContainer, stateBasedGame);
 		ground.init(gameContainer, stateBasedGame);
+		currentAmmo = maxAmmo;
 		
 	}
 
@@ -75,9 +78,13 @@ public class Gameplay extends BasicGameState{
 		}
 
 		if(input.isMousePressed(input.MOUSE_LEFT_BUTTON)){
-			ammo.add(new Bullet(player.pointX, player.pointY));
-			ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);
-			ammo.get(ammo.size() -1).shoot(mouseX, mouseY, player.pointX, player.pointY);
+			if(ammo.size() < currentAmmo){
+				ammo.add(new Bullet(player.pointX, player.pointY));
+				ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);
+				ammo.get(ammo.size() -1).shoot(mouseX, mouseY, player.pointX, player.pointY);
+				currentAmmo--;
+			}
+			
 		}
 		//sjekke for kollisjon
 		//Opdatere onGround hvis nødvednigt
