@@ -99,7 +99,7 @@ public class Gameplay extends World{
 		Input input = gameContainer.getInput();
 		//tilbake til mainmenu
 		if(input.isKeyDown(input.KEY_ESCAPE))
-			stateBasedGame.enterState(Constants.INGAME_STATE);
+			stateBasedGame.enterState(Constants.MAINMENU_STATE);
 		
 		//Hente keyboard input
 		//--> gi til player
