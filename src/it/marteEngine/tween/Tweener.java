@@ -5,14 +5,16 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Tweener is a utility container for variuos tweens that can change Entity in many ways
+ * Tweener is a utility container for variuos tweens that can change Entity in
+ * many ways
  * 
  * @author Gornova
  */
 public class Tweener {
 
 	private List<Tween> tweens = new ArrayList<Tween>();
-	
+	private List<Tween> removeable = new ArrayList<Tween>();
+
 	private boolean active = true;
 
 	public Tweener(Tween... tweens) {
@@ -37,16 +39,16 @@ public class Tweener {
 		}
 		return false;
 	}
-	
+
 	public boolean remove(Tween tween) {
 		if (tween == null || tween.getParent() != this)
 			return false;
-		boolean result = tweens.remove(tween);
+		removeable.add(tween);
 		tween.setActive(false);
 		tween.setParent(null);
-		return result;
+		return true;
 	}
-	
+
 	public void clearTweens() {
 		for (Tween tween : tweens) {
 			tween.setActive(false);
@@ -64,7 +66,7 @@ public class Tweener {
 		}
 		return null;
 	}
-	
+
 	public Tween getTween(int index) {
 		if (index < 0 || index >= tweens.size())
 			return null;
@@ -79,6 +81,8 @@ public class Tweener {
 				if (tween.isFinished())
 					tween.finish();
 			}
+			tweens.removeAll(removeable);
+			removeable.clear();
 		}
 	}
 

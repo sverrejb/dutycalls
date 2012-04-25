@@ -68,7 +68,7 @@ public abstract class Entity implements Comparable<Entity> {
 	public boolean wrapVertical = false;
 
 	/** speed vector (x,y): specifies x and y movement per update call in pixels **/
-	public Vector2f speed = new Vector2f(0,0);
+	public Vector2f speed = new Vector2f(0, 0);
 
 	/**
 	 * angle in degrees from 0 to 360, used for drawing the entity rotated. NOT
@@ -86,7 +86,7 @@ public abstract class Entity implements Comparable<Entity> {
 	private Color color = new Color(Color.white);
 
 	private Hashtable<String, Alarm> alarms = new Hashtable<String, Alarm>();
-	private Hashtable<String,Alarm> addableAlarms = new Hashtable<String, Alarm>();
+	private Hashtable<String, Alarm> addableAlarms = new Hashtable<String, Alarm>();
 
 	/** spritesheet that holds animations **/
 	protected SpriteSheet sheet;
@@ -274,7 +274,7 @@ public abstract class Entity implements Comparable<Entity> {
 			if (scale != 1.0f)
 				g.resetTransform();
 		}
-		if (ME.debugEnabled) {
+		if (ME.debugEnabled && collidable) {
 			g.setColor(ME.borderColor);
 			Rectangle hitBox = new Rectangle(x + hitboxOffsetX, y
 					+ hitboxOffsetY, hitboxWidth, hitboxHeight);
@@ -282,12 +282,12 @@ public abstract class Entity implements Comparable<Entity> {
 			g.setColor(Color.white);
 			g.drawRect(x, y, 1, 1);
 			// draw entity center
-			if (width!=0 && height!=0){
-				float centerX = x + width/2;
-				float centerY = y + height/2;
+			if (width != 0 && height != 0) {
+				float centerX = x + width / 2;
+				float centerY = y + height / 2;
 				g.setColor(Color.green);
 				g.drawRect(centerX, centerY, 1, 1);
-				g.setColor(Color.white);	
+				g.setColor(Color.white);
 			}
 		}
 	}
@@ -333,8 +333,9 @@ public abstract class Entity implements Comparable<Entity> {
 		}
 		animations.put(name, anim);
 	}
-	
-	public Animation addAnimation(SpriteSheet sheet, String name, boolean loop, int row, int... frames) {
+
+	public Animation addAnimation(SpriteSheet sheet, String name, boolean loop,
+			int row, int... frames) {
 		Animation anim = new Animation(false);
 		anim.setLooping(loop);
 		for (int i = 0; i < frames.length; i++) {
@@ -345,7 +346,36 @@ public abstract class Entity implements Comparable<Entity> {
 		}
 		animations.put(name, anim);
 		return anim;
-	}	
+	}
+
+	/**
+	 * Add animation to entity, first animation added is current animation. Can
+	 * Flip the frames horizontally o vertically
+	 * 
+	 * @Param name
+	 * @Param loop
+	 * @Param fliphorizontal
+	 * @Param flipvertical
+	 * @Param row
+	 * @Param frames
+	 * 
+	 * @author Sabathorn
+	 */
+	public void addFlippedAnimation(String name, boolean loop,
+			boolean fliphorizontal, boolean flipvertical, int row,
+			int... frames) {
+		Animation anim = new Animation(false);
+		anim.setLooping(loop);
+		for (int i = 0; i < frames.length; i++) {
+			anim.addFrame(
+					sheet.getSprite(frames[i], row).getFlippedCopy(
+							fliphorizontal, flipvertical), duration);
+		}
+		if (animations.size() == 0) {
+			currentAnim = name;
+		}
+		animations.put(name, anim);
+	}
 
 	/**
 	 * define commands to handle inputs
@@ -449,7 +479,7 @@ public abstract class Entity implements Comparable<Entity> {
 		this.hitboxWidth = width;
 		this.hitboxHeight = height;
 		this.collidable = true;
-		
+
 		this.width = width;
 		this.height = height;
 	}
@@ -463,11 +493,11 @@ public abstract class Entity implements Comparable<Entity> {
 	public boolean addType(String... types) {
 		return type.addAll(Arrays.asList(types));
 	}
-	
+
 	/**
 	 * Reset type information for this entity
 	 */
-	public void clearTypes(){
+	public void clearTypes() {
 		type.clear();
 	}
 
@@ -484,7 +514,7 @@ public abstract class Entity implements Comparable<Entity> {
 			return null;
 		// offset
 		for (Entity entity : world.getEntities()) {
-			if (entity.collidable && entity.type.contains(type)) {
+			if (entity.collidable && entity.isType(type)) {
 				if (!entity.equals(this)
 						&& x + hitboxOffsetX + hitboxWidth > entity.x
 								+ entity.hitboxOffsetX
@@ -537,7 +567,7 @@ public abstract class Entity implements Comparable<Entity> {
 			return null;
 		ArrayList<Entity> collidingEntities = null;
 		for (Entity entity : world.getEntities()) {
-			if (entity.collidable && entity.type.contains(type)) {
+			if (entity.collidable && entity.isType(type)) {
 				if (!entity.equals(this)
 						&& x + hitboxOffsetX + hitboxWidth > entity.x
 								+ entity.hitboxOffsetX
@@ -666,7 +696,7 @@ public abstract class Entity implements Comparable<Entity> {
 	}
 
 	public boolean isType(String type) {
-		return type.contains(type);
+		return this.type.contains(type);
 	}
 
 	/**
@@ -701,9 +731,9 @@ public abstract class Entity implements Comparable<Entity> {
 	public float getDistance(Entity other) {
 		return getDistance(new Vector2f(other.x, other.y));
 	}
-	
+
 	public float getDistance(Vector2f otherPos) {
-		Vector2f myPos = new Vector2f(x,y);
+		Vector2f myPos = new Vector2f(x, y);
 		return myPos.distance(otherPos);
 	}
 
@@ -739,7 +769,7 @@ public abstract class Entity implements Comparable<Entity> {
 	}
 
 	/***************** some methods to deal with alarms ************************************/
-	
+
 	/**
 	 * Create an Alarm with given parameters and add to current Entity
 	 */
@@ -753,28 +783,45 @@ public abstract class Entity implements Comparable<Entity> {
 		return alarm;
 	}
 
-	public void restartAlarm(String name) {
+	public boolean restartAlarm(String name) {
 		Alarm alarm = alarms.get(name);
-		if (alarm != null)
+		if (alarm != null) {
 			alarm.start();
+			return true;
+		}
+		return false;
 	}
 
-	public void pauseAlarm(String name) {
+	public boolean pauseAlarm(String name) {
 		Alarm alarm = alarms.get(name);
-		if (alarm != null)
+		if (alarm != null) {
 			alarm.pause();
+			return true;
+		}
+		return false;
+
 	}
 
-	public void resumeAlarm(String name) {
+	public boolean resumeAlarm(String name) {
 		Alarm alarm = alarms.get(name);
-		if (alarm != null)
+		if (alarm != null) {
 			alarm.resume();
+			return true;
+		}
+		return false;
 	}
 
-	public void destroyAlarm(String name) {
+	public boolean destroyAlarm(String name) {
 		Alarm alarm = alarms.get(name);
-		if (alarm != null)
+		if (alarm != null) {
 			alarm.setDead(true);
+			return true;
+		}
+		return false;
+	}
+
+	public boolean existAlarm(String name) {
+		return alarms.get(name) == null ? false : true;
 	}
 
 	/**
@@ -817,19 +864,19 @@ public abstract class Entity implements Comparable<Entity> {
 			}
 			if (deadAlarms != null) {
 				for (String deadAlarm : deadAlarms) {
-					alarms.put(deadAlarm, null);
+					alarms.remove(deadAlarm);
 				}
 			}
 		}
-		if (addableAlarms != null && !addableAlarms.isEmpty()){
-			
+		if (addableAlarms != null && !addableAlarms.isEmpty()) {
+
 			Iterator<String> itr = addableAlarms.keySet().iterator();
-			while (itr.hasNext()){
+			while (itr.hasNext()) {
 				String name = itr.next();
 				alarms.put(name, addableAlarms.get(name));
 			}
-		}		
-		if(!addableAlarms.isEmpty()){
+		}
+		if (!addableAlarms.isEmpty()) {
 			addableAlarms.clear();
 		}
 	}
@@ -867,27 +914,30 @@ public abstract class Entity implements Comparable<Entity> {
 		}
 	}
 
-	public String toCsv(){
-		return ""+(int)x+","+(int)y+","+name+","+type.iterator().next();
+	public String toCsv() {
+		return "" + (int) x + "," + (int) y + "," + name + ","
+				+ type.iterator().next();
 	}
 
-	
 	/**
-	 * @param shape to check
+	 * @param shape
+	 *            to check
 	 * @return entity that intersect with theri hitboxes given shape
 	 */
-	public List<Entity> intersect(Shape shape){
-		if (shape == null) return null;
+	public List<Entity> intersect(Shape shape) {
+		if (shape == null)
+			return null;
 		List<Entity> result = new ArrayList<Entity>();
 		for (Entity entity : world.getEntities()) {
 			if (entity.collidable && !entity.equals(this)) {
-				Rectangle rec = new Rectangle(entity.x, entity.y, entity.width, entity.height);
-				if (shape.intersects(rec)){
+				Rectangle rec = new Rectangle(entity.x, entity.y, entity.width,
+						entity.height);
+				if (shape.intersects(rec)) {
 					result.add(entity);
 				}
 			}
 		}
 		return result;
 	}
-	
+
 }

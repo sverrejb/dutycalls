@@ -101,7 +101,7 @@ public class PlayerObject extends PlatformerEntity {
 			mouseX = input.getMouseX();
 			mouseY = input.getMouseY();
 			if(ammo.size() < Constants.MAXAMMO){
-				ammo.add(new Bullet((int)this.x, (int)this.y));
+				ammo.add(new Bullet(this.x, this.y));
 				//ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);
 				ammo.get(ammo.size() -1).shoot(mouseX, mouseY, this.x, this.y);
 				currentAmmo--;
