@@ -13,4 +13,6 @@ public class Constants {
 	
 	public static float BULLET_SPEED = 10f;
 	
+	public static int MAXAMMO = 40;
+	
 }
