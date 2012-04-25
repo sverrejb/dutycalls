@@ -5,6 +5,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.util.Log;
 
+import Incognito.utils.Constants;
+
 /**
  * this class only works with a fixed frame rate of 60. All calculations are
  * based on that assumption. It's okay for this little sample game
@@ -20,14 +22,14 @@ public class PhysicsEntity extends Entity {
 	/** acceleration vector (x,y) **/
 	public Vector2f acceleration = new Vector2f(0, 0);
 
-	public float gravity = 0.2f;
+	public float gravity = Constants.GRAVITY;//0.2f;
 
 	public Vector2f friction = new Vector2f(0.5f, 0.5f);
 
 	/** height of a slope a PhysicsEntity can run up */
 	public int slopeHeight = 1;
 
-	public Vector2f maxSpeed = new Vector2f(3, 8);
+	public Vector2f maxSpeed = Constants.MAX_SPEED;//new Vector2f(3, 8);
 
 	public PhysicsEntity(float x, float y) {
 		super(x, y);
@@ -79,7 +81,7 @@ public class PhysicsEntity extends Entity {
 
 	/**
 	 * Increases this entity's vertical speed, based on its gravity (gravity)
-	 * 
+	 * TODO Uses delta?
 	 * @return void
 	 */
 	public void gravity(int delta) {

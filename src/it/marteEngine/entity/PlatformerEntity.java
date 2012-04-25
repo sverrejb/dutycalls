@@ -16,8 +16,8 @@ public class PlatformerEntity extends PhysicsEntity {
 	protected static final String CMD_RIGHT = "right";
 	protected static final String CMD_JUMP = "jump";
 	protected boolean onGround = false;
-	private int moveSpeed = 1;
-	private int jumpSpeed = 6;
+	private int moveSpeed = Constants.PLAYER_MOVE_SPEED;
+	private int jumpSpeed = Constants.PLAYER_JUMP_SPEED;
 
 	/* Stores last walking direction */
 	protected String lastDirection;
@@ -93,7 +93,16 @@ public class PlatformerEntity extends PhysicsEntity {
 			
 		}
 		
+		//Walking animation
 		if ((!check(CMD_LEFT) && !check(CMD_RIGHT))){
+			if(lastDirection == ME.WALK_RIGHT)
+				currentAnim = ME.STAND_STILL_RIGHT;
+			else if(lastDirection == ME.WALK_LEFT)
+				currentAnim = ME.STAND_STILL_LEFT;
+		}
+		
+		//Jumping in air animation
+		if(!onGround){
 			if(lastDirection == ME.WALK_RIGHT)
 				currentAnim = "STAND_STILL_RIGHT";
 			else if(lastDirection == ME.WALK_LEFT)

@@ -12,6 +12,8 @@ import org.newdawn.slick.geom.RoundedRectangle;
 import org.newdawn.slick.particles.ParticleSystem;
 import org.newdawn.slick.state.StateBasedGame;
 
+import Incognito.utils.Constants;
+
 /**
  * Marte Engine Utility class
  * 
@@ -21,7 +23,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class ME {
 
 	/** true if debug is enabled, shows hitbox of entities **/
-	public static boolean debugEnabled = false;
+	public static boolean debugEnabled = Constants.DEBUG;
 	/** place debug information on top or at bottom **/
 	public static boolean debugWindowAtTop = true;
 	/** key to activate debug mode **/
@@ -48,6 +50,12 @@ public class ME {
 	public static final String WALK_RIGHT = "walk_Right";
 	public static final String WALK_UP = "walk_Up";
 	public static final String WALK_DOWN = "walk_Down";
+	public static final String STAND_STILL_RIGHT = "STAND_STILL_RIGHT";
+	public static final String STAND_STILL_LEFT = "STAND_STILL_LEFT";
+	public static final String JUMPING_LEFT = "JUMPING_LEFT";
+	public static final String JUMPED_LEFT = "JUMPED_LEFT";
+	public static final String JUMPING_RIGHT = "JUMPING_RIGHT";
+	public static final String JUMPED_RIGHT = "JUMPED_RIGHT";
 
 	/** utility hashtable for game attributes **/
 	public static Hashtable<String, Object> attributes = new Hashtable<String, Object>();
