@@ -2,58 +2,49 @@ package Incognito.entities;
 
 import it.marteEngine.entity.PhysicsEntity;
 
-import javax.swing.text.Position;
-
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
-import org.newdawn.slick.state.StateBasedGame;
-
-import Incognito.entities.GameObject;
+import Incognito.utils.Constants;
 
 public class Bullet extends PhysicsEntity {
 	
-	Image bullet = null;
-	
-	float moveX = 0f;
-	float moveY = 0f;
-	float totalSpeed = 10f;
-	float speedX = 0;
-	float speedY = 0;
-	Position pos = null;
+	private static Image bullet;
 	
 	
-	public Bullet(int pointX, int pointY){
+	public Bullet(int pointX, int pointY) throws SlickException{
 		super(pointX, pointY);
-		this.pointX = pointX;
-		this.pointY = pointY;
-		bullet = new Image("img/bullet.png");
+		
+		if(bullet == null)
+			bullet = new Image("img/bullet.png");
+		
+		setGraphic(bullet);
+		setHitBox(0, 0, bullet.getWidth(), bullet.getHeight(), true);
 	}
 	
 	
 	@Override
-	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException{
-		bullet.draw(this.pointX,this.pointY);
-	}
-	@Override
-	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
-		pointX += speedX;
-		pointY += speedY;
+	public void render(GameContainer gameContainer, Graphics g) throws SlickException{
+		super.render(gameContainer, g);
 	}
 	
 	@Override
+	public void update(GameContainer gameContainer, int delta) throws SlickException {
+		super.update(gameContainer, delta);
+	}
+	
+
 	public void unLoad() {
-	
+		bullet = null;
 	}
+	
 	public void shoot(int mouseX, int mouseY, float pointX, float pointY) {
 		Vector2f movment = new Vector2f(mouseX - pointX,mouseY - pointY);
 		movment.normalise();
-		speedX = movment.getX()*totalSpeed;
-		speedY = movment.getY()*totalSpeed;
+		float speedX = movment.getX() * Constants.BULLET_SPEED;
+		float speedY = movment.getY() * Constants.BULLET_SPEED;
 	}
 	
 	
