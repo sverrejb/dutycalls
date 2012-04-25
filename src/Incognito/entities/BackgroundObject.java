@@ -1,4 +1,4 @@
-package Incognito;
+package Incognito.entities;
 
 import org.newdawn.slick.tiled.TiledMap;
 

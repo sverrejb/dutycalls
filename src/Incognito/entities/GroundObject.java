@@ -1,4 +1,4 @@
-package Incognito;
+package Incognito.entities;
 
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.GameContainer;
@@ -16,8 +16,8 @@ public class GroundObject extends GameObject {
 	//Two dim array representing each tiles blocked value
 	protected boolean[][] blocked;
 	
-	public GroundObject() {
-		super();
+	public GroundObject(int x, int y) {
+		super(x, y);
 	}
 	
 	

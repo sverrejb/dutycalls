@@ -1,4 +1,4 @@
-package Incognito;
+package Incognito.utils;
 
 import java.awt.Point;
 

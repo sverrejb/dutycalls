@@ -1,5 +1,8 @@
-package Incognito;
+package Incognito.states;
 
+import it.randomtower.engine.World;
+
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -8,8 +11,13 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
-public class MainMenu extends BasicGameState {
+import Incognito.utils.Globals;
+import Incognito.utils.Constants;
+
+public class MainMenu extends World {
 	
 	private Image background = null;
 	private Image title = null;
@@ -27,6 +35,7 @@ public class MainMenu extends BasicGameState {
 	private float ExitbuttonScale = 1;
 	
 	public MainMenu(int stateID) {
+		super(stateID);
 		this.stateID = stateID;
 	}
 
@@ -75,7 +84,9 @@ public class MainMenu extends BasicGameState {
 			 
 			  if ( input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) ){
 				  //This will run init on Gameplay state
-				  stateBasedGame.enterState(GameState.GAMEPLAYSTATE);
+				  System.out.println(Globals.game.getStateCount());
+				  Globals.game.enterState(Constants.INGAME_STATE, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+				 
 			  }
 			}else{
 			  if(StartbuttonScale > 1.0f)

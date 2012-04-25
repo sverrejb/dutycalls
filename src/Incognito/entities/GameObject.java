@@ -1,4 +1,6 @@
-package Incognito;
+package Incognito.entities;
+
+import it.randomtower.engine.entity.Entity;
 
 import java.awt.Point;
 
@@ -13,7 +15,7 @@ import org.newdawn.slick.tiled.TiledMap;
 /*
  * This class defines everything for all collideable objects in the game
  */
-public abstract class GameObject implements IGameObject{
+public abstract class GameObject extends Entity{
 	/*
 	 * Constants
 	 */
@@ -52,7 +54,8 @@ public abstract class GameObject implements IGameObject{
 	/*
 	 * Constructor
 	 */
-	public GameObject(){
+	public GameObject(int x, int y){
+		super(x, y);
 		velocityVector = new Vector2f(0,0);
 	}
 	

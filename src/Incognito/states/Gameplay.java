@@ -1,4 +1,6 @@
-package Incognito;
+package Incognito.states;
+
+import it.randomtower.engine.World;
 
 import org.lwjgl.opengl.Display;
 import org.newdawn.slick.GameContainer;
@@ -8,11 +10,13 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import Incognito.Action;
+import Incognito.entities.GroundObject;
+import Incognito.entities.PlayerObject;
+import Incognito.utils.Action;
+import Incognito.utils.Constants;
 
-public class Gameplay extends BasicGameState{
+public class Gameplay extends World{
 
-	private int stateID = -1;
 	
 	private PlayerObject player;
 	private GroundObject ground;
@@ -23,16 +27,17 @@ public class Gameplay extends BasicGameState{
 	
 	//skudd i list
 
-	public Gameplay(int stateID) {
-		this.stateID = stateID;
-		
-		player = new PlayerObject(100f, 300f);
-		ground = new GroundObject();
+	public Gameplay(int id) {
+		super(id);
+		player = new PlayerObject(100, 300);
+		ground = new GroundObject(0, 0);
 	}
 
 	@Override
 	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
 			throws SlickException {
+		super.init(gameContainer, stateBasedGame);
+
 		player.init(gameContainer, stateBasedGame);
 		ground.init(gameContainer, stateBasedGame);
 	}
@@ -40,6 +45,7 @@ public class Gameplay extends BasicGameState{
 	@Override
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g)
 			throws SlickException {
+		super.render(gameContainer, stateBasedGame, g);
 		//Background
 		ground.render(gameContainer, stateBasedGame, g);
 		player.render(gameContainer, stateBasedGame, g);
@@ -52,12 +58,13 @@ public class Gameplay extends BasicGameState{
 	@Override
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta)
 			throws SlickException {
+		super.update(gameContainer, stateBasedGame, delta);
 		
 		Input input = gameContainer.getInput();
 		
 		//tilbake til mainmenu
 		if(input.isKeyDown(input.KEY_ESCAPE))
-			stateBasedGame.enterState(GameState.MAINMENUSTATE);
+			stateBasedGame.enterState(Constants.INGAME_STATE);
 		
 		//Hente keyboard input
 		//--> gi til player
@@ -96,9 +103,7 @@ public class Gameplay extends BasicGameState{
 		
 	}
 
-	@Override
-	public int getID() {
-		return stateID;
-	}
+	
+
 
 }

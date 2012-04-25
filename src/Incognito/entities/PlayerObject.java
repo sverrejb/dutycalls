@@ -1,4 +1,4 @@
-package Incognito;
+package Incognito.entities;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
@@ -6,6 +6,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+
+import Incognito.utils.Action;
 
 public class PlayerObject extends GameObject {
 	
@@ -16,8 +18,9 @@ public class PlayerObject extends GameObject {
 	float moveX = 0f;
 	float moveY = 0f;
 	
-	public PlayerObject(float pointX, float pointY ){
-		super();
+	public PlayerObject(int pointX, int pointY ){
+		super(pointX, pointY);
+		
 		this.pointX = pointX;
 		this.pointY = pointY;
 		
