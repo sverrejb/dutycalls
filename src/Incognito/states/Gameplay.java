@@ -92,10 +92,6 @@ public class Gameplay extends World{
 		if(input.isKeyDown(input.KEY_S)){
 		}
 		
-		if(input.isKeyDown(input.KEY_SPACE)){
-			player.movePlayer(Action.SHOOT);
-		}
-		
 		//sjekke for kollisjon
 		//Opdatere onGround hvis nødvednigt
 		player.collision(ground);
