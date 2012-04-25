@@ -82,5 +82,10 @@ public class PlayerObject extends GameObject {
 		if(action == action.RIGHT){
 			moveX = action.getDir().x * action.getValue();
 		}
+		
+		if(action == Action.JUMP){
+			moveY = action.getDir().y * action.getValue();
+			onGround = false;
+		}
 	}
 }

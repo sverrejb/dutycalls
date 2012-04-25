@@ -141,6 +141,14 @@ public abstract class GameObject extends Entity{
 		return false;
 	}
 	
+	public float getX(){
+		return pointX;
+	}
+	public float getY(){
+		return pointY;
+	}
+	
+	
 	
 	
 	
