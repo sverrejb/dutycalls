@@ -43,17 +43,15 @@ public class Gameplay extends World{
 		
 		player = new PlayerObject(100, 300);
 		
-		
-		//ground = new GroundObject(0, 0);
-		
 		/*
 		 * Add to MarteEngine world
 		 */
 		add(player);
-		//add(ground);
 		
+		/*
+		 * Add the world
+		 */
 		TiledMap ground = new TiledMap("tiles/testLevel.tmx");
-		//blocked = new boolean[ground.getWidth()][ground.getHeight()];
 		
 		int pixelsX = ground.getTileWidth();
 		int pixelsY = ground.getTileHeight();
@@ -84,14 +82,6 @@ public class Gameplay extends World{
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g)
 			throws SlickException {
 		super.render(gameContainer, stateBasedGame, g);
-		
-		//Background
-		//ground.render(gameContainer, stateBasedGame, g);
-		//player.render(gameContainer, stateBasedGame, g);
-		//enemies
-		//weapons
-		//shots
-		
 	}
 
 	@Override
@@ -104,27 +94,6 @@ public class Gameplay extends World{
 		if(input.isKeyDown(input.KEY_ESCAPE))
 			stateBasedGame.enterState(Constants.MAINMENU_STATE);
 		
-		//Hente keyboard input
-		//--> gi til player
-		/*
-		if(input.isKeyDown(input.KEY_A)){
-			player.movePlayer(Action.LEFT);
-		}
-		
-		if(input.isKeyDown(input.KEY_D)){
-			player.movePlayer(Action.RIGHT);
-		}
-		
-		if(input.isKeyDown(input.KEY_W)){
-			player.movePlayer(Action.JUMP);
-		}
-		
-		if(input.isKeyDown(input.KEY_S)){
-		}
-		if(input.isKeyDown(input.KEY_SPACE)){
-			player.movePlayer(Action.SHOOT);
-		}*/
-		
 		/*
 		if(input.isMousePressed(input.MOUSE_LEFT_BUTTON)){
 			if(ammo.size() < currentAmmo){
@@ -134,17 +103,7 @@ public class Gameplay extends World{
 				currentAmmo--;
 			}
 			
-		}*/
-		//sjekke for kollisjon
-		////Opdatere onGround hvis nødvednigt
-		//player.collision(ground);
-		
-		//legge til gravitasjon
-		//player.applyGravitation();
-				
-		//ground.update(gameContainer, stateBasedGame, delta);
-		//player.update(gameContainer, stateBasedGame, delta);
-		
+		}*/		
 		
 	}
 
