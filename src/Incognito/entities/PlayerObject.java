@@ -1,9 +1,13 @@
 package Incognito.entities;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -17,6 +21,9 @@ public class PlayerObject extends GameObject {
 	
 	float moveX = 0f;
 	float moveY = 0f;
+	List<Bullet> ammo = new LinkedList<Bullet>();
+	int maxAmmo = 40;
+	int currentAmmo; 
 	
 	public PlayerObject(int pointX, int pointY ){
 		super(pointX, pointY);
@@ -39,16 +46,23 @@ public class PlayerObject extends GameObject {
 		
 		playerSprite = walkRight;
 		
+		currentAmmo = maxAmmo;
+		
 	}
 	
 	
 	@Override
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException{
 		playerSprite.draw(pointX,pointY);
+		g.drawString("Ammo: " + currentAmmo, 700, 10);
 	}
 	
 	@Override
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
+		
+		Input input = gameContainer.getInput();
+		int mouseX = input.getMouseX();
+		int mouseY = input.getMouseY();
 		
 		double newX = moveX/delta;
 		pointX += newX;
@@ -61,6 +75,20 @@ public class PlayerObject extends GameObject {
 		moveY -= newY;
 		
 		super.update(gameContainer, stateBasedGame, delta);
+		
+		if(input.isMousePressed(input.MOUSE_LEFT_BUTTON)){
+			if(ammo.size() < maxAmmo){
+				ammo.add(new Bullet((int)this.getX(), (int)this.getY()));
+				ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);
+				ammo.get(ammo.size() -1).shoot(mouseX, mouseY, this.getX(), this.getY());
+				currentAmmo--;
+			}
+			
+		}
+		
+		if(!ammo.isEmpty())
+			for(Bullet bullet : ammo)
+				bullet.update(gameContainer, stateBasedGame, delta);
 	}
 	
 	@Override

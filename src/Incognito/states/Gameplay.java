@@ -25,9 +25,6 @@ public class Gameplay extends World{
 	private PlayerObject player;
 	private GroundObject ground;
 	
-	List<Bullet> ammo = new LinkedList<Bullet>();
-	int maxAmmo = 40;
-	int currentAmmo; 
 	
 	//Enemy i list
 	
@@ -49,7 +46,6 @@ public class Gameplay extends World{
 		player.init(gameContainer, stateBasedGame);
 		ground.init(gameContainer, stateBasedGame);
 		
-		currentAmmo = maxAmmo;
 	}
 
 	@Override
@@ -62,7 +58,6 @@ public class Gameplay extends World{
 		//enemies
 		//weapons
 		//shots
-		g.drawString("Ammo: " + currentAmmo, 700, 10);
 		
 	}
 
@@ -72,8 +67,6 @@ public class Gameplay extends World{
 		super.update(gameContainer, stateBasedGame, delta);
 		
 		Input input = gameContainer.getInput();
-		int mouseX = input.getMouseX();
-		int mouseY = input.getMouseY();
 		
 		//tilbake til mainmenu
 		if(input.isKeyDown(input.KEY_ESCAPE))
@@ -103,17 +96,6 @@ public class Gameplay extends World{
 			player.movePlayer(Action.SHOOT);
 		}
 		
-		
-		if(input.isMousePressed(input.MOUSE_LEFT_BUTTON)){
-			if(ammo.size() < maxAmmo){
-				ammo.add(new Bullet((int)player.getX(), (int)player.getY()));
-				ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);
-				ammo.get(ammo.size() -1).shoot(mouseX, mouseY, player.getX(), player.getY());
-				currentAmmo--;
-			}
-			
-		}
-		
 		//sjekke for kollisjon
 		//Opdatere onGround hvis nødvednigt
 		player.collision(ground);
@@ -124,9 +106,6 @@ public class Gameplay extends World{
 		ground.update(gameContainer, stateBasedGame, delta);
 		player.update(gameContainer, stateBasedGame, delta);
 		
-		if(!ammo.isEmpty())
-			for(Bullet bullet : ammo)
-				bullet.update(gameContainer, stateBasedGame, delta);
 		
 	}
 
