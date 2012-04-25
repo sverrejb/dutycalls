@@ -42,8 +42,5 @@ public class GroundObject extends Entity {
 	}
 	
 	
-	@Override
-	public void collisionResponse(Entity other) {
-		// called when colliding with another entity
-	}
+
 }

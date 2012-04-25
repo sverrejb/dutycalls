@@ -11,7 +11,7 @@ public class Constants {
 	
 	public static final float GRAVITY = 9.81f;
 	
-	public static float BULLET_SPEED = 10f;
+	public static float BULLET_SPEED = 1f;
 	
 	public static int MAXAMMO = 40;
 	

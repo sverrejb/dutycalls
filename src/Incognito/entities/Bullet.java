@@ -1,5 +1,6 @@
 package Incognito.entities;
 
+import it.marteEngine.ME;
 import it.marteEngine.entity.Entity;
 import it.marteEngine.entity.PhysicsEntity;
 
@@ -14,8 +15,14 @@ public class Bullet extends PhysicsEntity {
 	
 	private static Image bullet;
 	
+	public static int bulletsCount;
+	
 	public Bullet(float x, float y) throws SlickException{
 		super(x, y);
+		
+		bulletsCount++;
+		
+		System.out.println(bulletsCount);
 		
 		if(bullet == null)
 			bullet = new Image("img/bullet.png");
@@ -23,7 +30,7 @@ public class Bullet extends PhysicsEntity {
 		setGraphic(bullet);
 		setHitBox(0, 0, bullet.getWidth(), bullet.getHeight(), true);
 		
-		this.addType(Entity.SOLID);
+		//this.addType(Entity.SOLID);
 	}
 	
 	
@@ -43,10 +50,21 @@ public class Bullet extends PhysicsEntity {
 		bullet = null;
 	}
 	
-	public void shoot(float mouseX, float mouseY, float pointX, float pointY) {
-		Vector2f movment = new Vector2f(mouseX - pointX,mouseY - pointY);
+	public void shoot(float mouseX, float mouseY) {
+		Vector2f movment = new Vector2f(mouseX - x,mouseY - y);
 		movment.normalise();
+		
+		//acceleration.add(new Vector2f(movment.getX() * Constants.BULLET_SPEED, movment.getY() * Constants.BULLET_SPEED));
 		speed.set(movment.getX() * Constants.BULLET_SPEED, movment.getY() * Constants.BULLET_SPEED);
+		System.out.println(speed.getX() + "  " + speed.getY());
+	}
+	
+	@Override
+	public void collisionResponse(Entity other) {
+		// called when colliding with another entity
+		bulletsCount--;
+		System.out.println("byebye");
+		ME.world.remove(this);
 	}
 	
 	

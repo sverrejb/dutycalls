@@ -2,6 +2,7 @@ package Incognito.entities;
 
 import it.marteEngine.entity.Entity;
 import it.marteEngine.entity.PlatformerEntity;
+import it.marteEngine.ME;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,7 +25,9 @@ public class PlayerObject extends PlatformerEntity {
 	
 	float moveX = 0f;
 	float moveY = 0f;
+	
 	List<Bullet> ammo = new LinkedList<Bullet>();
+	
 	int currentAmmo = Constants.MAXAMMO; 
 
 	
@@ -100,18 +103,29 @@ public class PlayerObject extends PlatformerEntity {
 		if(check("SHOOT")){
 			mouseX = input.getMouseX();
 			mouseY = input.getMouseY();
+			
+
+			if(Bullet.bulletsCount <= Constants.MAXAMMO){
+				Bullet bullet = new Bullet(x + 100, y);
+				
+				bullet.shoot(mouseX + 100, mouseY);
+				
+				ME.world.add(bullet);
+			}
+			
+			/*
 			if(ammo.size() < Constants.MAXAMMO){
 				ammo.add(new Bullet(this.x, this.y));
 				//ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);
 				ammo.get(ammo.size() -1).shoot(mouseX, mouseY, this.x, this.y);
 				currentAmmo--;
-			}
+			}*/
 			
 		}
-		
+		/*
 		if(!ammo.isEmpty())
 			for(Bullet bullet : ammo)
-				bullet.update(gameContainer, delta);
+				bullet.update(gameContainer, delta);*/
 
 		
 	}
