@@ -22,8 +22,6 @@ public class Bullet extends PhysicsEntity {
 		
 		bulletsCount++;
 		
-		System.out.println(bulletsCount);
-		
 		if(bullet == null)
 			bullet = new Image("img/bullet.png");
 		
@@ -56,7 +54,6 @@ public class Bullet extends PhysicsEntity {
 		
 		//acceleration.add(new Vector2f(movment.getX() * Constants.BULLET_SPEED, movment.getY() * Constants.BULLET_SPEED));
 		speed.set(movment.getX() * Constants.BULLET_SPEED, movment.getY() * Constants.BULLET_SPEED);
-		System.out.println(speed.getX() + "  " + speed.getY());
 	}
 	
 	@Override

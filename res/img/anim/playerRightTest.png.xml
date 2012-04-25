@@ -1,0 +1,8 @@
+<sheet>
+	<sprite name="r1.png" x="0" y="0" width="103" height="150" />
+	<sprite name="r2.png" x="103" y="0" width="103" height="150" />
+	<sprite name="r3.png" x="206" y="0" width="103" height="150" />
+	<sprite name="r4.png" x="309" y="0" width="103" height="150" />
+	<sprite name="r5.png" x="412" y="0" width="103" height="150" />
+	<sprite name="r6.png" x="515" y="0" width="103" height="150" />
+</sheet>

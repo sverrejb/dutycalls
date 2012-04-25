@@ -13,6 +13,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 
 import Incognito.utils.Constants;
 
@@ -29,14 +30,22 @@ public class PlayerObject extends PlatformerEntity {
 	List<Bullet> ammo = new LinkedList<Bullet>();
 	
 	int currentAmmo = Constants.MAXAMMO; 
+	
+	private int pixelsPerPicX = 103;
+	private int pixelsPerPicY = 150;
 
 	
 	public PlayerObject(int pointX, int pointY ) throws SlickException{
 		super(pointX, pointY);
-		Image test = new Image("img/anim/r1.png");
-		
+		//mage test = new Image("img/anim/r1.png");
+		SpriteSheet test = new SpriteSheet("img/anim/playerRightTest.png", pixelsPerPicX, pixelsPerPicY);
 		setGraphic(test);
-		setHitBox(0, 0, test.getWidth(), test.getHeight(), true);
+		duration = 100;		
+		addAnimation("WALK_RIGHT", true, 0, 0, 1, 2, 3, 4, 5);
+		addFlippedAnimation("WALK_LEFT", false, false, true, 0, 0, 1, 2, 3, 4, 5);
+
+		
+		setHitBox(0, 0, pixelsPerPicX, pixelsPerPicY, true);
 		
 		this.addType(Entity.PLAYER);
 		
@@ -109,8 +118,9 @@ public class PlayerObject extends PlatformerEntity {
 				Bullet bullet = new Bullet(x + 100, y);
 				
 				bullet.shoot(mouseX + 100, mouseY);
-				
+				System.out.println(ME.world.getCount());
 				ME.world.add(bullet);
+				System.out.println(ME.world.getCount());
 			}
 			
 			/*

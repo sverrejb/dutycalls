@@ -1,5 +1,6 @@
 package it.marteEngine.entity;
 
+import it.marteEngine.ME;
 import it.marteEngine.ResourceManager;
 
 import org.newdawn.slick.GameContainer;
@@ -77,6 +78,7 @@ public class PlatformerEntity extends PhysicsEntity {
 		// increase acceeration, if we're not going too fast
 		if (check(CMD_LEFT) && speed.x > -maxSpeed.x) {
 			acceleration.x = -moveSpeed;
+			//currentAnim = ME.WALK_LEFT;
 		}
 		if (check(CMD_RIGHT) && speed.x < maxSpeed.x) {
 			acceleration.x = moveSpeed;
