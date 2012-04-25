@@ -67,7 +67,6 @@ public class Gameplay extends World{
 		super.update(gameContainer, stateBasedGame, delta);
 		
 		Input input = gameContainer.getInput();
-		
 		//tilbake til mainmenu
 		if(input.isKeyDown(input.KEY_ESCAPE))
 			stateBasedGame.enterState(Constants.INGAME_STATE);

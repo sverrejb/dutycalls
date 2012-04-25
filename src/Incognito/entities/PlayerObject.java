@@ -30,7 +30,7 @@ public class PlayerObject extends GameObject {
 		
 		this.pointX = pointX;
 		this.pointY = pointY;
-		
+		define("SHOOT", Input.MOUSE_LEFT_BUTTON);
 	} 
 	
 	@Override
@@ -59,10 +59,10 @@ public class PlayerObject extends GameObject {
 	
 	@Override
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
-		
 		Input input = gameContainer.getInput();
-		int mouseX = input.getMouseX();
-		int mouseY = input.getMouseY();
+		
+		float mouseX;
+		float mouseY;
 		
 		double newX = moveX/delta;
 		pointX += newX;
@@ -76,7 +76,9 @@ public class PlayerObject extends GameObject {
 		
 		super.update(gameContainer, stateBasedGame, delta);
 		
-		if(input.isMousePressed(input.MOUSE_LEFT_BUTTON)){
+		if(check("SHOOT")){
+			mouseX = input.getMouseX();
+			mouseY = input.getMouseY();
 			if(ammo.size() < maxAmmo){
 				ammo.add(new Bullet((int)this.getX(), (int)this.getY()));
 				ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);

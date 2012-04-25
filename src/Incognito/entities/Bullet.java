@@ -53,7 +53,7 @@ public class Bullet extends GameObject {
 	public void unLoad() {
 	
 	}
-	public void shoot(int mouseX, int mouseY, float pointX, float pointY) {
+	public void shoot(float mouseX, float mouseY, float pointX, float pointY) {
 		Vector2f movment = new Vector2f(mouseX - pointX,mouseY - pointY);
 		movment.normalise();
 		speedX = movment.getX()*totalSpeed;
