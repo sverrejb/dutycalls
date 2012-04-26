@@ -1,15 +1,24 @@
 package Incognito.entities;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import Incognito.utils.Constants;
+
 import it.marteEngine.ME;
 import it.marteEngine.entity.Entity;
 
 public class WeaponObject extends Entity{
+	
+	//List<Bullet> ammo = new LinkedList<Bullet>();
+	
+	//int currentAmmo = Constants.MAXAMMO; 
 	
 	private static PlayerObject player;
 	
@@ -32,6 +41,8 @@ public class WeaponObject extends Entity{
 		this.player = player;
 		
 		collidable = false;
+		
+		define("SHOOT", Input.MOUSE_LEFT_BUTTON);
 		
 	}
 	
@@ -66,6 +77,24 @@ public class WeaponObject extends Entity{
 		
 		
 		super.update(gameContainer, delta);
+		
+		//float mouseX;
+		//float mouseY;
+		
+		if(check("SHOOT")){
+			mouseX = input.getMouseX();
+			mouseY = input.getMouseY();
+			
+			System.out.println(Bullet.bulletsCount);
+			if(Bullet.bulletsCount <= Constants.MAXAMMO){
+				Bullet bullet = new Bullet(x + 150, y);
+				
+				bullet.shoot(mouseX + 150, mouseY);
+			//	System.out.println(ME.world.getCount());
+				ME.world.add(bullet);
+			//	System.out.println(ME.world.getCount());
+			}	
+		}
 		
 	}
 

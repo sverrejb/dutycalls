@@ -21,9 +21,6 @@ import Incognito.utils.Constants;
 
 public class PlayerObject extends PlatformerEntity {
 	
-	List<Bullet> ammo = new LinkedList<Bullet>();
-	
-	int currentAmmo = Constants.MAXAMMO; 
 	
 	private int pixelsPerPicX = 103;
 	private int pixelsPerPicY = 150;
@@ -52,8 +49,6 @@ public class PlayerObject extends PlatformerEntity {
 		
 		this.addType(Entity.PLAYER);
 		
-		define("SHOOT", Input.MOUSE_LEFT_BUTTON);
-		
 		
 	} 
 
@@ -62,7 +57,6 @@ public class PlayerObject extends PlatformerEntity {
 	@Override
 	public void render(GameContainer gameContainer, Graphics g) throws SlickException{
 		super.render(gameContainer, g);
-		g.drawString("Ammo: " + currentAmmo, 700, 10);
 	}
 	
 	@Override
@@ -73,27 +67,7 @@ public class PlayerObject extends PlatformerEntity {
 		/*
 		 * SKYTING
 		 */
-		Input input = gameContainer.getInput();
 		
-		
-		
-		float mouseX;
-		float mouseY;
-		
-		if(check("SHOOT")){
-			mouseX = input.getMouseX();
-			mouseY = input.getMouseY();
-			
-			System.out.println(Bullet.bulletsCount);
-			if(Bullet.bulletsCount <= Constants.MAXAMMO){
-				Bullet bullet = new Bullet(x + 150, y);
-				
-				bullet.shoot(mouseX + 150, mouseY);
-			//	System.out.println(ME.world.getCount());
-				ME.world.add(bullet);
-			//	System.out.println(ME.world.getCount());
-			}	
-		}
 	}
 	
 
