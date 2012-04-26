@@ -42,6 +42,7 @@ public class PlayerObject extends PlatformerEntity {
 		addFlippedAnimation(Constants.STAND_STILL_LEFT, true, true, false, 0, 1);
 		addAnimation(ME.WALK_RIGHT, true, 0, 0, 1, 2, 3, 4, 5);
 		addFlippedAnimation(ME.WALK_LEFT, true, true, false, 0, 0, 1, 2, 3, 4, 5);
+
 		
 		lastDirection = ME.WALK_RIGHT;
 		

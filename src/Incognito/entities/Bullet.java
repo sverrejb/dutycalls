@@ -41,6 +41,8 @@ public class Bullet extends PhysicsEntity {
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
 		super.update(gameContainer, delta);
+		if(y < Constants.GAME_ROOF)
+			destroy();
 		
 	}
 	
@@ -60,7 +62,7 @@ public class Bullet extends PhysicsEntity {
 	@Override
 	public void collisionResponse(Entity other) {
 		// called when colliding with another entity
-		if(!other.isType(PLAYER) || this.y > Constants.GAME_ROOF){
+		if(!other.isType(PLAYER)){
 			bulletsCount--;
 			//System.out.println("byebye");
 			destroy();
