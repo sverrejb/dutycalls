@@ -4,6 +4,8 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
 import org.lwjgl.LWJGLUtil;
+
+import java.awt.Cursor;
 import java.io.File;
 
 import Incognito.states.GameState;
@@ -21,5 +23,6 @@ public class Incognito {
 		app.setDisplayMode(800, 600, false);
 		app.setTargetFrameRate(FPS);
 		app.start();
+		
 	}
 }

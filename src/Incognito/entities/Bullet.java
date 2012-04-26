@@ -28,6 +28,7 @@ public class Bullet extends PhysicsEntity {
 		setGraphic(bullet);
 		setHitBox(0, 0, bullet.getWidth(), bullet.getHeight(), true);
 		
+		
 		//this.addType(Entity.SOLID);
 	}
 	
@@ -59,9 +60,14 @@ public class Bullet extends PhysicsEntity {
 	@Override
 	public void collisionResponse(Entity other) {
 		// called when colliding with another entity
-		bulletsCount--;
-		System.out.println("byebye");
-		ME.world.remove(this);
+		if(!other.isType(PLAYER)){
+			bulletsCount--;
+			//System.out.println("byebye");
+			destroy();
+			//ME.world.remove(this);
+		}
+		else
+			System.out.println("trololo");
 	}
 	
 	

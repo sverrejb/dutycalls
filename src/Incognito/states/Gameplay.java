@@ -1,5 +1,6 @@
 package Incognito.states;
 
+import java.awt.Cursor;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.MouseListener;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
@@ -91,6 +93,68 @@ public class Gameplay extends World{
 		setWidth(ground.getWidth() * pixelsX);
 		setHeight(ground.getHeight() * pixelsY);
 		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * pixelsX, ground.getHeight() * pixelsY, new Vector2f(32,32)));
+
+		gameContainer.getInput().addMouseListener(new MouseListener() {
+			
+			@Override
+			public void setInput(Input arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public boolean isAcceptingInput() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public void inputStarted() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void inputEnded() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseWheelMoved(int arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseReleased(int arg0, int arg1, int arg2) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(int arg0, int arg1, int arg2) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseMoved(int arg0, int arg1, int arg2, int arg3) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseDragged(int arg0, int arg1, int arg2, int arg3) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(int arg0, int arg1, int arg2, int arg3) {
+				System.out.println("hello");
+			}
+		});
 	}
 
 	@Override
@@ -121,6 +185,14 @@ public class Gameplay extends World{
 			
 		}*/		
 		
+	}
+	
+	@Override
+	public void enter(GameContainer container, StateBasedGame game)
+			throws SlickException {
+		super.enter(container, game);
+		
+		//org.newdawn.slick.AppGameContainer.setMouseCursor(new Cursor(Cursor.HAND_CURSOR), 2,2);
 	}
 
 	
