@@ -12,6 +12,7 @@ public class Constants {
 	/* Games constants*/
 	public static final int GAME_WIDTH = 800;
 	public static final int GAME_HEIGHT = 600;
+	public static final int GAME_ROOF = 100;
 	public static boolean DEBUG = true;
 	
 	/*Physics constants*/

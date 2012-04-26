@@ -60,7 +60,7 @@ public class Bullet extends PhysicsEntity {
 	@Override
 	public void collisionResponse(Entity other) {
 		// called when colliding with another entity
-		if(!other.isType(PLAYER)){
+		if(!other.isType(PLAYER) || this.y > Constants.GAME_ROOF){
 			bulletsCount--;
 			//System.out.println("byebye");
 			destroy();
