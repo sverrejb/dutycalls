@@ -12,7 +12,6 @@ public class Constants {
 	/* Games constants*/
 	public static final int GAME_WIDTH = 800;
 	public static final int GAME_HEIGHT = 600;
-	public static final int GAME_ROOF = -1200;
 	public static boolean DEBUG = true;
 	
 	/*Physics constants*/
@@ -29,5 +28,6 @@ public class Constants {
 	
 	/* Bullet constants*/
 	public static final float BULLET_SPEED = 50f;
+	public static final int BULLET_BOUNDRY = 1200;
 	public static final int MAXAMMO = 40;
 }
