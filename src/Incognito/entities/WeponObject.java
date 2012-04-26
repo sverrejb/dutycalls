@@ -6,6 +6,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import it.marteEngine.ME;
 import it.marteEngine.entity.Entity;
 
 public class WeponObject extends Entity{
@@ -46,8 +47,9 @@ public class WeponObject extends Entity{
 		float centerX = player.x + gunCenterX + playerGunPosX;
 		float centerY = player.y + gunCenterY + playerGUnPosY;
 		
-		float mouseX = input.getMouseX();
-		float mouseY = input.getMouseY();
+		// + Fixes for Camera movement
+		float mouseX = input.getMouseX() + ME.world.camera.cameraX;
+		float mouseY = input.getMouseY() + ME.world.camera.cameraY;
 		
 		//2. Find out their position relative to each other (angle)
 		//arctan(Y/X) - arctan(Y/X)	
