@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="100" height="37" tilewidth="16" tileheight="16">
+<map version="1.0" orientation="orthogonal" width="500" height="37" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="pokemon-tileset" tilewidth="16" tileheight="16">
   <image source="tileset-advance.png" width="128" height="15971"/>
   <tile id="0">
@@ -18,9 +18,9 @@
    </properties>
   </tile>
  </tileset>
- <layer name="level1" width="100" height="37">
+ <layer name="level1" width="500" height="37">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2ZSQ6DMAxFnStw/2t02HTYdNh0OFIttZVQlIChiW3S/6QvFlAl/KdQBQIRhU+APYHgwxPw4Qv48EMg+PAEfPgCPvwBHz4IvSN82NLvHz5sifuHD1tC4ggf9sCHD/C88kXcPXzYkeodPuxIdd+Cj/g9wxLuKTe/Jcy9RXJ9w4cN8OGHob7hQ5exruFDl3jvlzsPHzqM9QwfusCHH1J7v9w1/+xjaD9ZqheJi3guoB6p97iS60AdJGvjew4+6jKlY/ioD3y80fifloxPJB+vZR+WpL4zSX+n5WPVEa05G862UxjQkLl9Sn2UWPs7drDnHDjHGT6W8s3plzlp3teJHZw5F861wfVRoktNHzd2cOc8OM+GfJTscOw5hMhSihdk6MXZ0DkAAA==
+   H4sIAAAAAAAAC+3cTW7bMBAGUAm5Qe5/jTTZtM0mP5skPVJZIIvAsAuTEcUZ6j1g4J0jiuR8tiRnXZZl/SwAIKd1kecAkJ08B4D85DlAG32TSOQ5QBt9k0jkOUAbvZNI5DlAm3XRQ4nDWgRot3551UcZSZ7P4fR7gjmF/k73mT3HSHp/fuYPxpDnRCLPAdqsF15hBHkO0Ma9cyKR5wD1PKtCNNYjQJ1zfVMPZTR5DlDn3P1yPZTR5Hkcfm8GOZzLcfuV0WbIjku/vc42pmzHC0clz4koa/YBjPK1Z8pzopDnAPXkOdHIc4B68pxo5Hk/l86pcw35yXOikef9zPCMHnCePCcaOQNQT54TjTyfm3mFPuQ50cjzeZlX6Oe0d9prjCbP////aDLf+8563JCFPCcSPX+usZ/2F/ML/chzItHv5xr7LNcWIAt5ThT6/dxjP/rcQm96KFFYi7nG3jJXR59f6M0eI4KZ83y259y+c6yZxgnZZOslzMk6jGvrzx3mGfrQR4lgz3V4d7ssP0rdl3q43eEPJtZrTmreU3+C69kvjHZtnm9xvfpnyfBfpX6XemzI88zXyqOQ5zk49/noSYy25xp8Khn+XOql1Kvv511t8azAHp+djvTZrOZ5jtnPxczMLaPsucbeSoa/l/oo9Ueeb+LanrHl/feRdVNZo49XHa9glNFrX+XpHaPH+q/kudqiYEZ/AWE/1G8QIQEA
   </data>
  </layer>
 </map>

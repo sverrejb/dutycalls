@@ -80,14 +80,9 @@ public class WeaponObject extends Entity{
 		
 		
 		super.update(gameContainer, delta);
-		
-		//float mouseX;
-		//float mouseY;
-		
+				
 		if(check("SHOOT")){
-			mouseX = input.getMouseX();
-			mouseY = input.getMouseY();
-			
+			System.out.println(x + "      " + y);
 			bulletExit = new Vector2f(mouseX - x, mouseY - y);
 			bulletExit.normalise();
 			if(Bullet.bulletsCount <= Constants.MAXAMMO){
