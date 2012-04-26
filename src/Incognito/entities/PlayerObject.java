@@ -38,6 +38,8 @@ public class PlayerObject extends PlatformerEntity {
 		/* Each frame duration for animation */
 		duration = Constants.PLAYER_ANIMATION_SPEED;		
 		
+		//setCentered(true);
+		
 		/* Animation */
 		addAnimation(Constants.STAND_STILL_RIGHT, false, 0, 1);
 		addFlippedAnimation(Constants.STAND_STILL_LEFT, true, true, false, 0, 1);

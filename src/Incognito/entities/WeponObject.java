@@ -44,8 +44,8 @@ public class WeponObject extends Entity{
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
 		Input input = gameContainer.getInput();
 		
-		float centerX = player.x + gunCenterX + playerGunPosX;
-		float centerY = player.y + gunCenterY + playerGUnPosY;
+		float centerX = player.x + playerGunPosX;
+		float centerY = player.y + playerGUnPosY;
 		
 		// + Fixes for Camera movement
 		float mouseX = input.getMouseX() + ME.world.camera.cameraX;
@@ -55,10 +55,15 @@ public class WeponObject extends Entity{
 		//arctan(Y/X) - arctan(Y/X)	
 		double angle = Math.toDegrees(Math.atan2((mouseY)- (centerY), mouseX - centerX));
 		
+		//Position gun in the middle
+		centerX += gunCenterX;
+		centerY += gunCenterY;
+		
 		this.x = centerX;
 		this.y = centerY;
 		
 		setAngle((int)angle);
+		
 		
 		super.update(gameContainer, delta);
 		
