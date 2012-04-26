@@ -21,6 +21,7 @@ import Incognito.entities.BackgroundObject;
 import Incognito.entities.Bullet;
 import Incognito.entities.GroundObject;
 import Incognito.entities.PlayerObject;
+import Incognito.entities.WeponObject;
 import Incognito.utils.Action;
 import Incognito.utils.Constants;
 
@@ -29,6 +30,7 @@ public class Gameplay extends World{
 	
 	private PlayerObject player;
 	private GroundObject ground;
+	private WeponObject wepon;
 	private BackgroundObject bg;
 	
 	//Enemy i list
@@ -47,11 +49,13 @@ public class Gameplay extends World{
 		super.init(gameContainer, stateBasedGame);
 		
 		player = new PlayerObject(100, 300);
+		wepon = new WeponObject(player);
 		
 		/*
 		 * Add to MarteEngine world
 		 */
 		add(player);
+		add(wepon);
 		
 		/*
 		 * Add the world
