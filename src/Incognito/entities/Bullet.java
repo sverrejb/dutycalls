@@ -41,7 +41,7 @@ public class Bullet extends PhysicsEntity {
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
 		super.update(gameContainer, delta);
-		if(y < Constants.GAME_ROOF)
+		if(y < Constants.GAME_ROOF || y > -Constants.GAME_ROOF)
 			destroy();
 		
 	}
