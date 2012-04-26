@@ -94,67 +94,7 @@ public class Gameplay extends World{
 		setHeight(ground.getHeight() * pixelsY);
 		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * pixelsX, ground.getHeight() * pixelsY, new Vector2f(32,32)));
 
-		gameContainer.getInput().addMouseListener(new MouseListener() {
-			
-			@Override
-			public void setInput(Input arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public boolean isAcceptingInput() {
-				// TODO Auto-generated method stub
-				return false;
-			}
-			
-			@Override
-			public void inputStarted() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void inputEnded() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseWheelMoved(int arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseReleased(int arg0, int arg1, int arg2) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mousePressed(int arg0, int arg1, int arg2) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseMoved(int arg0, int arg1, int arg2, int arg3) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseDragged(int arg0, int arg1, int arg2, int arg3) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(int arg0, int arg1, int arg2, int arg3) {
-				System.out.println("hello");
-			}
-		});
+		
 	}
 
 	@Override
