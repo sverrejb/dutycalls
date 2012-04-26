@@ -87,7 +87,7 @@ public class WeaponObject extends Entity{
 			
 			System.out.println(Bullet.bulletsCount);
 			if(Bullet.bulletsCount <= Constants.MAXAMMO){
-				Bullet bullet = new Bullet(x + 150, y);
+				Bullet bullet = new Bullet(x + this.width - 50, y + 10);
 				
 				bullet.shoot(mouseX + 150, mouseY);
 			//	System.out.println(ME.world.getCount());
