@@ -82,7 +82,7 @@ public class PlayerObject extends PlatformerEntity {
 			mouseX = input.getMouseX();
 			mouseY = input.getMouseY();
 			
-
+			System.out.println(Bullet.bulletsCount);
 			if(Bullet.bulletsCount <= Constants.MAXAMMO){
 				Bullet bullet = new Bullet(x + 150, y);
 				

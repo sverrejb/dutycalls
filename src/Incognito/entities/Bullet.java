@@ -29,7 +29,7 @@ public class Bullet extends PhysicsEntity {
 		setHitBox(0, 0, bullet.getWidth(), bullet.getHeight(), true);
 		
 		
-		//this.addType(Entity.SOLID);
+		this.addType(Entity.SOLID);
 	}
 	
 	
@@ -66,8 +66,6 @@ public class Bullet extends PhysicsEntity {
 			destroy();
 			//ME.world.remove(this);
 		}
-		else
-			System.out.println("trololo");
 	}
 	
 	
