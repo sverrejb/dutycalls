@@ -8,6 +8,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 
 import Incognito.utils.Constants;
 
@@ -27,6 +28,8 @@ public class WeaponObject extends Entity{
 	
 	private final float playerGunPosX = 50f;
 	private final float playerGUnPosY = 75f;
+	
+	private Vector2f bulletExit;
 
 	public WeaponObject(PlayerObject player) throws SlickException{
 		super(player.x, player.y);
@@ -85,11 +88,12 @@ public class WeaponObject extends Entity{
 			mouseX = input.getMouseX();
 			mouseY = input.getMouseY();
 			
-			System.out.println(Bullet.bulletsCount);
+			bulletExit = new Vector2f(mouseX - x, mouseY - y);
+			bulletExit.normalise();
 			if(Bullet.bulletsCount <= Constants.MAXAMMO){
-				Bullet bullet = new Bullet(x + this.width - 50, y + 10);
+				Bullet bullet = new Bullet((this.width)* bulletExit.getX() + x, (this.width) * bulletExit.getY() + y);
 				
-				bullet.shoot(mouseX + 150, mouseY);
+				bullet.shoot(mouseX, mouseY);
 			//	System.out.println(ME.world.getCount());
 				ME.world.add(bullet);
 			//	System.out.println(ME.world.getCount());
