@@ -9,7 +9,7 @@ import org.newdawn.slick.SlickException;
 import it.marteEngine.ME;
 import it.marteEngine.entity.Entity;
 
-public class WeponObject extends Entity{
+public class WeaponObject extends Entity{
 	
 	private static PlayerObject player;
 	
@@ -19,7 +19,7 @@ public class WeponObject extends Entity{
 	private final float playerGunPosX = 50f;
 	private final float playerGUnPosY = 75f;
 
-	public WeponObject(PlayerObject player) throws SlickException{
+	public WeaponObject(PlayerObject player) throws SlickException{
 		super(player.x, player.y);
 		
 		Image gun = new Image("img/anim/gun.png");
