@@ -151,11 +151,10 @@ public class Gameplay extends World{
 	
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-		Globals.ac.setMouseCursor("/res/img/crosshair.png", 12, 12);
-		
+
+		Globals.ac.setMouseCursor(("/res/img/cursor.gif"), 0, 0);		
+
 		super.enter(container, game);
-		
-		//org.newdawn.slick.AppGameContainer.setMouseCursor(new Cursor(Cursor.HAND_CURSOR), 2,2);
 	}
 
 	
