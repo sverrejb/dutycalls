@@ -5,6 +5,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import it.marteEngine.ME;
 import it.marteEngine.entity.Entity;
 
 
@@ -29,6 +30,7 @@ public class BackgroundObject extends Entity {
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
 		super.update(gameContainer, delta);
+		x = ME.world.camera.cameraX/2;
 	}
 	
 }
