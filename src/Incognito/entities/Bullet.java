@@ -28,6 +28,8 @@ public class Bullet extends PhysicsEntity {
 		setGraphic(bullet);
 		setHitBox(0, 0, bullet.getWidth(), bullet.getHeight(), true);
 		
+		/* Remove gravity */
+		this.gravity = 0f;
 		
 		this.addType(Entity.SOLID);
 	}
@@ -61,9 +63,7 @@ public class Bullet extends PhysicsEntity {
 		// called when colliding with another entity
 		if(!other.isType(PLAYER)){
 			bulletsCount--;
-			//System.out.println("byebye");
 			destroy();
-			//ME.world.remove(this);
 		}
 	}
 	
