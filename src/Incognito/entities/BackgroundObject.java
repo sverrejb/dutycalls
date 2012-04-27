@@ -36,14 +36,11 @@ public class BackgroundObject extends Entity {
 		float camPosX = ME.world.camera.cameraX;
 		float camPosY = ME.world.camera.cameraY;
 		
-		if( image.getWidth() % camPosX == 0)
-			fixPosX = camPosX;
+		
+		x = (float) (ME.world.camera.cameraX/1.3);
 			
-		x = fixPosX;
-		y = fixPosY;
 			
 		super.update(gameContainer, delta);
-		x = ME.world.camera.cameraX/2;
 	}
 	
 }
