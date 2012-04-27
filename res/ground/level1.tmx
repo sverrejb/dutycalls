@@ -5,6 +5,11 @@
    <property name="blocked" value="true"/>
   </properties>
   <image source="grasjunglemain.png" trans="ffffff" width="1024" height="1024"/>
+  <tile id="125">
+   <properties>
+    <property name="enemy" value="ground"/>
+   </properties>
+  </tile>
   <tile id="160">
    <properties>
     <property name="blocked" value="true"/>
@@ -33,7 +38,7 @@
  </tileset>
  <layer name="Tile Layer 1" width="500" height="37">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3dyw2CQBQFUPpfEhvQDrQD7cBfAVqJIcbNi2bAwcwMnrO7rF7YEHLnQdcBAAAAAAC5dqUHAAAAAAAAAIAKbEoPAAAAAAAAAAAV0J8DAC3ahrwO2Td2AAAAAACYSn8OALQg9uX7kPuQDyHr0wEAAAAASNGfAwA1mtqX9x+uvejTAQAAAABI0Z8DADVI9eW5ViHr0wGgDseQT0WmAAAAgCf9OQAwVerf41Pz3F35N/TpAFDGLeR7kSkAgDGGc2/OugGwdEvvz4f3cO/eAJAntRt+DjnuerdInw4AAAAA8H+W3p/P7Vp6AAB4I3a9ufvgqf3wS8it9+Vjnu+/vse5GYD2PQBQc084ECEBAA==
+   H4sIAAAAAAAAC+3dyw2CQBQFUCu3CGID2oF2oB34K0ArMcS4edEMOJiZwXN2l9ULG0LuPFgsAAAAAACAXLvSAwAAAAAAAABABTalBwAAAAAAAACACujPAYAWbUNeh+wbOwAAAAAAjKU/BwBaEPvyfchdyIeQ9ekAAAAAAKTozwGAGo3ty7sP11706QAAAAAApOjPAYAapPryXKuQ9ekAUIdjyKciUwAAAMCT/hwAGCv17/Gxeequ/Bv6dAAo4xbyvcgUAMAQ/bm3OZ51W5YeAICqzL0/79/DvXsDQJ7Ubvg55Ljr3SJ9OgAAAADA/5l7fz61a+kBAOCN2PXm7oOn9sMvIbfelw95vv/6HudmANr3ADUo7SQQIQEA
   </data>
  </layer>
 </map>

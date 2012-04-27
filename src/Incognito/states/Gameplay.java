@@ -72,11 +72,15 @@ public class Gameplay extends World{
 		
 		for (int x = 0; x < ground.getWidth(); x++) 
 			for (int y = 0; y < ground.getHeight(); y++) {
+				
 				//ID of the tile on x, y position layer 0
 				int ID = ground.getTileId(x, y, 0);
 				
 				String value = ground.getTileProperty(ID, "blocked", "false");
 				
+				/*
+				 * Create ground
+				 */				
 				if("true".equals(value)){
 					groundObject = new GroundObject(x*pixelsX, y*pixelsY, ground.getTileImage(x, y, 0));
 					add(groundObject);
@@ -90,6 +94,18 @@ public class Gameplay extends World{
 						groundObject.collidable = false;
 						add(groundObject);
 					}
+				}
+				
+				/*
+				 * Spawn enemies
+				 */
+				value = ground.getTileProperty(ID, "enemy", "false");
+				
+				if("ground".equals(value)){ //ground1, ground1. for punkter å gå og??
+					
+				}
+				else if("flying".equals(value)){
+					
 				}
 			}
 		

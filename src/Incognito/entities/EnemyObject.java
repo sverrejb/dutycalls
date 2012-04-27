@@ -12,6 +12,10 @@ import it.marteEngine.entity.PhysicsEntity;
 import Incognito.entities.*;
 
 public class EnemyObject extends PhysicsEntity{
+	
+	private enum STATES {KILL_MODE, WANDER, DEAD}
+	
+	
 	public EnemyObject(int x, int y){
 		super(x, y);		
 	}
