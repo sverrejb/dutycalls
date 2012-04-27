@@ -63,7 +63,7 @@ public class Gameplay extends World{
 		/*
 		 * Add the world
 		 */
-		TiledMap ground = new TiledMap("tiles/testLevel.tmx");
+		TiledMap ground = new TiledMap("ground/level1.tmx");
 		GroundObject groundObject;
 		
 		int pixelsX = ground.getTileWidth();

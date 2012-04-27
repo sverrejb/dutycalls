@@ -46,7 +46,7 @@ public class PlayerObject extends PlatformerEntity {
 		
 		lastDirection = ME.WALK_RIGHT;
 		
-		setHitBox(0, 0, pixelsPerPicX, pixelsPerPicY, true);
+		setHitBox(20, 0, pixelsPerPicX - 37, pixelsPerPicY, true);
 		
 		this.addType(Entity.PLAYER);
 		

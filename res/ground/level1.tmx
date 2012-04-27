@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="500" height="37" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="grasjunglemain" tilewidth="64" tileheight="64">
+  <properties>
+   <property name="blocked" value="true"/>
+  </properties>
+  <image source="grasjunglemain.png" trans="ffffff" width="1024" height="1024"/>
+  <tile id="160">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="161">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="176">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="177">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="193">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="500" height="37">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3dyw2CQBQFUPpfEhvQDrQD7cBfAVqJIcbNi2bAwcwMnrO7rF7YEHLnQdcBAAAAAAC5dqUHAAAAAAAAAIAKbEoPAAAAAAAAAAAV0J8DAC3ahrwO2Td2AAAAAACYSn8OALQg9uX7kPuQDyHr0wEAAAAASNGfAwA1mtqX9x+uvejTAQAAAABI0Z8DADVI9eW5ViHr0wGgDseQT0WmAAAAgCf9OQAwVerf41Pz3F35N/TpAFDGLeR7kSkAgDGGc2/OugGwdEvvz4f3cO/eAJAntRt+DjnuerdInw4AAAAA8H+W3p/P7Vp6AAB4I3a9ufvgqf3wS8it9+Vjnu+/vse5GYD2PQBQc084ECEBAA==
+  </data>
+ </layer>
+</map>
