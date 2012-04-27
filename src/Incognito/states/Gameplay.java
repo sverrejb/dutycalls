@@ -24,6 +24,7 @@ import Incognito.entities.PlayerObject;
 import Incognito.entities.WeaponObject;
 import Incognito.utils.Action;
 import Incognito.utils.Constants;
+import Incognito.utils.Globals;
 
 public class Gameplay extends World{
 
@@ -133,8 +134,8 @@ public class Gameplay extends World{
 	}
 	
 	@Override
-	public void enter(GameContainer container, StateBasedGame game)
-			throws SlickException {
+	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+		Globals.ac.setMouseCursor(new Image ("/res/img/crosshair.png"), 25, 25);
 		super.enter(container, game);
 		
 		//org.newdawn.slick.AppGameContainer.setMouseCursor(new Cursor(Cursor.HAND_CURSOR), 2,2);
