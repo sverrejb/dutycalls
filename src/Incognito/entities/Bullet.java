@@ -52,11 +52,7 @@ public class Bullet extends PhysicsEntity {
 		bullet = null;
 	}
 	
-	public void shoot(float mouseX, float mouseY) {
-		Vector2f movment = new Vector2f(mouseX - x,mouseY - y);
-		movment.normalise();
-		
-		//acceleration.add(new Vector2f(movment.getX() * Constants.BULLET_SPEED, movment.getY() * Constants.BULLET_SPEED));
+	public void shoot(Vector2f movment) {
 		speed.set(movment.getX() * Constants.BULLET_SPEED, movment.getY() * Constants.BULLET_SPEED);
 	}
 	

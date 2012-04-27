@@ -86,12 +86,9 @@ public class WeaponObject extends Entity{
 			bulletExit = new Vector2f(mouseX - x, mouseY - y);
 			bulletExit.normalise();
 			if(Bullet.bulletsCount <= Constants.MAXAMMO){
-				Bullet bullet = new Bullet((this.width)* bulletExit.getX() + x, (this.width) * bulletExit.getY() + y);
-				
-				bullet.shoot(mouseX, mouseY);
-			//	System.out.println(ME.world.getCount());
+				Bullet bullet = new Bullet((this.width)* bulletExit.getX() + x, (this.width) * bulletExit.getY() + y);	
+				bullet.shoot(bulletExit);
 				ME.world.add(bullet);
-			//	System.out.println(ME.world.getCount());
 			}	
 		}
 		
