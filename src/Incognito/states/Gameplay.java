@@ -76,7 +76,7 @@ public class Gameplay extends World{
 				//ID of the tile on x, y position layer 0
 				int ID = ground.getTileId(x, y, 0);
 				
-				String value = ground.getTileProperty(ID, "blocked", "false");
+				String value = ground.getTileProperty(ID, "blocked", "null");
 				
 				/*
 				 * Create ground
@@ -85,7 +85,7 @@ public class Gameplay extends World{
 					groundObject = new GroundObject(x*pixelsX, y*pixelsY, ground.getTileImage(x, y, 0));
 					add(groundObject);
 				}
-				else{
+				else if(!"null".equals(value)){
 					//Render not collideable images
 					Image temp = ground.getTileImage(x, y, 0);
 					
@@ -102,7 +102,7 @@ public class Gameplay extends World{
 				value = ground.getTileProperty(ID, "enemy", "false");
 				
 				if("ground".equals(value)){ //ground1, ground1. for punkter å gå og??
-					
+
 				}
 				else if("flying".equals(value)){
 					
@@ -151,7 +151,8 @@ public class Gameplay extends World{
 	
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-		Globals.ac.setMouseCursor(new Image ("/res/img/crosshair.png"), 25, 25);
+		Globals.ac.setMouseCursor("/res/img/crosshair.png", 12, 12);
+		
 		super.enter(container, game);
 		
 		//org.newdawn.slick.AppGameContainer.setMouseCursor(new Cursor(Cursor.HAND_CURSOR), 2,2);
