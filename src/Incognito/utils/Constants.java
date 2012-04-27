@@ -27,7 +27,7 @@ public class Constants {
 	public static final String STAND_STILL_LEFT = "STAND_STILL_LEFT";
 	
 	/* Bullet constants*/
-	public static final float BULLET_SPEED = 50f;
+	public static final float BULLET_SPEED = 40f;
 	public static final int BULLET_BOUNDRY = 1200;
 	public static final int MAXAMMO = 40;
 }
