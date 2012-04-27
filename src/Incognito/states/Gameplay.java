@@ -30,8 +30,8 @@ public class Gameplay extends World{
 	
 	private PlayerObject player;
 	private GroundObject ground;
-	private WeaponObject wepon;
-	private BackgroundObject bg;
+	private WeaponObject weapon;
+	private BackgroundObject backGround;
 	
 	//Enemy i list
 	
@@ -49,21 +49,22 @@ public class Gameplay extends World{
 		super.init(gameContainer, stateBasedGame);
 		
 		player = new PlayerObject(100, 300);
-		wepon = new WeaponObject(player);
+		weapon = new WeaponObject(player);
+		
+		backGround = new BackgroundObject(0, 0, new Image("res/img/jungle.png"));
 		
 		/*
 		 * Add to MarteEngine world
 		 */
 		add(player);
-		add(wepon);
+		add(weapon);
+		add(backGround);
 		
 		/*
 		 * Add the world
 		 */
-		TiledMap ground = new TiledMap("tiles/testLevel.tmx");
+		TiledMap ground = new TiledMap("ground/level1.tmx");
 		GroundObject groundObject;
-		Image jungle = new Image("res/img/jungle.png");
-		bg = new BackgroundObject(0, 0, jungle);
 		
 		int pixelsX = ground.getTileWidth();
 		int pixelsY = ground.getTileHeight();
@@ -104,7 +105,7 @@ public class Gameplay extends World{
 	@Override
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g)
 			throws SlickException {
-		bg.render(gameContainer, g);
+		//bg.render(gameContainer, g);
 		super.render(gameContainer, stateBasedGame, g);
 	}
 
