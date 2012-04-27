@@ -8,6 +8,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.util.pathfinding.*;
 
 import it.marteEngine.ME;
+import it.marteEngine.entity.Entity;
 import it.marteEngine.entity.PhysicsEntity;
 
 import Incognito.entities.*;
@@ -16,12 +17,16 @@ public class EnemyObject extends PhysicsEntity{
 	
 	private enum STATES {KILL_MODE, WANDER, DEAD}
 	
+	private int health = 100;
 	
 	public EnemyObject(int x, int y, Image image){
 		super(x, y);		
 		
 		setGraphic(image);
-		setHitBox(0, 0, x, y, true);
+		collidable = true;
+		setHitBox(0, 0, image.getWidth(), image.getHeight(), true);
+		
+		addType(Entity.ENEMY);
 		
 	}
 	
@@ -32,9 +37,25 @@ public class EnemyObject extends PhysicsEntity{
 	
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
+		
+		if(health <= 0)
+			destroy();
+		
 		super.update(gameContainer, delta);
 		
-		float playerPosX = ((PlayerObject)ME.world.getEntities(PLAYER)).x;
-		float playerPosY = ((PlayerObject)ME.world.getEntities(PLAYER)).y;
+		//float playerPosX = ((PlayerObject)ME.world.getEntities(PLAYER)).x;
+		//float playerPosY = ((PlayerObject)ME.world.getEntities(PLAYER)).y;
+	}
+	
+	public void shot(int damage){
+		health -= damage;
+	}
+	
+	@Override
+	public void collisionResponse(Entity other) {
+		if(other.isType(BULLET)){
+			System.out.println("AUCH");
+			other.destroy();
+		}
 	}
 }

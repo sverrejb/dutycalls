@@ -20,6 +20,7 @@ import org.newdawn.slick.tiled.TiledMap;
 
 import Incognito.entities.BackgroundObject;
 import Incognito.entities.Bullet;
+import Incognito.entities.GroundEnemy;
 import Incognito.entities.GroundObject;
 import Incognito.entities.PlayerObject;
 import Incognito.entities.WeaponObject;
@@ -116,7 +117,9 @@ public class Gameplay extends World{
 				value = ground.getTileProperty(ID, "enemy", "false");
 				
 				if("ground".equals(value)){ //ground1, ground1. for punkter å gå og??
-
+					Image temp = new Image("img/anim/r1.png");
+					GroundEnemy groundEnemy = new GroundEnemy(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
+					add(groundEnemy);
 				}
 				else if("flying".equals(value)){
 					

@@ -17,6 +17,8 @@ public class Bullet extends PhysicsEntity {
 	
 	public static int bulletsCount;
 	
+	private int damage = 10;
+	
 	public Bullet(float x, float y) throws SlickException{
 		super(x, y);
 		
@@ -31,7 +33,7 @@ public class Bullet extends PhysicsEntity {
 		/* Remove gravity */
 		this.gravity = 0f;
 		
-		this.addType(Entity.SOLID);
+		this.addType(Entity.BULLET);
 	}
 	
 	
@@ -56,14 +58,22 @@ public class Bullet extends PhysicsEntity {
 	
 	public void shoot(Vector2f movment) {
 		speed.set(movment.getX() * Constants.BULLET_SPEED, movment.getY() * Constants.BULLET_SPEED);
+		System.out.println("PEWPEW");
 	}
 	
 	@Override
 	public void collisionResponse(Entity other) {
 		// called when colliding with another entity
 		if(!other.isType(PLAYER)){
-			bulletsCount--;
+			
+			if(other.isType(Entity.ENEMY)){
+				System.out.println("DIE MOTHERFUCKER");
+				((EnemyObject)other).shot(damage);
+			}
+			
 			destroy();
+			bulletsCount--;
+			
 		}
 	}
 	
