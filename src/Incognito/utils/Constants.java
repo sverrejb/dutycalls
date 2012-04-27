@@ -13,6 +13,8 @@ public class Constants {
 	public static final int GAME_WIDTH = 800;
 	public static final int GAME_HEIGHT = 600;
 	public static boolean DEBUG = true;
+	public static  final int CAMRA_TWEEK_X = 200;
+	public static  final int CAMRA_TWEEK_Y = 0;
 	
 	/*Physics constants*/
 	public static final float GRAVITY = 0.2f;
