@@ -2,6 +2,7 @@ package Incognito.entities;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import org.newdawn.slick.util.pathfinding.*;
@@ -16,8 +17,12 @@ public class EnemyObject extends PhysicsEntity{
 	private enum STATES {KILL_MODE, WANDER, DEAD}
 	
 	
-	public EnemyObject(int x, int y){
+	public EnemyObject(int x, int y, Image image){
 		super(x, y);		
+		
+		setGraphic(image);
+		setHitBox(0, 0, x, y, true);
+		
 	}
 	
 	@Override

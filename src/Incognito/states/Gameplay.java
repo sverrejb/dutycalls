@@ -74,7 +74,7 @@ public class Gameplay extends World{
 		int tileFixWidth;
 		int tileFixHeight;
 		
-		//Goes through every pixel. Needs optimization
+		//Goes through every pixel. Needs optimization   x = x + 16?
 		for (int x = 0; x < ground.getWidth(); x++) 
 			for (int y = 0; y < ground.getHeight(); y++) {
 				
