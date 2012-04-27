@@ -1,5 +1,8 @@
 package Incognito.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -18,6 +21,8 @@ public class EnemyObject extends PhysicsEntity{
 	private enum STATES {KILL_MODE, WANDER, DEAD}
 	
 	private int health = 100;
+	
+	List<Entity> bulletHits = new ArrayList<Entity>();
 	
 	public EnemyObject(int x, int y, Image image){
 		super(x, y);		
@@ -47,15 +52,11 @@ public class EnemyObject extends PhysicsEntity{
 		//float playerPosY = ((PlayerObject)ME.world.getEntities(PLAYER)).y;
 	}
 	
-	public void shot(int damage){
-		health -= damage;
-	}
-	
-	@Override
-	public void collisionResponse(Entity other) {
-		if(other.isType(BULLET)){
-			System.out.println("AUCH");
-			other.destroy();
+	public void shot(int damage, Entity bullet){
+		//Herp derp løsning
+		if(!bulletHits.contains(bullet)){
+			bulletHits.add(bullet);
+			health -= damage;
 		}
 	}
 }

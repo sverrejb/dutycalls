@@ -58,18 +58,15 @@ public class Bullet extends PhysicsEntity {
 	
 	public void shoot(Vector2f movment) {
 		speed.set(movment.getX() * Constants.BULLET_SPEED, movment.getY() * Constants.BULLET_SPEED);
-		System.out.println("PEWPEW");
 	}
 	
 	@Override
 	public void collisionResponse(Entity other) {
 		// called when colliding with another entity
 		if(!other.isType(PLAYER)){
+			if(other.isType(Entity.ENEMY))
+				((EnemyObject)other).shot(damage, this);
 			
-			if(other.isType(Entity.ENEMY)){
-				System.out.println("DIE MOTHERFUCKER");
-				((EnemyObject)other).shot(damage);
-			}
 			
 			destroy();
 			bulletsCount--;
