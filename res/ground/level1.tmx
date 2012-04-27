@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="500" height="37" tilewidth="16" tileheight="16">
+<map version="1.0" orientation="orthogonal" width="500" height="57" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="grasjunglemain" tilewidth="64" tileheight="64">
   <properties>
    <property name="blocked" value="true"/>
@@ -91,9 +91,9 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="500" height="37">
+ <layer name="Tile Layer 1" width="500" height="57">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3dyw2CQBQFUCu3CGID2oF2oB34K0ArMcS4edEMOJiZwXN2l9ULG0LuPFgsAAAAAACAXLvSAwAAAAAAAABABTalBwAAAAAAAACACujPAYAWbUNeh+wbOwAAAAAAjKU/BwBaEPvyfchdyIeQ9ekAAAAAAKTozwGAGo3ty7sP11706QAAAAAApOjPAYAapPryXKuQ9ekAUIdjyKciUwAAAMCT/hwAGCv17/Gxeequ/Bv6dAAo4xbyvcgUAMAQ/bm3OZ51W5YeAICqzL0/79/DvXsDQJ7Ubvg55Ljr3SJ9OgAAAADA/5l7fz61a+kBAOCN2PXm7oOn9sMvIbfelw95vv/6HudmANr3ADUo7SQQIQEA
+   H4sIAAAAAAAAC+3csQ3CMABE0ewGEwYWoIAeJOgpgAUYiP6E5CKO4yjvdVfZ/Zc9DAAAAAAAAADA1pyXvgAAAAAAAAAAdKC3fv6O/VjkFgAAAAAAAABsTfbzceF9GQAAAAAAAACgvXvsV+xP7Nq9/BtbPwcAAAAAAACgR9nXs6fvYu9j53/s2edz+68dAAAAAAAAgDUovVfXwwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/rvGPsW+tboIAAAAAAAAAMyo1MefscfCBgAAAAAAAIAe1e7j+jkAAAAAAAAANZR6du2dffwYe2ov188BAAAAAAAAtmlq/6793ru0D43PAwAAAAAAAKAPrd9zz92j17YBoIYf3LbBelC9AQA=
   </data>
  </layer>
 </map>
