@@ -16,11 +16,8 @@ import it.marteEngine.ME;
 import it.marteEngine.entity.Entity;
 
 public class WeaponObject extends Entity{
-	
-	//List<Bullet> ammo = new LinkedList<Bullet>();
-	
-	//int currentAmmo = Constants.MAXAMMO; 
-	
+ 
+	private int ammo = Constants.MAXAMMO;
 	private static PlayerObject player;
 	
 	private final float gunCenterX = 0f;
@@ -52,6 +49,7 @@ public class WeaponObject extends Entity{
 	@Override
 	public void render(GameContainer gameContainer, Graphics g) throws SlickException{
 		super.render(gameContainer, g);
+		g.drawString("Ammo:    "+ ammo, ME.world.camera.cameraX + 10, 35);
 	}
 	
 	@Override
@@ -85,10 +83,11 @@ public class WeaponObject extends Entity{
 			//System.out.println(x + "      " + y);
 			bulletExit = new Vector2f(mouseX - x, mouseY - y);
 			bulletExit.normalise();
-			if(Bullet.bulletsCount <= Constants.MAXAMMO){
+			if(ammo > 0){
 				Bullet bullet = new Bullet((this.width)* bulletExit.getX() + x, (this.width) * bulletExit.getY() + y);	
 				bullet.shoot(bulletExit);
 				ME.world.add(bullet);
+				ammo--;
 			}	
 		}
 		
