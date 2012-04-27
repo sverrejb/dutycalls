@@ -80,11 +80,12 @@ public class WeaponObject extends Entity{
 		super.update(gameContainer, delta);
 				
 		if(check("SHOOT")){
-			//System.out.println(x + "      " + y);
 			bulletExit = new Vector2f(mouseX - x, mouseY - y);
 			bulletExit.normalise();
 			if(ammo > 0){
-				Bullet bullet = new Bullet((this.width)* bulletExit.getX() + x, (this.width) * bulletExit.getY() + y);	
+				Bullet bullet = new Bullet(((this.width)* bulletExit.getX() + x)+ (bulletExit.getY()) * (this.height/5),
+						((this.width) * bulletExit.getY() + y)+ (bulletExit.getX()) * (this.height/5));	
+				
 				bullet.shoot(bulletExit);
 				ME.world.add(bullet);
 				ammo--;
