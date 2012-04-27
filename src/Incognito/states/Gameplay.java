@@ -1,6 +1,7 @@
 package Incognito.states;
 
 import java.awt.Cursor;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -67,22 +68,35 @@ public class Gameplay extends World{
 		TiledMap ground = new TiledMap("ground/level1.tmx");
 		GroundObject groundObject;
 		
-		int pixelsX = ground.getTileWidth();
-		int pixelsY = ground.getTileHeight();
+		int mapTileWidth = ground.getTileWidth();
+		int mapTileHeight = ground.getTileHeight();
 		
+		int tileFixWidth;
+		int tileFixHeight;
+		
+		//Goes through every pixel. Needs optimization   x = x + 16?
 		for (int x = 0; x < ground.getWidth(); x++) 
 			for (int y = 0; y < ground.getHeight(); y++) {
 				
 				//ID of the tile on x, y position layer 0
 				int ID = ground.getTileId(x, y, 0);
 				
+				//ID == 0 ==> no tile, nothing to do here... move on sir.
+				if(ID == 0)
+					continue;
+				
+				tileFixWidth = ground.getTileSetByGID(ID).getTileWidth();
+				tileFixHeight = ground.getTileSetByGID(ID).getTileHeight() / mapTileHeight;
+				
 				String value = ground.getTileProperty(ID, "blocked", "null");
 				
 				/*
-				 * Create ground
+				 * Create groundd
 				 */				
 				if("true".equals(value)){
-					groundObject = new GroundObject(x*pixelsX, y*pixelsY, ground.getTileImage(x, y, 0));
+					Image temp = ground.getTileImage(x, y, 0);
+					groundObject = new GroundObject(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
+
 					add(groundObject);
 				}
 				else if(!"null".equals(value)){
@@ -90,7 +104,7 @@ public class Gameplay extends World{
 					Image temp = ground.getTileImage(x, y, 0);
 					
 					if(temp != null){
-						groundObject = new GroundObject(x*pixelsX, y*pixelsY, temp);
+						groundObject = new GroundObject(x*mapTileWidth,(y*mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
 						groundObject.collidable = false;
 						add(groundObject);
 					}
@@ -112,9 +126,9 @@ public class Gameplay extends World{
 		/*
 		 * Add camera
 		 */		
-		setWidth(ground.getWidth() * pixelsX);
-		setHeight(ground.getHeight() * pixelsY);
-		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * pixelsX, ground.getHeight() * pixelsY, new Vector2f(32,32)));
+		setWidth(ground.getWidth() * mapTileWidth);
+		setHeight(ground.getHeight() * mapTileHeight);
+		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * mapTileWidth, ground.getHeight() * mapTileHeight, new Vector2f(32,0)));
 
 		
 	}
