@@ -26,7 +26,6 @@ public class Incognito{
 		Globals.ac = app;
 		app.setDisplayMode(800, 600, false);
 		app.setTargetFrameRate(FPS);
-		
 		app.start();
 		
 	}
