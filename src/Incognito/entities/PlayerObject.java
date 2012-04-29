@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -15,8 +16,11 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.MouseListener;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import Incognito.utils.Constants;
+import Incognito.utils.Globals;
 
 
 public class PlayerObject extends PlatformerEntity {
@@ -63,6 +67,9 @@ public class PlayerObject extends PlatformerEntity {
 	
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
+		if(y > Constants.GAME_HEIGHT)
+			Globals.game.enterState(Constants.LOST_STATE,  new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+		
 		super.update(gameContainer, delta);		
 	}
 	

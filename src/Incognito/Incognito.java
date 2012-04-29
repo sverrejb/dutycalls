@@ -3,6 +3,8 @@ package Incognito;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+
+import Incognito.utils.Constants;
 import Incognito.utils.Globals;
 
 import org.lwjgl.LWJGLUtil;
@@ -15,8 +17,6 @@ import Incognito.states.GameState;
 
 public class Incognito{
 	
-	private static final int FPS = 60;
-	
 	
 	public static void main(String[] args) throws SlickException {
 		System.setProperty("org.lwjgl.librarypath", new File(new File(System.getProperty("user.dir"), "lib/native"), LWJGLUtil.getPlatformName()).getAbsolutePath());
@@ -25,7 +25,8 @@ public class Incognito{
 		AppGameContainer app = new AppGameContainer(new GameState("Incognito"));
 		Globals.ac = app;
 		app.setDisplayMode(800, 600, false);
-		app.setTargetFrameRate(FPS);
+		app.setTargetFrameRate(Constants.FPS);
+		app.setVSync(true);
 		app.start();
 		
 	}

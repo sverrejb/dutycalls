@@ -49,7 +49,7 @@ public class Gameplay extends World{
 	@Override
 	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
 			throws SlickException {
-		super.init(gameContainer, stateBasedGame);
+		super.init(gameContainer, stateBasedGame);		
 		
 		player = new PlayerObject(100, 300);
 		weapon = new WeaponObject(player);
@@ -127,50 +127,27 @@ public class Gameplay extends World{
 				for(int i = 4; i < ground.getLayerCount(); i++){
 					int ID = ground.getTileId(x, y, i);
 					
+					//ID == 0 ==> no tile, nothing to do here... move on sir.
+					if(ID == 0)
+						continue;
+					
 					String value = ground.getTileProperty(ID, "enemy", "null");
 					
 					if("ground".equals(value)){ //ground1, ground1. for punkter å gå og??
 						temp = new Image("img/anim/r1.png");
 						GroundEnemy groundEnemy = new GroundEnemy(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
 						groundEnemy.depth = 2;
+						
+						Vector2f[] vectors = {
+								new Vector2f(100,100), new Vector2f(400, 400)
+								};
+						groundEnemy.setWaypoints(vectors);
 						add(groundEnemy);
 					}
 					else if("flying".equals(value)){
 						
 					}
 				}
-				
-				//ID of the tile on x, y position layer 0
-				//int ID = ground.getTileId(x, y, 1);
-				
-				//ID == 0 ==> no tile, nothing to do here... move on sir.
-				//if(ID == 0)
-				//	continue;
-				
-				//tileFixWidth = ground.getTileSetByGID(ID).getTileWidth();
-				//tileFixHeight = ground.getTileSetByGID(ID).getTileHeight() / mapTileHeight;
-				/*
-				String value = ground.getTileProperty(ID, "blocked", "null");
-				
-				/*
-				 * Create ground
-				 				
-				if("true".equals(value)){
-					Image temp = ground.getTileImage(x, y, 0);
-					groundObject = new GroundObject(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
-
-					add(groundObject);
-				}
-				else if(!"null".equals(value)){
-					//Render not collideable images
-					Image temp = ground.getTileImage(x, y, 0);
-					
-					if(temp != null){
-						groundObject = new GroundObject(x*mapTileWidth,(y*mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
-						groundObject.collidable = false;
-						add(groundObject);
-					}
-				}*/
 			}
 		
 		
@@ -180,8 +157,6 @@ public class Gameplay extends World{
 		setWidth(ground.getWidth() * mapTileWidth);
 		setHeight(ground.getHeight() * mapTileHeight);
 		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * mapTileWidth, ground.getHeight() * mapTileHeight, new Vector2f(32,32)));
-
-		
 	}
 
 	@Override

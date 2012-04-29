@@ -477,4 +477,9 @@ public class World extends BasicGameState {
 		return false;
 	}
 
+	public void enter() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

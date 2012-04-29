@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="500" height="57" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="grasjunglemain" tilewidth="64" tileheight="64">
+  <properties>
+   <property name="blocked" value="true"/>
+  </properties>
+  <image source="grasjunglemain.png" trans="ffffff" width="1024" height="1024"/>
+  <tile id="125">
+   <properties>
+    <property name="enemy" value="ground"/>
+   </properties>
+  </tile>
+  <tile id="145">
+   <properties>
+    <property name="blocked" value=""/>
+   </properties>
+  </tile>
+  <tile id="147">
+   <properties>
+    <property name="blocked" value=""/>
+   </properties>
+  </tile>
+  <tile id="160">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="161">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="176">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="177">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="192">
+   <properties>
+    <property name="blocked" value=""/>
+   </properties>
+  </tile>
+  <tile id="193">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="194">
+   <properties>
+    <property name="blocked" value=""/>
+   </properties>
+  </tile>
+  <tile id="195">
+   <properties>
+    <property name="blocked" value=""/>
+   </properties>
+  </tile>
+  <tile id="208">
+   <properties>
+    <property name="blocked" value="false"/>
+   </properties>
+  </tile>
+  <tile id="209">
+   <properties>
+    <property name="blocked" value=""/>
+   </properties>
+  </tile>
+  <tile id="210">
+   <properties>
+    <property name="blocked" value=""/>
+   </properties>
+  </tile>
+  <tile id="211">
+   <properties>
+    <property name="blocked" value=""/>
+   </properties>
+  </tile>
+  <tile id="212">
+   <properties>
+    <property name="blocked" value=""/>
+   </properties>
+  </tile>
+  <tile id="224">
+   <properties>
+    <property name="blocked" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+<<<<<<< HEAD
+ <tileset firstgid="257" name="grasjunglemainSMALL" tilewidth="16" tileheight="16">
+  <image source="grasjunglemain.png" trans="ffffff" width="1024" height="1024"/>
+  <tile id="3008">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="3072">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="enemy 1" width="500" height="37">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/BnjoRWuECEBAA==
+  </data>
+ </layer>
+ <layer name="Foreground not blocked" width="500" height="37" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/BnjoRWuECEBAA==
+  </data>
+ </layer>
+ <layer name="Ground blocks not visible" width="500" height="37" visible="0">
+  <properties>
+   <property name="blocked" value="false"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/BnjoRWuECEBAA==
+  </data>
+ </layer>
+ <layer name="Ground blocked" width="500" height="37" visible="0">
+  <properties>
+   <property name="blocked" value="true"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/BnjoRWuECEBAA==
+  </data>
+ </layer>
+ <layer name="background not blocked" width="500" height="37">
+  <properties>
+   <property name="blocked" value="false"/>
+  </properties>
+=======
+ <layer name="Tile Layer 1" width="500" height="57">
+>>>>>>> branch 'master' of https://perok@bitbucket.org/sverrejb/spillprosjekt.git
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3csQ3CMABE0ewGEwYWoIAeJOgpgAUYiP6E5CKO4yjvdVfZ/Zc9DAAAAAAAAADA1pyXvgAAAAAAAAAAdKC3fv6O/VjkFgAAAAAAAABsTfbzceF9GQAAAAAAAACgvXvsV+xP7Nq9/BtbPwcAAAAAAACgR9nXs6fvYu9j53/s2edz+68dAAAAAAAAgDUovVfXwwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/rvGPsW+tboIAAAAAAAAAMyo1MefscfCBgAAAAAAAIAe1e7j+jkAAAAAAAAANZR6du2dffwYe2ov188BAAAAAAAAtmlq/6793ru0D43PAwAAAAAAAKAPrd9zz92j17YBoIYf3LbBelC9AQA=
+  </data>
+ </layer>
+</map>

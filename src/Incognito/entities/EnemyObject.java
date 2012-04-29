@@ -20,7 +20,7 @@ public class EnemyObject extends PhysicsEntity{
 	
 	private enum STATES {KILL_MODE, WANDER, DEAD}
 	
-	private int health = 100;
+	private int health = 20;
 	
 	List<Entity> bulletHits = new ArrayList<Entity>();
 	
