@@ -1,8 +1,5 @@
 package Incognito.entities;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -18,6 +15,8 @@ import it.marteEngine.entity.Entity;
 public class WeaponObject extends Entity{
  
 	private int ammo = Constants.MAXAMMO;
+	private boolean canShoot = true;
+	
 	private static PlayerObject player;
 	
 	private final float gunCenterX = 0f;
@@ -35,7 +34,6 @@ public class WeaponObject extends Entity{
 		
 		setGraphic(gun);
 		
-		
 		depth = 12;
 		
 		this.player = player;
@@ -44,6 +42,8 @@ public class WeaponObject extends Entity{
 		
 		define("SHOOT", Input.MOUSE_LEFT_BUTTON);
 		
+		/* An alarm wich will be fires each time the player shoots */
+		setAlarm("FIRE_RATE", Constants.WEAPON_FIRE_RATE, true, false);
 	}
 	
 	@Override
@@ -77,21 +77,33 @@ public class WeaponObject extends Entity{
 		setAngle((int)angle);
 		
 		
-		super.update(gameContainer, delta);
 				
-		if(check("SHOOT")){
+		if(check("SHOOT") && canShoot){
 			bulletExit = new Vector2f(mouseX - x, mouseY - y);
 			bulletExit.normalise();
+			
 			if(ammo > 0){
 				Bullet bullet = new Bullet(((this.width)* bulletExit.getX() + x)+ (bulletExit.getY()) * (this.height/5),
 						((this.width) * bulletExit.getY() + y)+ (bulletExit.getX()) * (this.height/5));	
 				
 				bullet.shoot(bulletExit);
+				
+				/* Makes the player unable to fire and start the RELOAD alarm*/
+				canShoot = false;
+				restartAlarm("FIRE_RATE");
+				
 				ME.world.add(bullet);
 				ammo--;
 			}	
 		}
 		
+		super.update(gameContainer, delta);		
+	}
+	
+	@Override
+	public void alarmTriggered(String name) {
+		if(name.equals("FIRE_RATE"))
+			canShoot = true;
 	}
 
 }

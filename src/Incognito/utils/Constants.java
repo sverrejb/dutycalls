@@ -34,8 +34,9 @@ public class Constants {
 	public static final int ENEMY_MOVE_SPEED = 1;
 	public static final int ENEMY_ANIMATION_SPEED = 100;
 	
-	/* Bullet constants*/
+	/* Weapon constants*/
 	public static final float BULLET_SPEED = 40f;
 	public static final int BULLET_BOUNDRY = 1200;
+	public static final int WEAPON_FIRE_RATE = 30; //halvt sek
 	public static final int MAXAMMO = 40;
 }
