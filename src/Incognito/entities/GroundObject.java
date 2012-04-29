@@ -29,6 +29,17 @@ public class GroundObject extends Entity {
 		addType(Entity.SOLID);
 	}
 	
+	/* Groundobject not visible*/
+	public GroundObject(int x, int y, int width, int height) {
+		super(x, y);
+		
+		setHitBox(0, 0, width, height, true);
+		
+		depth = 0;
+		
+		addType(Entity.SOLID);
+	}
+	
 	@Override
 	public void render(GameContainer gameContainer, Graphics g) throws SlickException{
 		super.render(gameContainer, g);

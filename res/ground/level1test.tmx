@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="500" height="37" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="grasjunglemain small" tilewidth="16" tileheight="16">
+  <image source="grasjunglemain.png" trans="ffffff" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="4097" name="grasjunglemain" tilewidth="64" tileheight="64">
+  <image source="grasjunglemain.png" trans="ffffff" width="1024" height="1024"/>
+ </tileset>
+ <layer name="background not blocked" width="500" height="37">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3ZsQmAQAwF0Izg7G7iCLqBJw6gk4idpAkWchbvdT8Ekv5HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8CfT0PsDAAAAAAAAAIhYOvfXc7q/ptxSHvXtAAAAAAAAAHwg99FV3l7u3/k524v9I+VTfw4ApQvTTQJcECEBAA==
+  </data>
+ </layer>
+ <layer name="ground blocked" width="500" height="37">
+  <properties>
+   <property name="blocked" value="true"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3ZoREAIAwEwZSQ/h0tUCEWZCYwmF137v1HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsJv5e8FpZK0BAAAAAAAA4IXqf91tAAAAAAAAAAAAuGEBMAlUgxAhAQA=
+  </data>
+ </layer>
+ <layer name="ground blocked not visible" width="500" height="37">
+  <properties>
+   <property name="blocked" value="true"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3VQQkAAAgEQcFM9q/mwwp+DmZgM2wVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/Ju+AIBMPg4A2bwcAPL5OQAAAAAAAAAAAAAAAAAAAADAjwXUzqY3ECEBAA==
+  </data>
+ </layer>
+ <layer name="foreground not blocked" width="500" height="37">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/BnjoRWuECEBAA==
+  </data>
+ </layer>
+</map>

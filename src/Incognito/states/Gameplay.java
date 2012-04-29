@@ -66,7 +66,7 @@ public class Gameplay extends World{
 		/*
 		 * Add the world
 		 */
-		TiledMap ground = new TiledMap("ground/level1.tmx");
+		TiledMap ground = new TiledMap("ground/level1test.tmx");
 		GroundObject groundObject;
 		
 		int mapTileWidth = ground.getTileWidth();
@@ -84,21 +84,59 @@ public class Gameplay extends World{
 				//layer 3 : foreground not blocked
 				//layer 4 -> n:  enemies 
 				
+				/* Render not collideable images */
+				Image temp = ground.getTileImage(x, y, 0);
+				
+				if(temp != null){
+					groundObject = new GroundObject(x*mapTileWidth,(y*mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
+					groundObject.collidable = false;
+					groundObject.depth = 2;
+					add(groundObject);
+				}
+				
+				/* Draw collideable images */				
+				temp = ground.getTileImage(x, y, 1);
+				
+				if(temp != null){
+					groundObject = new GroundObject(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
+					groundObject.depth = 2;
+					add(groundObject);
+				}	
+				
+				/* extra blocked not visible*/
+				temp = ground.getTileImage(x, y, 2);
+				
+				if(temp != null){
+					groundObject = new GroundObject(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp.getWidth(), temp.getHeight());
+					groundObject.depth = 2;
+					add(groundObject);
+				}
+				
+				/* Foreground not blocked*/
+				temp = ground.getTileImage(x, y, 3);
+				
+				if(temp != null){
+					groundObject = new GroundObject(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
+					groundObject.depth = 13;
+					groundObject.collidable = false;
+					add(groundObject);
+				}
+				
 				//ID of the tile on x, y position layer 0
-				int ID = ground.getTileId(x, y, 0);
+				//int ID = ground.getTileId(x, y, 1);
 				
 				//ID == 0 ==> no tile, nothing to do here... move on sir.
-				if(ID == 0)
-					continue;
+				//if(ID == 0)
+				//	continue;
 				
-				tileFixWidth = ground.getTileSetByGID(ID).getTileWidth();
-				tileFixHeight = ground.getTileSetByGID(ID).getTileHeight() / mapTileHeight;
-				
+				//tileFixWidth = ground.getTileSetByGID(ID).getTileWidth();
+				//tileFixHeight = ground.getTileSetByGID(ID).getTileHeight() / mapTileHeight;
+				/*
 				String value = ground.getTileProperty(ID, "blocked", "null");
 				
 				/*
-				 * Create groundd
-				 */				
+				 * Create ground
+				 				
 				if("true".equals(value)){
 					Image temp = ground.getTileImage(x, y, 0);
 					groundObject = new GroundObject(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
@@ -118,7 +156,7 @@ public class Gameplay extends World{
 				
 				/*
 				 * Spawn enemies
-				 */
+				 
 				value = ground.getTileProperty(ID, "enemy", "false");
 				
 				if("ground".equals(value)){ //ground1, ground1. for punkter å gå og??
@@ -128,8 +166,9 @@ public class Gameplay extends World{
 				}
 				else if("flying".equals(value)){
 					
-				}
+				}*/
 			}
+		
 		
 		/*
 		 * Add camera
