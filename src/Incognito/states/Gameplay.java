@@ -78,6 +78,11 @@ public class Gameplay extends World{
 		//Goes through every pixel. Needs optimization   x = x + 16?
 		for (int x = 0; x < ground.getWidth(); x++) 
 			for (int y = 0; y < ground.getHeight(); y++) {
+				//Layer 0 : background not blocked
+				//layer 1 : ground blocked
+				//layer 2 : extra blocked properties not visible
+				//layer 3 : foreground not blocked
+				//layer 4 -> n:  enemies 
 				
 				//ID of the tile on x, y position layer 0
 				int ID = ground.getTileId(x, y, 0);

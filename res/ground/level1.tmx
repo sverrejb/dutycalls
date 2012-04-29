@@ -91,7 +91,49 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="500" height="37">
+ <tileset firstgid="257" name="grasjunglemainSMALL" tilewidth="16" tileheight="16">
+  <image source="grasjunglemain.png" trans="ffffff" width="1024" height="1024"/>
+  <tile id="3008">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="3072">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="enemy 1" width="500" height="37">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/BnjoRWuECEBAA==
+  </data>
+ </layer>
+ <layer name="Foreground not blocked" width="500" height="37" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/BnjoRWuECEBAA==
+  </data>
+ </layer>
+ <layer name="Ground blocks not visible" width="500" height="37" visible="0">
+  <properties>
+   <property name="blocked" value="false"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/BnjoRWuECEBAA==
+  </data>
+ </layer>
+ <layer name="Ground blocked" width="500" height="37" visible="0">
+  <properties>
+   <property name="blocked" value="true"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/BnjoRWuECEBAA==
+  </data>
+ </layer>
+ <layer name="background not blocked" width="500" height="37">
+  <properties>
+   <property name="blocked" value="false"/>
+  </properties>
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3dyw2CQBQFUCu3CGID2oF2oB34K0ArMcS4edEMOJiZwXN2l9ULG0LuPFgsAAAAAACAXLvSAwAAAAAAAABABTalBwAAAAAAAACACujPAYAWbUNeh+wbOwAAAAAAjKU/BwBaEPvyfchdyIeQ9ekAAAAAAKTozwGAGo3ty7sP11706QAAAAAApOjPAYAapPryXKuQ9ekAUIdjyKciUwAAAMCT/hwAGCv17/Gxeequ/Bv6dAAo4xbyvcgUAMAQ/bm3OZ51W5YeAICqzL0/79/DvXsDQJ7Ubvg55Ljr3SJ9OgAAAADA/5l7fz61a+kBAOCN2PXm7oOn9sMvIbfelw95vv/6HudmANr3ADUo7SQQIQEA
   </data>
