@@ -30,6 +30,8 @@ public class Bullet extends PhysicsEntity {
 		setGraphic(bullet);
 		setHitBox(0, 0, bullet.getWidth(), bullet.getHeight(), true);
 		
+		depth = 3;
+		
 		/* Remove gravity */
 		this.gravity = 0f;
 		

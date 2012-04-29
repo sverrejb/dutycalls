@@ -117,9 +117,27 @@ public class Gameplay extends World{
 				
 				if(temp != null){
 					groundObject = new GroundObject(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
-					groundObject.depth = 13;
+					groundObject.depth = 6;
 					groundObject.collidable = false;
 					add(groundObject);
+				}
+				
+				
+				/* Spawn enemies*/
+				for(int i = 4; i < ground.getLayerCount(); i++){
+					int ID = ground.getTileId(x, y, i);
+					
+					String value = ground.getTileProperty(ID, "enemy", "null");
+					
+					if("ground".equals(value)){ //ground1, ground1. for punkter å gå og??
+						temp = new Image("img/anim/r1.png");
+						GroundEnemy groundEnemy = new GroundEnemy(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
+						groundEnemy.depth = 2;
+						add(groundEnemy);
+					}
+					else if("flying".equals(value)){
+						
+					}
 				}
 				
 				//ID of the tile on x, y position layer 0
@@ -152,20 +170,6 @@ public class Gameplay extends World{
 						groundObject.collidable = false;
 						add(groundObject);
 					}
-				}
-				
-				/*
-				 * Spawn enemies
-				 
-				value = ground.getTileProperty(ID, "enemy", "false");
-				
-				if("ground".equals(value)){ //ground1, ground1. for punkter å gå og??
-					Image temp = new Image("img/anim/r1.png");
-					GroundEnemy groundEnemy = new GroundEnemy(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
-					add(groundEnemy);
-				}
-				else if("flying".equals(value)){
-					
 				}*/
 			}
 		

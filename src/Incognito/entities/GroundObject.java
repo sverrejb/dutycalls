@@ -24,7 +24,7 @@ public class GroundObject extends Entity {
 		
 		setHitBox(0, 0, image.getWidth(), image.getHeight(), true);
 		
-		depth = 0;
+		//depth = 0;
 		
 		addType(Entity.SOLID);
 	}
@@ -34,9 +34,6 @@ public class GroundObject extends Entity {
 		super(x, y);
 		
 		setHitBox(0, 0, width, height, true);
-		
-		depth = 0;
-		
 		addType(Entity.SOLID);
 	}
 	

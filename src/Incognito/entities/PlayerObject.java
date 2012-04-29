@@ -36,6 +36,7 @@ public class PlayerObject extends PlatformerEntity {
 		duration = Constants.PLAYER_ANIMATION_SPEED;		
 		
 		//setCentered(true);
+		depth = 4;
 		
 		/* Animation */
 		addAnimation(Constants.STAND_STILL_RIGHT, false, 0, 1);
@@ -62,13 +63,7 @@ public class PlayerObject extends PlatformerEntity {
 	
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
-		super.update(gameContainer, delta);/*
-	
-		
-		/*
-		 * SKYTING
-		 */
-		
+		super.update(gameContainer, delta);		
 	}
 	
 
