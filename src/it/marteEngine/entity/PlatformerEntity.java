@@ -83,17 +83,22 @@ public class PlatformerEntity extends PhysicsEntity {
 		// increase acceeration, if we're not going too fast
 		if (check(CMD_LEFT) && speed.x > -maxSpeed.x) {
 			acceleration.x = -moveSpeed;
-			currentAnim = ME.WALK_LEFT;
-			lastDirection = ME.WALK_LEFT;
 		}
 		if (check(CMD_RIGHT) && speed.x < maxSpeed.x) {
 			acceleration.x = moveSpeed;
-			currentAnim = ME.WALK_RIGHT;
-			lastDirection = ME.WALK_RIGHT;
-			
 		}
 		
 		//Walking animation
+		if (this.speed.getX() > 0) {
+			currentAnim = ME.WALK_RIGHT;
+			lastDirection = ME.WALK_RIGHT;
+		}
+		else if(this.speed.getX() < 0){
+			currentAnim = ME.WALK_LEFT;
+			lastDirection = ME.WALK_LEFT;
+		}
+		
+		//Standing animation
 		if ((!check(CMD_LEFT) && !check(CMD_RIGHT))){
 			if(lastDirection == ME.WALK_RIGHT)
 				currentAnim = ME.STAND_STILL_RIGHT;
@@ -108,6 +113,7 @@ public class PlatformerEntity extends PhysicsEntity {
 			else if(lastDirection == ME.WALK_LEFT)
 				currentAnim = Constants.STAND_STILL_LEFT;
 		}
+		
 
 		// friction (apply if we're not moving, or if our speed.x is larger than
 		// maxspeed)

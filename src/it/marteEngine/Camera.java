@@ -7,6 +7,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 
+import Incognito.utils.Constants;
+
 /**
  * 
  * for now let's just assume that the camera covers the whole screen, starting
@@ -19,6 +21,7 @@ public class Camera {
 	/** coordinates of the top left corner of the camera area in the world */
 	public float cameraX;
 	public float cameraY;
+	public float cameraTweekX = 300;
 	/** width and height of the render area for this camera */
 	private float renderWidth;
 	private float renderHeight;
@@ -71,8 +74,8 @@ public class Camera {
 		if (follow != null
 				&& !moveRect.contains(follow.x + follow.width / 2, follow.y
 						+ follow.height / 2)) {
-			float targetCX = follow.x - (this.renderWidth / 2);
-			float targetCY = follow.y - (this.renderHeight / 2);
+			float targetCX = follow.x - (this.renderWidth / 2) + cameraTweekX + Constants.CAMRA_TWEEK_X;
+			float targetCY = follow.y - (this.renderHeight / 2) + Constants.CAMRA_TWEEK_Y;
 			// now smoothly move camera on position cameraX, cameraY to position
 			// targetCX, targetCY, using
 			// maxSpeed

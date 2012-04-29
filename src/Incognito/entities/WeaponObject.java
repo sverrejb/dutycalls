@@ -60,8 +60,8 @@ public class WeaponObject extends Entity{
 		float centerY = player.y + playerGUnPosY;
 		
 		// + Fixes for Camera movement
-		float mouseX = input.getMouseX() + ME.world.camera.cameraX;
-		float mouseY = input.getMouseY() + ME.world.camera.cameraY;
+		float mouseX = input.getMouseX() + ME.world.camera.cameraX +7;
+		float mouseY = input.getMouseY() + ME.world.camera.cameraY +7;
 		
 		//2. Find out their position relative to each other (angle)
 		//arctan(Y/X) - arctan(Y/X)	
