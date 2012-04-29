@@ -43,7 +43,7 @@ public class PlatformerEntity extends PhysicsEntity {
 		
 		//setHitBox(0, 0, image.getWidth(), image.getHeight());//currentImage.getWidth(), currentImage.getHeight());
 		//dsetHitBox(0, 0, currentImage.getWidth(), currentImage.getHeight());
-		depth = 10;
+		depth = 4;
 		defineControls();
 	}
 

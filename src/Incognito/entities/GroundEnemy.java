@@ -28,28 +28,31 @@ public class GroundEnemy extends EnemyObject {
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
 		super.update(gameContainer, delta);
 			if(waypoints != null){
-			//Fix which waypoint to go after
-			if(currentWaypoint > waypoints.length)
-				direction = -1;
-			else if(currentWaypoint < 0 )
-				direction = 1;
+			
 			
 			//Are we close to the waypoint?
-			if(this.x > waypoints[currentWaypoint].x + 10 && x < waypoints[currentWaypoint].x - 10)
+			if(this.x > waypoints[currentWaypoint].x - 10 && x < waypoints[currentWaypoint].x + 10){
 				currentWaypoint += direction;
+				System.out.println("dafuq");
+			}
 			
-			if(true)
-				return;
+			//Fix which waypoint to go after
+			if(currentWaypoint >= waypoints.length -1)
+				direction = -1;
+			else if(currentWaypoint <= 0 )
+				direction = 1;
 			
+			// set acceleration to nothing
+			acceleration.x = 0;
+
+			// increase acceeration, if we're not going too fast			
 			//* distance? 
 			//Go correct direction
-			if(this.x > waypoints[currentWaypoint].x)
+			if(x > waypoints[currentWaypoint].x  && speed.x > -maxSpeed.x)
 				acceleration.x += Constants.ENEMY_MOVE_SPEED * -1;
-			else 
+			else if (x < waypoints[currentWaypoint].x && speed.x < maxSpeed.x)
 				acceleration.x += Constants.ENEMY_MOVE_SPEED;
 		}
-		
-			System.out.println(direction);
 		
 		
 		//float playerPosX = ((PlayerObject)ME.world.getEntities(PLAYER)).x;
