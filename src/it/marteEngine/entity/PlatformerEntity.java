@@ -113,9 +113,11 @@ public class PlatformerEntity extends PhysicsEntity {
 			else if(lastDirection == ME.WALK_LEFT)
 				currentAnim = Constants.STAND_STILL_LEFT;
 		}
-		
-		if(currentAnim == ME.WALK_LEFT || currentAnim == ME.STAND_STILL_LEFT)
+		if(ME.world.camera.cameraX > Constants.GAME_WIDTH/2){
+			if(currentAnim == ME.WALK_LEFT || currentAnim == ME.STAND_STILL_LEFT)
 			ME.world.camera.cameraTweekX = -(Math.abs(ME.world.camera.cameraTweekX));
+		}
+		
 		if(currentAnim == ME.WALK_RIGHT || currentAnim == ME.STAND_STILL_RIGHT)
 			ME.world.camera.cameraTweekX = Math.abs(ME.world.camera.cameraTweekX);
 		

@@ -66,7 +66,6 @@ public class Camera {
 	public void update(GameContainer container, int delta)
 			throws SlickException {
 		setCamera();
-		System.out.println(moveRect);
 	}
 
 	private void setCamera() {
