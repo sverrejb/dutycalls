@@ -88,7 +88,7 @@ public class WeaponObject extends Entity{
 				
 				bullet.shoot(bulletExit);
 				
-				/* Makes the player unable to fire and start the RELOAD alarm*/
+				/* Makes the player unable to fire and start the FIRE_RATE alarm*/
 				canShoot = false;
 				restartAlarm("FIRE_RATE");
 				
