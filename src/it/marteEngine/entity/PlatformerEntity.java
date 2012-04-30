@@ -114,6 +114,11 @@ public class PlatformerEntity extends PhysicsEntity {
 				currentAnim = Constants.STAND_STILL_LEFT;
 		}
 		
+		if(currentAnim == ME.WALK_LEFT || currentAnim == ME.STAND_STILL_LEFT)
+			ME.world.camera.cameraTweekX = -(Math.abs(ME.world.camera.cameraTweekX));
+		if(currentAnim == ME.WALK_RIGHT || currentAnim == ME.STAND_STILL_RIGHT)
+			ME.world.camera.cameraTweekX = Math.abs(ME.world.camera.cameraTweekX);
+		
 
 		// friction (apply if we're not moving, or if our speed.x is larger than
 		// maxspeed)
