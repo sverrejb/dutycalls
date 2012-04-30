@@ -1,5 +1,8 @@
 package Incognito.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -10,7 +13,7 @@ import Incognito.utils.Constants;
 
 public class GroundEnemy extends EnemyObject {
 	
-	private Vector2f[] waypoints;
+	private List<Vector2f> waypoints;
 	private int currentWaypoint = 0;
 	private int direction = 1;
 
@@ -27,17 +30,14 @@ public class GroundEnemy extends EnemyObject {
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
 		super.update(gameContainer, delta);
-			if(waypoints != null){
-			
-			
+		if(waypoints != null){
+
 			//Are we close to the waypoint?
-			if(this.x > waypoints[currentWaypoint].x - 10 && x < waypoints[currentWaypoint].x + 10){
+			if(this.x > waypoints.get(currentWaypoint).x - 10 && x < waypoints.get(currentWaypoint).x + 10){
 				currentWaypoint += direction;
-				System.out.println("dafuq");
 			}
-			
 			//Fix which waypoint to go after
-			if(currentWaypoint >= waypoints.length -1)
+			if(currentWaypoint >= waypoints.size() -1)
 				direction = -1;
 			else if(currentWaypoint <= 0 )
 				direction = 1;
@@ -48,9 +48,9 @@ public class GroundEnemy extends EnemyObject {
 			// increase acceeration, if we're not going too fast			
 			//* distance? 
 			//Go correct direction
-			if(x > waypoints[currentWaypoint].x  && speed.x > -maxSpeed.x)
+			if(x > waypoints.get(currentWaypoint).x  && speed.x > -maxSpeed.x)
 				acceleration.x += Constants.ENEMY_MOVE_SPEED * -1;
-			else if (x < waypoints[currentWaypoint].x && speed.x < maxSpeed.x)
+			else if (x < waypoints.get(currentWaypoint).x && speed.x < maxSpeed.x)
 				acceleration.x += Constants.ENEMY_MOVE_SPEED;
 		}
 		
@@ -59,8 +59,11 @@ public class GroundEnemy extends EnemyObject {
 		//float playerPosY = ((PlayerObject)ME.world.getEntities(PLAYER)).y;
 	}
 	
-	public void setWaypoints(Vector2f[] waypoints){
-		this.waypoints = waypoints.clone();
+	public void addWaypoints(Vector2f waypoints){
+		if(this.waypoints == null)
+			this.waypoints = new ArrayList<Vector2f>();
+		
+		this.waypoints.add(waypoints);
 	}
 
 }

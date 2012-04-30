@@ -75,6 +75,16 @@ public class Gameplay extends World{
 		int tileFixWidth;
 		int tileFixHeight;
 		
+		/* List containing every waypoint for each enemy */
+		List<List<Vector2f>> enemyWaypoints = null;
+		
+		if(ground.getLayerCount() > 3){
+			enemyWaypoints = new ArrayList<List<Vector2f>>();
+			for(int i = 4; i < ground.getLayerCount(); i++){
+				enemyWaypoints.add(new ArrayList<Vector2f>());
+			}
+		}
+		
 		//Goes through every pixel. Needs optimization   x = x + 16?
 		for (int x = 0; x < ground.getWidth(); x++) 
 			for (int y = 0; y < ground.getHeight(); y++) {
@@ -134,21 +144,36 @@ public class Gameplay extends World{
 					String value = ground.getTileProperty(ID, "enemy", "null");
 					
 					if("ground".equals(value)){ //ground1, ground1. for punkter å gå og??
-						temp = new Image("img/anim/r1.png");
-						GroundEnemy groundEnemy = new GroundEnemy(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
-						groundEnemy.depth = 2;
+						//temp = new Image("img/anim/r1.png");
+						//GroundEnemy groundEnemy = new GroundEnemy(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
+						//groundEnemy.depth = 2;
+						//Istedenfor bare legge inn groundEnemy etterpå? Bare lagre posisjonene her og spawn fienden på første?
+						//Vector2f[] vectors = {
+						//		new Vector2f(100,100), new Vector2f(400, 400)
+						//		};
+						//groundEnemy.setWaypoints(vectors);
+						//add(groundEnemy);
 						
-						Vector2f[] vectors = {
-								new Vector2f(100,100), new Vector2f(400, 400)
-								};
-						groundEnemy.setWaypoints(vectors);
-						add(groundEnemy);
+						//enemyWaypoints.
+						System.out.println(i + " " + ground.getLayerCount());
+						temp = new Image("img/anim/r1.png");
+						enemyWaypoints.get(i-4).add(new Vector2f(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight));
 					}
 					else if("flying".equals(value)){
 						
 					}
 				}
 			}
+		
+		
+		for (int i = 0; i < enemyWaypoints.size(); i++) {
+			GroundEnemy groundEnemy = new GroundEnemy((int)enemyWaypoints.get(i).get(0).x, (int)enemyWaypoints.get(i).get(0).y, new Image("img/anim/r1.png"));
+			groundEnemy.depth = 2;
+			for (int j = 0; j < enemyWaypoints.get(i).size(); j++) {
+				groundEnemy.addWaypoints(enemyWaypoints.get(i).get(j));
+			}
+			add(groundEnemy);
+		}
 		
 		
 		/*

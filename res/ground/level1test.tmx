@@ -7,6 +7,16 @@
     <property name="enemy" value="ground"/>
    </properties>
   </tile>
+  <tile id="822">
+   <properties>
+    <property name="enemy" value="waypoint"/>
+   </properties>
+  </tile>
+  <tile id="1844">
+   <properties>
+    <property name="enemy" value="ground"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="4097" name="grasjunglemain" tilewidth="64" tileheight="64">
   <image source="grasjunglemain.png" trans="ffffff" width="1024" height="1024"/>
@@ -32,14 +42,22 @@
    H4sIAAAAAAAAC+3VsQkAMAhFQSEzZf/VUrhBEDThDqz93YsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgJ3vldbvdMWU/AEzQ2cSK35oOAKmjiZU/NR0A9BwAAAAAAAAAAAAAAAAAAAAA4GUHMIgJMRAhAQA=
   </data>
  </layer>
- <layer name="foreground not blocked" width="500" height="37" visible="0">
+ <layer name="foreground not blocked" width="500" height="37">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/BnjoRWuECEBAA==
   </data>
  </layer>
- <layer name="enemy 1" width="500" height="37" visible="0">
+ <layer name="enemy 1" width="500" height="37">
+  <properties>
+   <property name="enemy" value="ground"/>
+  </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3OMQ0AAAgDsCV4wr80JBAunlZBEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADZd3wMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK4GnYRl5BAhAQA=
+   H4sIAAAAAAAAC+3ZMQ0AAAgEsd9QhH9rDFggYWkV3H4JAAAAAAAAAAAAAAAAAAAAAAAAAAAArK7vAgAAAAAAAAC444MDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAw4T5IqRAhAQA=
+  </data>
+ </layer>
+ <layer name="enemy 2" width="500" height="37">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3NMREAAAgEoN9MZP9qZnD0hAIkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFzX9eMEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2Bj/kqyRECEBAA==
   </data>
  </layer>
 </map>
