@@ -9,6 +9,8 @@ import Incognito.utils.Globals;
 
 import org.lwjgl.LWJGLUtil;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+
 import java.awt.Cursor;
 import java.io.File;
 
@@ -24,7 +26,7 @@ public class Incognito{
 		
 		AppGameContainer app = new AppGameContainer(new GameState("Incognito"));
 		Globals.ac = app;
-		app.setDisplayMode(800, 600, false);
+		app.setDisplayMode(Constants.GAME_WIDTH, Constants.GAME_HEIGHT, false);
 		app.setTargetFrameRate(Constants.FPS);
 		app.setVSync(true);
 		app.start();

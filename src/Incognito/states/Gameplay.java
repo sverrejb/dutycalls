@@ -180,7 +180,8 @@ public class Gameplay extends World{
 		 */		
 		setWidth(ground.getWidth() * mapTileWidth);
 		setHeight(ground.getHeight() * mapTileHeight);
-		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * mapTileWidth, ground.getHeight() * mapTileHeight, new Vector2f(10,10)));
+		
+		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * mapTileWidth, ground.getHeight() * mapTileHeight, new Vector2f(8,8)));
 	}
 
 	@Override
