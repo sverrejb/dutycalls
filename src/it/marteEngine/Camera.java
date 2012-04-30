@@ -74,8 +74,8 @@ public class Camera {
 		if (follow != null
 				&& !moveRect.contains(follow.x + follow.width / 2, follow.y
 						+ follow.height / 2)) {
-			float targetCX = follow.x - (this.renderWidth / 2) + cameraTweekX + Constants.CAMRA_TWEEK_X;
-			float targetCY = follow.y - (this.renderHeight / 2) + Constants.CAMRA_TWEEK_Y;
+			float targetCX = follow.x - (this.renderWidth / 2) + cameraTweekX;
+			float targetCY = follow.y - (this.renderHeight / 2);
 			// now smoothly move camera on position cameraX, cameraY to position
 			// targetCX, targetCY, using
 			// maxSpeed
