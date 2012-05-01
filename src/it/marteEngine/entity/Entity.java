@@ -143,6 +143,7 @@ public abstract class Entity implements Comparable<Entity> {
 		this.startx = x;
 		this.starty = y;
 		stateManager = new StateManager();
+		
 	}
 
 	/**
@@ -276,6 +277,7 @@ public abstract class Entity implements Comparable<Entity> {
 				g.drawImage(currentImage, 0, 0);
 			} else
 				g.drawImage(currentImage, xpos, ypos);
+			
 			if (scale != 1.0f)
 				g.resetTransform();
 		}

@@ -91,7 +91,7 @@ public class Gameplay extends World{
 				if(temp != null){
 					groundObject = new GroundObject(x*Globals.mapTileWidth,(y*Globals.mapTileHeight) - temp.getHeight() + Globals.mapTileHeight, temp);
 					groundObject.collidable = false;
-					groundObject.depth = 2;
+					groundObject.depth = 1;
 					add(groundObject);
 				}
 				
@@ -146,6 +146,9 @@ public class Gameplay extends World{
 			}
 		
 		
+		/*
+		 * Add enmies
+		 */
 		for (int i = 0; i < enemyWaypoints.size(); i++) {
 			GroundEnemy groundEnemy = new GroundEnemy((int)enemyWaypoints.get(i).get(0).x, (int)enemyWaypoints.get(i).get(0).y, new Image("img/anim/r1.png"));
 			groundEnemy.depth = 2;
@@ -166,20 +169,18 @@ public class Gameplay extends World{
 			
 		}
 		
-		
 		/*
 		 * Add camera
 		 */		
 		setWidth(ground.getWidth() * Globals.mapTileWidth);
 		setHeight(ground.getHeight() * Globals.mapTileHeight);
 		
-		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * Globals.mapTileWidth, ground.getHeight() * Globals.mapTileHeight, new Vector2f(8,8)));
+		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * Globals.mapTileWidth, ground.getHeight() * Globals.mapTileHeight, new Vector2f(8,3)));
 	}
 
 	@Override
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g)
 			throws SlickException {
-		//bg.render(gameContainer, g);
 		super.render(gameContainer, stateBasedGame, g);
 	}
 

@@ -22,7 +22,7 @@ public class BackgroundObject extends Entity {
 		addType("BACKGROUND");
 		
 		depth = 1;
-
+		
 		collidable = false;
 	}
 	

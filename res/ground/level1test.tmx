@@ -21,9 +21,12 @@
  <tileset firstgid="4097" name="grasjunglemain" tilewidth="64" tileheight="64">
   <image source="grasjunglemain.png" trans="ffffff" width="1024" height="1024"/>
  </tileset>
+ <tileset firstgid="4353" name="Jungle_byLunarea" tilewidth="16" tileheight="16">
+  <image source="Jungle_byLunarea.png" trans="ffffff" width="512" height="512"/>
+ </tileset>
  <layer name="background not blocked" width="500" height="37">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3awQmAQAwEQEuwdsFCtAPtQMUCtBLxJ0E4RCQgM789Asl/r6oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACALG2dfQEAAAAAAAAAAAAAAHf65P/e3cv92fcDAAAAAAAA8A9jcv88hP1TyHPIjb4cAAAAAAAAgA/EPrqUl4fzZ76+rYX5LeRdfw4ARQdAiV0kECEBAA==
+   H4sIAAAAAAAAC+3cWYrUUBQG4KAbkDR2q/twfHYPzm7D2UU0aDvvQRGcBd2BQ/vStqB70BcH/EUaNIGOFaFu0vk++B9OVYUKqSKnKvfmVhUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzf/R2l9wAAAACGb6muql3J7mRPXXpvAIA+9qeHH0gOJof0cwAoajW9+F2Pfnwk2xxNjiXH9XMAKOpzevGXHv34TLY5m5xLzuvnAFDUzoWqWlyYfbuV9PBryfXkhn4OAEXtTS/f16OfP0gPf5g8Sh7r58zJlcZ9jFfd1wgwSify2+Fkcio5XbdrAGD4LqRnX0wuJZfrds1w+W8NTEnf+eZdmufSsbqZY3MruZ3cqds1AAxB3/nmU/Ekx+Zp8ix5XrdrANhQcu2zvvPNp2Itn8f7ZD35ULdr5sO1c2AMSq591ne++VR8zefxLfme/KjbNQBssPYZAIyftc+YCtfNgbG7t8l5ax5rn939z/PmZvu/FWyV+fgAlGPtMwAAAAAA+DcvC4/Pvmi8/6tG/bpRL098PLnr+Gxr1Ic7ngcAAAAAAADgt+Z4dFf9ZsbX/6r/fGy14/UfG/Un4+d/6To+2zvGy5vPD9HbjjkAs35nAabgJ4oT5s8QIQEA
   </data>
  </layer>
  <layer name="ground blocked" width="500" height="37">
@@ -31,7 +34,7 @@
    <property name="blocked" value="true"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3csQ2AMAxFwYzA9OnJDmSD7EVqdwjFEOmu+zM8y6UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf3EeubuGDQAAAAAAAABfuEK/Hsm76+cAAABs4Om9OAAAAAAAAACskP0v7a2mpwMAAAAAAACAfg4A0w0M1hczECEBAA==
+   H4sIAAAAAAAAC+3czQnCMAAGUEeo4gRupqADefDu/11RJ3ADB1JPYhAkpC1p+t7tO7UpJaT5QgcDcnasvvMyMh+CDAAAAAAAAABdtAv670dk1p8DAAAAAAAAUILU/vymPwcAAAAAAACgQNsqLp/15wAAAAAAAAAAAAAAAAAAAAAAAEBHrKt288r/2gAAeLkE68KrdSIAAABE8W0NkC6cS+8tZ3M3AAAAXRB7Xrxv6j5vf+r580xl7xwAAAAAAD7smwOlaft/aak2hc+7+4bHl8Pzmwf3MKw5TzIYIwAAAAAAAEDTcuh/m5Rbfx523bMgT//kxY/rjRse46jwdwTg7Qn9Z2KXECEBAA==
   </data>
  </layer>
  <layer name="ground blocked not visible" width="500" height="37">
@@ -39,7 +42,7 @@
    <property name="blocked" value="true"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3auwkAMAhAQSEzZf/VUrhBPkThDqy1e40RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGfmyAEAetJxAOhNywGgPz0HAAAAAOCFKn/eu3dUuR8AKvjZxBu7NR0A0o8m3typ6QCg5wAAAAAAAAAAAAAAAAAAAAAAnS2X5mYyECEBAA==
+   H4sIAAAAAAAAC+3aQQrDMAwEwEDe1P9/reTQU0shtV0pm5mzwdZFi4y2DQAAAAAAAAAAAAAAAAAAAAAAWO2xV78AABglzwEgg0wHgAxHpst1AAAAAAAAAIB3r70K+xUAcE2f8lumA8B/jczW387LdOBO/E9SaXS2lucA+h21ZDHAOP2SFc78nctzgHH6JbPZSwOAazNrA0A/Z3fO5TnQRZc971/f0eX9q92lzkr+zYEElX1rxt3JfTe5ti7M2UCSir41887EvptYU0fyHEgiz/tJrAkAAAAAAAAAAAAAAAAAAAAAWOMJ1cZLLxAhAQA=
   </data>
  </layer>
  <layer name="foreground not blocked" width="500" height="37">
@@ -58,6 +61,16 @@
  <layer name="enemy 2" width="500" height="37">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3NMREAAAgEoN9MZP9qZnD0hAIkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFzX9eMEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2Bj/kqyRECEBAA==
+  </data>
+ </layer>
+ <layer name="enemy 3" width="500" height="37">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3KMREAAAgEoN9MZP9qpvAchJkEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+K5r9wMAAAAAAAAAAAAAAAAAAAAAAAAAAADAhQHMNGYfECEBAA==
+  </data>
+ </layer>
+ <layer name="enemy 4" width="500" height="37">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3MMQ0AAAgDsH0owr81bIykFdAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKDPzs8bAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAHge3HfvNECEBAA==
   </data>
  </layer>
 </map>
