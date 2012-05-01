@@ -36,5 +36,4 @@ public class Constants {
 	public static final float BULLET_SPEED = 40f;
 	public static final int BULLET_BOUNDRY = 1200;
 	public static final int WEAPON_FIRE_RATE = 30; //halvt sek
-	public static final int MAXAMMO = 40;
 }

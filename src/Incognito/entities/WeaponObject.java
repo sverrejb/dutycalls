@@ -14,7 +14,6 @@ import it.marteEngine.entity.Entity;
 
 public class WeaponObject extends Entity{
  
-	private int ammo = Constants.MAXAMMO;
 	private boolean canShoot = true;
 	
 	private static PlayerObject player;
@@ -54,7 +53,7 @@ public class WeaponObject extends Entity{
 	@Override
 	public void render(GameContainer gameContainer, Graphics g) throws SlickException{
 		super.render(gameContainer, g);
-		g.drawString("Ammo:    "+ ammo, ME.world.camera.cameraX + 10, 35);
+		g.drawString("Ammo:    "+ player.getAmmo(), ME.world.camera.cameraX + 10, 35);
 	}
 	
 	@Override
@@ -97,7 +96,7 @@ public class WeaponObject extends Entity{
 		if(check("SHOOT") && canShoot){
 			
 			
-			if(ammo > 0){
+			if(player.getAmmo() > 0){
 				Bullet bullet = new Bullet(((this.width/2)* bulletExit.getX() + x)+ (bulletExit.getY()),
 						((this.width/2) * bulletExit.getY() + y)+ (bulletExit.getX()));	
 				
@@ -108,7 +107,7 @@ public class WeaponObject extends Entity{
 				restartAlarm("FIRE_RATE");
 				
 				ME.world.add(bullet);
-				ammo--;
+				player.setAmmo(player.getAmmo()-1);
 			}	
 		}
 		

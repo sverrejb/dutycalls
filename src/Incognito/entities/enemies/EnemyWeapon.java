@@ -13,7 +13,7 @@ import Incognito.entities.Bullet;
 import Incognito.utils.Constants;
 
 public class EnemyWeapon extends Entity{
-	private int ammo = Constants.MAXAMMO;
+	private int ammo = 40;
 	private boolean canShoot = false;
 	
 	private EnemyObject enemy;

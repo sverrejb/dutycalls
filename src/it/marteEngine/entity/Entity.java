@@ -37,6 +37,8 @@ public abstract class Entity implements Comparable<Entity> {
 	public static final String ENEMY = "ENEMY";
 	public static final String BULLET = "BULLET";
 	public static final String GROUND = "GROUND";
+	public static final String ITEM = "BULLET";
+
 	/** the world this entity lives in */
 	public World world = null;
 
