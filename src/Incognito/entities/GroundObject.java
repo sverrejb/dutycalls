@@ -24,8 +24,6 @@ public class GroundObject extends Entity {
 		
 		setHitBox(0, 0, image.getWidth(), image.getHeight(), true);
 		
-		//depth = 0;
-		
 		addType(Entity.SOLID, Entity.GROUND);
 	}
 	
@@ -40,8 +38,6 @@ public class GroundObject extends Entity {
 	@Override
 	public void render(GameContainer gameContainer, Graphics g) throws SlickException{
 		super.render(gameContainer, g);
-		
-		//ground.render(0, 0);
 	}
 	
 	@Override

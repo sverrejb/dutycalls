@@ -134,7 +134,6 @@ public class GroundEnemy extends EnemyObject {
 		/*
 		 * Check if player is near
 		 * If that is the case, then attack
-		 * 
 		 */
 		//Is the enemy facing the correct direction to spot the player?
 		if(centerX > playerCenterX) //enemy to the right of player
@@ -155,7 +154,7 @@ public class GroundEnemy extends EnemyObject {
 		 * Traces the ray and checks for wall collision
 		 */
 		while(bresenham.next()){
-			Entity wall = ME.world.find(bresenham.getX() , bresenham.getY(), Entity.GROUND);
+			Entity wall = ME.world.find(bresenham.getX() , bresenham.getY(), Entity.GROUND); //Make it possible to find different entities?
 				
 			/*
 			 * We have collided with a wall, and the player is therefore not seen

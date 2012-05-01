@@ -189,21 +189,10 @@ public class Gameplay extends World{
 		super.update(gameContainer, stateBasedGame, delta);
 		
 		Input input = gameContainer.getInput();
+		
 		//tilbake til mainmenu
 		if(input.isKeyDown(input.KEY_ESCAPE))
-			stateBasedGame.enterState(Constants.MAINMENU_STATE);
-		
-		/*
-		if(input.isMousePressed(input.MOUSE_LEFT_BUTTON)){
-			if(ammo.size() < currentAmmo){
-				ammo.add(new Bullet((int)player.getX(), (int)player.getY()));
-				ammo.get(ammo.size() -1).init(gameContainer, stateBasedGame);
-				ammo.get(ammo.size() -1).shoot(mouseX, mouseY, player.getX(), player.getY());
-				currentAmmo--;
-			}
-			
-		}*/		
-		
+			stateBasedGame.enterState(Constants.MAINMENU_STATE);		
 	}
 	
 	@Override

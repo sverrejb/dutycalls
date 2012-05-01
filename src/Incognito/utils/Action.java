@@ -2,6 +2,9 @@ package Incognito.utils;
 
 import java.awt.Point;
 
+/*
+ * CLASS OBSOLETE
+ */
 public enum Action {	
 	LEFT(-1, 0, 30),
 	RIGHT(1, 0, 30),
