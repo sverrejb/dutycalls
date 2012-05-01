@@ -34,7 +34,7 @@ public class PhysicsEntity extends Entity {
 	public PhysicsEntity(float x, float y) {
 		super(x, y);
 		// physics entities are solid
-		addType(SOLID);
+		//addType(SOLID);
 	}
 
 	public void update(GameContainer container, int delta)

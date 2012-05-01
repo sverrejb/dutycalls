@@ -35,7 +35,8 @@ public class Bullet extends PhysicsEntity {
 		/* Remove gravity */
 		this.gravity = 0f;
 		
-		this.addType(Entity.BULLET);
+		
+		this.addType(Entity.BULLET, Entity.SOLID);
 	}
 	
 	
@@ -66,10 +67,10 @@ public class Bullet extends PhysicsEntity {
 	public void collisionResponse(Entity other) {
 		// called when colliding with another entity
 		if(!other.isType(PLAYER)){
-			if(other.isType(Entity.ENEMY))
+			if(other.isType(Entity.ENEMY)){
 				((EnemyObject)other).shot(damage, this);
-			
-			
+				System.out.println("auch");
+			}
 			destroy();
 			bulletsCount--;
 			

@@ -52,6 +52,8 @@ public class Gameplay extends World{
 		super.init(gameContainer, stateBasedGame);		
 		
 		player = new PlayerObject(100, 300);
+		Globals.player = player;
+		
 		weapon = new WeaponObject(player);
 		
 		backGround = new BackgroundObject(0, 0, new Image("res/img/jungle.png"));
@@ -69,8 +71,8 @@ public class Gameplay extends World{
 		TiledMap ground = new TiledMap("ground/level1test.tmx");
 		GroundObject groundObject;
 		
-		int mapTileWidth = ground.getTileWidth();
-		int mapTileHeight = ground.getTileHeight();
+		Globals.mapTileWidth = ground.getTileWidth();
+		Globals.mapTileHeight = ground.getTileHeight();
 		
 		int tileFixWidth;
 		int tileFixHeight;
@@ -98,7 +100,7 @@ public class Gameplay extends World{
 				Image temp = ground.getTileImage(x, y, 0);
 				
 				if(temp != null){
-					groundObject = new GroundObject(x*mapTileWidth,(y*mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
+					groundObject = new GroundObject(x*Globals.mapTileWidth,(y*Globals.mapTileHeight) - temp.getHeight() + Globals.mapTileHeight, temp);
 					groundObject.collidable = false;
 					groundObject.depth = 2;
 					add(groundObject);
@@ -108,7 +110,7 @@ public class Gameplay extends World{
 				temp = ground.getTileImage(x, y, 1);
 				
 				if(temp != null){
-					groundObject = new GroundObject(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
+					groundObject = new GroundObject(x * Globals.mapTileWidth, (y * Globals.mapTileHeight) - temp.getHeight() + Globals.mapTileHeight, temp);
 					groundObject.depth = 2;
 					add(groundObject);
 				}	
@@ -117,7 +119,7 @@ public class Gameplay extends World{
 				temp = ground.getTileImage(x, y, 2);
 				
 				if(temp != null){
-					groundObject = new GroundObject(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp.getWidth(), temp.getHeight());
+					groundObject = new GroundObject(x * Globals.mapTileWidth, (y * Globals.mapTileHeight) - temp.getHeight() + Globals.mapTileHeight, temp.getWidth(), temp.getHeight());
 					groundObject.depth = 2;
 					add(groundObject);
 				}
@@ -126,7 +128,7 @@ public class Gameplay extends World{
 				temp = ground.getTileImage(x, y, 3);
 				
 				if(temp != null){
-					groundObject = new GroundObject(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
+					groundObject = new GroundObject(x * Globals.mapTileWidth, (y * Globals.mapTileHeight) - temp.getHeight() + Globals.mapTileHeight, temp);
 					groundObject.depth = 6;
 					groundObject.collidable = false;
 					add(groundObject);
@@ -156,7 +158,7 @@ public class Gameplay extends World{
 						
 						//enemyWaypoints.
 						temp = new Image("img/anim/r1.png");
-						enemyWaypoints.get(i-4).add(new Vector2f(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight));
+						enemyWaypoints.get(i-4).add(new Vector2f(x * Globals.mapTileWidth, (y * Globals.mapTileHeight) - temp.getHeight() + Globals.mapTileHeight));
 					}
 					else if("flying".equals(value)){
 						
@@ -178,10 +180,10 @@ public class Gameplay extends World{
 		/*
 		 * Add camera
 		 */		
-		setWidth(ground.getWidth() * mapTileWidth);
-		setHeight(ground.getHeight() * mapTileHeight);
+		setWidth(ground.getWidth() * Globals.mapTileWidth);
+		setHeight(ground.getHeight() * Globals.mapTileHeight);
 		
-		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * mapTileWidth, ground.getHeight() * mapTileHeight, new Vector2f(8,8)));
+		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * Globals.mapTileWidth, ground.getHeight() * Globals.mapTileHeight, new Vector2f(8,8)));
 	}
 
 	@Override
