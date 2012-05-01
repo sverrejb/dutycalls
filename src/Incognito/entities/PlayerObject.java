@@ -67,6 +67,8 @@ public class PlayerObject extends PlatformerEntity {
 	@Override
 	public void render(GameContainer gameContainer, Graphics g) throws SlickException{
 		super.render(gameContainer, g);
+		g.drawString("Ammo:    "+ ammo, ME.world.camera.cameraX + 10, 35);
+		g.drawString("Health:    "+ health, ME.world.camera.cameraX + 160, 35);
 	}
 	
 	@Override
@@ -85,7 +87,7 @@ public class PlayerObject extends PlatformerEntity {
 
 
 	public void addHealth(int i) {
-		if(health + i >= maxHealth)
+		if(health + i <= maxHealth)
 			health  += i;
 		else
 			health = maxHealth;
@@ -106,7 +108,7 @@ public class PlayerObject extends PlatformerEntity {
 
 
 	public void addAmmo(int i) {
-		if(ammo + i >= maxAmmo)
+		if(ammo + i <= maxAmmo)
 			ammo  += i;
 		else
 			ammo = maxAmmo;

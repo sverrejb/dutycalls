@@ -69,7 +69,6 @@ public class Bullet extends PhysicsEntity {
 		if(!other.isType(PLAYER)){
 			if(other.isType(Entity.ENEMY)){
 				((EnemyObject)other).shot(damage, this);
-				System.out.println("auch");
 			}
 			destroy();
 			bulletsCount--;

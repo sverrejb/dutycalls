@@ -1,5 +1,8 @@
 package Incognito.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -9,6 +12,8 @@ import it.marteEngine.entity.Entity;
 import it.marteEngine.entity.PhysicsEntity;
 
 public class ItemEntity extends PhysicsEntity{
+	
+	private boolean used = false;
 
 	public ItemEntity(float x, float y, Image image) {
 		super(x, y);
@@ -16,7 +21,8 @@ public class ItemEntity extends PhysicsEntity{
 		setGraphic(image);
 		collidable = true;
 		setHitBox(0, 0, image.getWidth(), image.getHeight(), true);
-		addType(Entity.ITEM);
+		addType(Entity.ITEM, Entity.SOLID);
+		depth = 4;
 	}
 	
 	@Override
@@ -31,12 +37,11 @@ public class ItemEntity extends PhysicsEntity{
 		
 
 	}
-	
-	@Override
-	public void collisionResponse(Entity other) {
-		
-		if(other.isType(PLAYER))
-			destroy();
+	public boolean isUsed(){
+		return used;
+	}
+	public void setUsed(boolean used){
+		this.used = used;
 	}
 
 }

@@ -15,6 +15,7 @@ import it.marteEngine.entity.Entity;
 import it.marteEngine.entity.PhysicsEntity;
 
 import Incognito.entities.*;
+import Incognito.utils.Constants;
 
 public class EnemyObject extends PhysicsEntity{
 	
@@ -43,9 +44,19 @@ public class EnemyObject extends PhysicsEntity{
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
 		
-		if(health <= 0)
+		if(health <= 0){
+			int dice = (int)(Math.random()*100);
+			
+			if(dice >= 0 && dice < Constants.HEALTH_PACK_SPAWNCHANCE)
+				ME.world.add(new MedpackEntity(this.x, this.y));
+			else if(dice >= Constants.HEALTH_PACK_SPAWNCHANCE && dice < Constants.HEALTH_PACK_SPAWNCHANCE + Constants.AMMO_PACK_SPAWNCHANCE)
+				ME.world.add(new AmmoEntity(this.x, this.y));
+			
 			destroy();
-		
+			
+			
+		}
+			
 		super.update(gameContainer, delta);
 		
 		//float playerPosX = ((PlayerObject)ME.world.getEntities(PLAYER)).x;

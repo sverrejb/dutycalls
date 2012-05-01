@@ -36,4 +36,12 @@ public class Constants {
 	public static final float BULLET_SPEED = 40f;
 	public static final int BULLET_BOUNDRY = 1200;
 	public static final int WEAPON_FIRE_RATE = 30; //halvt sek
+	
+	// Item constants
+	public static final int HEALTH_PACK_AMOUNT = 10;
+	public static final int HEALTH_PACK_BONUSAMOUNT = 10;
+	public static final int AMMO_PACK_AMOUNT = 10;
+	public static final int AMMO_PACK_BONUSAMOUNT = 10;
+	public static final int HEALTH_PACK_SPAWNCHANCE = 50;
+	public static final int AMMO_PACK_SPAWNCHANCE = 50;
 }

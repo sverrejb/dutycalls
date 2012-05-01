@@ -53,7 +53,6 @@ public class WeaponObject extends Entity{
 	@Override
 	public void render(GameContainer gameContainer, Graphics g) throws SlickException{
 		super.render(gameContainer, g);
-		g.drawString("Ammo:    "+ player.getAmmo(), ME.world.camera.cameraX + 10, 35);
 	}
 	
 	@Override
