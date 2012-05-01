@@ -41,6 +41,7 @@ public class BackgroundObject extends Entity {
 		float camPosY = ME.world.camera.cameraY;
 		
 		
+		
 		x = (float) (ME.world.camera.cameraX/1.3);
 			
 			

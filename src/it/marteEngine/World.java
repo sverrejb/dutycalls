@@ -288,6 +288,22 @@ public class World extends BasicGameState {
 		}
 		return false;
 	}
+	
+	public void removeAll(){
+		entities = new ArrayList<Entity>();
+		removable = new ArrayList<Entity>();
+		addable = new ArrayList<Entity>();
+
+		/**
+		 * two lists to contain objects that are rendered before and after camera
+		 * stuff is rendered
+		 */
+		belowCamera = new ArrayList<Entity>();
+		aboveCamera = new ArrayList<Entity>();
+
+		/** available commands for world **/
+		commands = new Hashtable<String, int[]>();
+	}
 
 	/**
 	 * @param name

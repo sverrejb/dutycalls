@@ -81,6 +81,9 @@ public class GroundEnemy extends EnemyObject {
 			
 			
 		}
+		else{
+			weapon.setAimDir((int)(x + (width/2) + 20),(int)(y + (height/2)));
+		}
 		
 		/*
 		 * Player is not seen

@@ -1,32 +1,26 @@
 package Incognito.states;
 
-import java.awt.Cursor;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import it.marteEngine.Camera;
-import it.marteEngine.ME;
 import it.marteEngine.World;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.MouseListener;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import Incognito.entities.BackgroundObject;
-import Incognito.entities.Bullet;
 import Incognito.entities.enemies.EnemyWeapon;
 import Incognito.entities.enemies.GroundEnemy;
 import Incognito.entities.GroundObject;
 import Incognito.entities.PlayerObject;
 import Incognito.entities.WeaponObject;
-import Incognito.utils.Action;
 import Incognito.utils.Constants;
 import Incognito.utils.Globals;
 
@@ -34,7 +28,6 @@ public class Gameplay extends World{
 
 	
 	private PlayerObject player;
-	private GroundObject ground;
 	private WeaponObject weapon;
 	private BackgroundObject backGround;
 	
@@ -231,9 +224,11 @@ public class Gameplay extends World{
 	
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-
-		Globals.ac.setMouseCursor(("/res/img/cursor.gif"), 0, 0);		
-
+		//Uglyfugly fix
+		this.removeAll();
+		init(container, game);
+		
+		Globals.ac.setMouseCursor(("/res/img/cursor.gif"), 0, 0);
 		super.enter(container, game);
 	}
 
