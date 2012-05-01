@@ -15,6 +15,7 @@ public class PlatformerEntity extends PhysicsEntity {
 	protected static final String CMD_LEFT = "left";
 	protected static final String CMD_RIGHT = "right";
 	protected static final String CMD_JUMP = "jump";
+	protected boolean goesRight = true;
 	protected boolean onGround = false;
 	private int moveSpeed = Constants.PLAYER_MOVE_SPEED;
 	private int jumpSpeed = Constants.PLAYER_JUMP_SPEED;
@@ -92,10 +93,12 @@ public class PlatformerEntity extends PhysicsEntity {
 		if (this.speed.getX() > 0) {
 			currentAnim = ME.WALK_RIGHT;
 			lastDirection = ME.WALK_RIGHT;
+			goesRight = true;
 		}
 		else if(this.speed.getX() < 0){
 			currentAnim = ME.WALK_LEFT;
 			lastDirection = ME.WALK_LEFT;
+			goesRight = false;
 		}
 		
 		//Standing animation
@@ -167,6 +170,10 @@ public class PlatformerEntity extends PhysicsEntity {
 
 	public void jump() {
 		speed.y = -jumpSpeed;
+	}
+	
+	public boolean isDirectionRight(){
+		return goesRight;
 	}
 
 }
