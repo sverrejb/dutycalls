@@ -23,6 +23,8 @@ public class BackgroundObject extends Entity {
 		
 		setGraphic(image);
 		
+		addType("BACKGROUND");
+		
 		depth = 1;
 		//setHitBox(0, 0, image.getWidth(), image.getHeight(), false);
 		collidable = false;

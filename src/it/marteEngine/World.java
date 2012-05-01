@@ -396,13 +396,15 @@ public class World extends BasicGameState {
 		return true;
 	}
 
-	public Entity find(int x, int y) {
+	public Entity find(int x, int y, String type) {
 		Rectangle rect;
 		for (Entity entity : entities) {
-			rect = new Rectangle(entity.x, entity.y, entity.width,
-					entity.height);
-			if (rect.contains(x, y)) {
-				return entity;
+			if(entity.isType(type)){ //modification
+				rect = new Rectangle(entity.x, entity.y, entity.width,
+						entity.height);
+				if (rect.contains(x, y)) {
+					return entity;
+				}
 			}
 		}
 		return null;
