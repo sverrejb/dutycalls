@@ -22,17 +22,22 @@ public class WeaponObject extends Entity{
 	private final float gunCenterX = 0f;
 	private final float gunCenterY = -20f;
 	
+	private float playerGunStartPosY = 75f;
+	
 	private final float playerGunPosX = 50f;
-	private final float playerGUnPosY = 75f;
+	private float playerGunPosY = playerGunStartPosY;
+	private Image gun = new Image("img/anim/gun.png");
 	
 	private Vector2f bulletExit;
 
 	public WeaponObject(PlayerObject player) throws SlickException{
 		super(player.x, player.y);
 		
-		Image gun = new Image("img/anim/gun.png");
 		
 		setGraphic(gun);
+		
+		gun.setCenterOfRotation(400, 400);
+		this.centered = true;
 		
 		depth = 12;
 		
@@ -57,12 +62,15 @@ public class WeaponObject extends Entity{
 		Input input = gameContainer.getInput();
 		
 		float centerX = player.x + playerGunPosX;
-		float centerY = player.y + playerGUnPosY;
+		float centerY = player.y + playerGunPosY;
+		
 		
 		// + Fixes for Camera movement
 		float mouseX = input.getMouseX() + ME.world.camera.cameraX +7;
 		float mouseY = input.getMouseY() + ME.world.camera.cameraY +7;
 		
+		bulletExit = new Vector2f(mouseX - x, mouseY - y);
+		bulletExit.normalise();
 		//2. Find out their position relative to each other (angle)
 		//arctan(Y/X) - arctan(Y/X)	
 		double angle = Math.toDegrees(Math.atan2((mouseY)- (centerY), mouseX - centerX));
@@ -74,17 +82,24 @@ public class WeaponObject extends Entity{
 		this.x = centerX;
 		this.y = centerY;
 		
+		gun.setCenterOfRotation(400, 400);
 		setAngle((int)angle);
+
+		if(!player.isDirectionRight()){
+			setGraphic(gun.getFlippedCopy(false, true));
+		}
+		else{
+			setGraphic(gun);
+		}
 		
-		
+
 				
 		if(check("SHOOT") && canShoot){
-			bulletExit = new Vector2f(mouseX - x, mouseY - y);
-			bulletExit.normalise();
+			
 			
 			if(ammo > 0){
-				Bullet bullet = new Bullet(((this.width)* bulletExit.getX() + x)+ (bulletExit.getY()) * (this.height/5),
-						((this.width) * bulletExit.getY() + y)+ (bulletExit.getX()) * (this.height/5));	
+				Bullet bullet = new Bullet(((this.width/2)* bulletExit.getX() + x)+ (bulletExit.getY()),
+						((this.width/2) * bulletExit.getY() + y)+ (bulletExit.getX()));	
 				
 				bullet.shoot(bulletExit);
 				
