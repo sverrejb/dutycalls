@@ -32,6 +32,7 @@ public class GroundEnemy extends EnemyObject {
 	public GroundEnemy(int x, int y, Image image) {
 		super(x, y, image);
 		// TODO Auto-generated constructor stub
+		addType(Entity.ENEMY);
 	}
 	
 	@Override
@@ -102,7 +103,7 @@ public class GroundEnemy extends EnemyObject {
 		/*
 		 * Go in wayPoint direction
 		 */
-		else if(waypoints != null){
+		if(waypoints != null){
 
 			//Are we close to the waypoint?
 			if(this.x > waypoints.get(currentWaypoint).x - 10 && x < waypoints.get(currentWaypoint).x + 10){
