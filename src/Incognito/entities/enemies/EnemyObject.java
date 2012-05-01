@@ -1,4 +1,4 @@
-package Incognito.entities;
+package Incognito.entities.enemies;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,19 +8,16 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-import org.newdawn.slick.util.pathfinding.*;
-
-import it.marteEngine.ME;
 import it.marteEngine.entity.Entity;
 import it.marteEngine.entity.PhysicsEntity;
-
-import Incognito.entities.*;
 
 public class EnemyObject extends PhysicsEntity{
 	
 	private enum STATES {KILL_MODE, WANDER, DEAD}
 	
 	private int health = 20;
+	
+	private boolean isRight = true;
 	
 	List<Entity> bulletHits = new ArrayList<Entity>();
 	
@@ -32,7 +29,6 @@ public class EnemyObject extends PhysicsEntity{
 		setHitBox(0, 0, image.getWidth(), image.getHeight(), true);
 		
 		addType(Entity.ENEMY);
-		
 	}
 	
 	@Override
@@ -42,11 +38,17 @@ public class EnemyObject extends PhysicsEntity{
 	
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
-		
-		if(health <= 0)
-			destroy();
-		
 		super.update(gameContainer, delta);
+		
+		if(health <= 0){
+			
+			destroy();
+			
+			if(this instanceof GroundEnemy)
+				((GroundEnemy) this).weapon.destroy();
+		}
+		
+		
 		
 		//float playerPosX = ((PlayerObject)ME.world.getEntities(PLAYER)).x;
 		//float playerPosY = ((PlayerObject)ME.world.getEntities(PLAYER)).y;
@@ -58,5 +60,9 @@ public class EnemyObject extends PhysicsEntity{
 			bulletHits.add(bullet);
 			health -= damage;
 		}
+	}
+	
+	public boolean isDirectionRight(){
+		return isRight;
 	}
 }
