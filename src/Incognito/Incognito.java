@@ -26,7 +26,7 @@ public class Incognito{
 		
 		AppGameContainer app = new AppGameContainer(new GameState("Incognito"));
 		Globals.ac = app;
-		app.setDisplayMode(Constants.GAME_WIDTH, Constants.GAME_HEIGHT, false);
+		app.setDisplayMode(Constants.GAME_WIDTH, Constants.GAME_HEIGHT, Constants.FULL_SCREEN);
 		app.setTargetFrameRate(Constants.FPS);
 		app.setVSync(true);
 		app.start();
