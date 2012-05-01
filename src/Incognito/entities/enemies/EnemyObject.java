@@ -22,7 +22,7 @@ public class EnemyObject extends PhysicsEntity{
 	
 	private int health = 20;
 	
-	private boolean isRight = true;
+	protected boolean isRight = true;
 	
 	List<Entity> bulletHits = new ArrayList<Entity>();
 	

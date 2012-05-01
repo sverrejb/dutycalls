@@ -31,12 +31,6 @@ public class Gameplay extends World{
 	private WeaponObject weapon;
 	private BackgroundObject backGround;
 	
-	//Enemy i list
-	
-	//våpen i list
-	
-	//skudd i list
-
 	public Gameplay(int id) throws SlickException{
 		super(id);
 	}
@@ -140,18 +134,8 @@ public class Gameplay extends World{
 					
 					String value = ground.getTileProperty(ID, "enemy", "null");
 					
-					if("ground".equals(value)){ //ground1, ground1. for punkter å gå og??
-						//temp = new Image("img/anim/r1.png");
-						//GroundEnemy groundEnemy = new GroundEnemy(x * mapTileWidth, (y * mapTileHeight) - temp.getHeight() + mapTileHeight, temp);
-						//groundEnemy.depth = 2;
-						//Istedenfor bare legge inn groundEnemy etterpå? Bare lagre posisjonene her og spawn fienden på første?
-						//Vector2f[] vectors = {
-						//		new Vector2f(100,100), new Vector2f(400, 400)
-						//		};
-						//groundEnemy.setWaypoints(vectors);
-						//add(groundEnemy);
+					if("ground".equals(value)){ 
 						
-						//enemyWaypoints.
 						temp = new Image("img/anim/r1.png");
 						enemyWaypoints.get(i-4).add(new Vector2f(x * Globals.mapTileWidth, (y * Globals.mapTileHeight) - temp.getHeight() + Globals.mapTileHeight));
 					}

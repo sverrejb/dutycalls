@@ -23,7 +23,7 @@ public class Constants {
 	public static final Vector2f MAX_SPEED = new Vector2f(3, 8);
 	
 	/* Player constants*/
-	public static final int PLAYER_ANIMATION_SPEED = 100; 
+	public static final int PLAYER_ANIMATION_SPEED = 155; 
 	public static final int PLAYER_MOVE_SPEED = 1;
 	public static final int PLAYER_JUMP_SPEED = 6;
 	public static final String STAND_STILL_RIGHT = "STAND_STILL_RIGHT"; // Now implemented in ME
@@ -32,6 +32,7 @@ public class Constants {
 	/* Enemy constants */
 	public static final int ENEMY_MOVE_SPEED = 1;
 	public static final int ENEMY_ANIMATION_SPEED = 100;
+	public static final int ENEMY_EYE_RANGE = 500;
 	
 	/* Weapon constants*/
 	public static final float BULLET_SPEED = 40f;
