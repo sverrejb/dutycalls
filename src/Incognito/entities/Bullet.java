@@ -9,7 +9,9 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
+
 import Incognito.utils.Constants;
+import Incognito.entities.enemies.EnemyObject;
 
 public class Bullet extends PhysicsEntity {
 	
@@ -51,7 +53,6 @@ public class Bullet extends PhysicsEntity {
 		if(y < ME.world.camera.cameraY -Constants.BULLET_BOUNDRY || y > ME.world.camera.cameraY +Constants.BULLET_BOUNDRY
 				|| x > ME.world.camera.cameraX + Constants.BULLET_BOUNDRY || x < ME.world.camera.cameraX -Constants.BULLET_BOUNDRY)
 			destroy();
-		
 	}
 	
 
@@ -70,9 +71,9 @@ public class Bullet extends PhysicsEntity {
 			if(other.isType(Entity.ENEMY)){
 				((EnemyObject)other).shot(damage, this);
 			}
+			
 			destroy();
 			bulletsCount--;
-			
 		}
 	}
 	

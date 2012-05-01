@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import it.marteEngine.Camera;
+import it.marteEngine.ME;
 import it.marteEngine.World;
 
 import org.newdawn.slick.GameContainer;
@@ -20,7 +21,8 @@ import org.newdawn.slick.tiled.TiledMap;
 
 import Incognito.entities.BackgroundObject;
 import Incognito.entities.Bullet;
-import Incognito.entities.GroundEnemy;
+import Incognito.entities.enemies.EnemyWeapon;
+import Incognito.entities.enemies.GroundEnemy;
 import Incognito.entities.GroundObject;
 import Incognito.entities.PlayerObject;
 import Incognito.entities.WeaponObject;
@@ -173,7 +175,18 @@ public class Gameplay extends World{
 			for (int j = 0; j < enemyWaypoints.get(i).size(); j++) {
 				groundEnemy.addWaypoints(enemyWaypoints.get(i).get(j));
 			}
+			/*
+			 * Give enemy weapon
+			 */
+			EnemyWeapon weapon = new EnemyWeapon(groundEnemy);
+			weapon.collidable = false;
+			weapon.depth = 12;
+			
+			groundEnemy.setWeapon(weapon);
+			
 			add(groundEnemy);
+			add(weapon);
+			
 		}
 		
 		

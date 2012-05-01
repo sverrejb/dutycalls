@@ -26,7 +26,7 @@ public class GroundObject extends Entity {
 		
 		//depth = 0;
 		
-		addType(Entity.SOLID);
+		addType(Entity.SOLID, Entity.GROUND);
 	}
 	
 	/* Groundobject not visible*/
