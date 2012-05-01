@@ -28,6 +28,10 @@ public class PlayerObject extends PlatformerEntity {
 	
 	private int pixelsPerPicX = 103;
 	private int pixelsPerPicY = 150;
+	private int maxHealth = 100;
+	private int health = maxHealth;
+	private int maxAmmo = 100;
+	private int ammo = maxAmmo;
 
 	
 	public PlayerObject(int pointX, int pointY ) throws SlickException{
@@ -76,5 +80,35 @@ public class PlayerObject extends PlatformerEntity {
 
 	public void unLoad() {
 		
+	}
+
+
+
+	public void addHealth(int i) {
+		if(health + i >= maxHealth)
+			health  += i;
+		else
+			health = maxHealth;
+	}
+
+
+
+	public int getAmmo() {
+		return ammo;
+	}
+
+
+
+	public void setAmmo(int i) {
+		ammo = i;
+	}
+
+
+
+	public void addAmmo(int i) {
+		if(ammo + i >= maxAmmo)
+			ammo  += i;
+		else
+			ammo = maxAmmo;
 	}
 }
