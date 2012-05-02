@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Vector2f;
@@ -75,6 +74,8 @@ public class GroundEnemy extends EnemyObject {
 			if(weapon != null){
 				weapon.setAimX(Globals.player.x + (Globals.player.width/2));
 				weapon.setAimY(Globals.player.y + (Globals.player.height/2));
+				
+				weapon.tryShoot();
 			}
 			
 			
@@ -82,6 +83,7 @@ public class GroundEnemy extends EnemyObject {
 		}
 		else{
 			weapon.setAimDir((int)(x + (width/2) + 20),(int)(y + (height/2)));
+			weapon.stopShoot();
 		}
 		
 		/*

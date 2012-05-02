@@ -32,6 +32,8 @@ public class EnemyWeapon extends Entity{
 	private float aimY = 0f;
 	
 	private Vector2f bulletExit;
+	
+	private boolean shootingAlarmActive = false;
 
 	public EnemyWeapon(EnemyObject player) throws SlickException{
 		super(player.x, player.y);
@@ -51,7 +53,7 @@ public class EnemyWeapon extends Entity{
 		collidable = false;
 		
 		/* An alarm wich will be fires each time the player shoots */
-		setAlarm("SHOOT", Constants.WEAPON_FIRE_RATE, false, false);
+		setAlarm("SHOOT", Constants.ENEMY_TRIGGER_TIME, false, false);
 	}
 	
 	@Override
@@ -103,11 +105,7 @@ public class EnemyWeapon extends Entity{
 						((this.width/2) * bulletExit.getY() + y)+ (bulletExit.getX()));	
 				
 				bullet.shoot(bulletExit);
-				
-				/* Makes the player unable to fire and start the FIRE_RATE alarm*/
-				canShoot = false;
-				restartAlarm("FIRE_RATE");
-				
+				System.out.println("pewpew");
 				ME.world.add(bullet);
 				ammo--;
 			}	
@@ -127,6 +125,20 @@ public class EnemyWeapon extends Entity{
 
 	public void setAimY(float aimY) {
 		this.aimY = aimY;
+	}
+	
+	public void tryShoot(){
+		if(!shootingAlarmActive){
+			restartAlarm("SHOOT");
+			shootingAlarmActive = true;
+		}
+	}
+	
+	public void stopShoot(){
+		if(shootingAlarmActive){
+			pauseAlarm("BULLET");
+			shootingAlarmActive = false;
+		}
 	}
 	
 	@Override
