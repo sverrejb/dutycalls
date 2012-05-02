@@ -18,7 +18,7 @@ public class Constants {
 	public static final int FPS = 60;
 	
 	/* Volum */
-	public static final float MUSIC_VOLUM = 0.4f;
+	public static final float MUSIC_VOLUM = 0.5f;
 	public static final float EFFECTS_VOLUM = 1f;
 	
 	/*Physics constants*/
