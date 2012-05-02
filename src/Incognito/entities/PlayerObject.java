@@ -71,14 +71,14 @@ public class PlayerObject extends PlatformerEntity {
 		super.render(gameContainer, g);
 		//hard coded HUD :S 
 		g.setColor(Color.black);
-		g.fillRoundRect(ME.world.camera.cameraX, ME.world.camera.cameraY, Constants.GAME_WIDTH, 36, 10);
+		g.fillRoundRect(ME.world.camera.cameraX, ME.world.camera.cameraY, 120, 56, 10);
 		
 		g.setColor(Color.lightGray);
-		g.fillRoundRect(ME.world.camera.cameraX + 3, ME.world.camera.cameraY + 3, Constants.GAME_WIDTH -6, 30, 10);
+		g.fillRoundRect(ME.world.camera.cameraX + 3, ME.world.camera.cameraY + 3, 120 -6, 50, 10);
 		
-		g.setColor(Color.white);
-		g.drawString("Ammo: "+ ammo, ME.world.camera.cameraX + 30,  ME.world.camera.cameraY + 8);
-		g.drawString("Health: "+ health, ME.world.camera.cameraX + 160,  ME.world.camera.cameraY + 8);
+		g.setColor(Color.black);
+		g.drawString("Health: "+ health, ME.world.camera.cameraX + 10,  ME.world.camera.cameraY + 8);
+		g.drawString("Ammo: "+ ammo, ME.world.camera.cameraX + 10,  ME.world.camera.cameraY + 28);	
 	}
 	
 	@Override

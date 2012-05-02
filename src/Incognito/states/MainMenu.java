@@ -28,8 +28,8 @@ public class MainMenu extends World {
 	private final String versionName = "Incognito InDev";
 
 	private int stateID = -1;
-	private float menuX = Constants.GAME_WIDTH / 2 - 250;
-	private float menuY = 300;
+	private float menuX = Constants.GAME_WIDTH / 2 - 300;
+	private float menuY = 250;
 	private float scaleStep = 0.001f;
 	private int buttonSpace = 80;
 	private float StartbuttonScale = 1;
@@ -61,7 +61,7 @@ public class MainMenu extends World {
 			StateBasedGame stateBasedGame, Graphics g) throws SlickException {
 		background.draw(0, 0);
 		//g.drawString(versionName, 600, 10);
-		title.draw(menuX - 20, 150);
+		title.draw(menuX - 20, 100);
 		startGameOption.draw(menuX, menuY, StartbuttonScale);
 		exitOption.draw(menuX, menuY + buttonSpace, ExitbuttonScale);
 	}
