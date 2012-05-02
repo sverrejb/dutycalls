@@ -145,8 +145,7 @@ public class Gameplay extends World{
 					
 					if("ground".equals(value)){ 
 						
-						temp = new Image("img/anim/r1.png");
-						enemyWaypoints.get(i-4).add(new Vector2f(x * Globals.mapTileWidth, (y * Globals.mapTileHeight) - temp.getHeight() + Globals.mapTileHeight));
+						enemyWaypoints.get(i-4).add(new Vector2f(x * Globals.mapTileWidth, (y * Globals.mapTileHeight) - 160 + Globals.mapTileHeight));
 					}
 					else if("flying".equals(value)){
 						
@@ -159,7 +158,7 @@ public class Gameplay extends World{
 		 * Add enmies
 		 */
 		for (int i = 0; i < enemyWaypoints.size(); i++) {
-			GroundEnemy groundEnemy = new GroundEnemy((int)enemyWaypoints.get(i).get(0).x, (int)enemyWaypoints.get(i).get(0).y, new SpriteSheet(("img/anim/enemywalk.png"), 103, 150));
+			GroundEnemy groundEnemy = new GroundEnemy((int)enemyWaypoints.get(i).get(0).x, (int)enemyWaypoints.get(i).get(0).y, new SpriteSheet(("img/anim/enemywalk.png"), 103, 160));
 			groundEnemy.depth = 2;
 			for (int j = 0; j < enemyWaypoints.get(i).size(); j++) {
 				groundEnemy.addWaypoints(enemyWaypoints.get(i).get(j));
