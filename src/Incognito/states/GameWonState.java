@@ -13,7 +13,6 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 import Incognito.utils.Constants;
 import Incognito.utils.Globals;
 
-import it.marteEngine.ME;
 import it.marteEngine.World;
 
 public class GameWonState extends World{
@@ -35,13 +34,10 @@ public class GameWonState extends World{
 		
 		if(input.isKeyPressed(input.KEY_SPACE))
 			Globals.game.enterState(Constants.MAINMENU_STATE, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-		
 	}
 	
 	@Override
 	public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException{
 		gameOver.draw(0,0);
-		g.setColor(Color.white);
-		g.drawString("Created by: Per Øyvind Kanestrøm, Sverre Johann Bjørke and Kyrre Laugerud Moe", 40, Constants.GAME_HEIGHT - 20);
 	}
 }
