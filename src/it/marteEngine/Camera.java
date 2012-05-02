@@ -21,7 +21,9 @@ public class Camera {
 	/** coordinates of the top left corner of the camera area in the world */
 	public float cameraX;
 	public float cameraY;
-	public float cameraTweekX = 200;
+	public float camraCenterX;
+	public float camraCenterY;
+	public float cameraTweekX = Constants.GAME_WIDTH/3;
 	/** width and height of the render area for this camera */
 	private float renderWidth;
 	private float renderHeight;
@@ -66,6 +68,8 @@ public class Camera {
 	public void update(GameContainer container, int delta)
 			throws SlickException {
 		setCamera();
+		camraCenterX = Constants.GAME_WIDTH/2;
+		camraCenterY = Constants.GAME_HEIGHT/2;
 	}
 
 	private void setCamera() {
