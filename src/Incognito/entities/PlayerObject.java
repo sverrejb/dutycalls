@@ -40,7 +40,7 @@ public class PlayerObject extends PlatformerEntity {
 		SpriteSheet test = new SpriteSheet("img/anim/playerRightTest.png", pixelsPerPicX, pixelsPerPicY);
 		setGraphic(test);
 		this.centered = true;
-		death = new Sound("/res/sound/wilhelmScream.wav");
+		death = new Sound("sound/wilhelmScream.wav");
 		
 		/* Each frame duration for animation */
 		duration = Constants.PLAYER_ANIMATION_SPEED;		

@@ -52,8 +52,8 @@ public class MainMenu extends World {
 		startGameOption = menuOptions.getSubImage(290, 180, 319, 66);
 		exitOption = menuOptions.getSubImage(290, 246, 150, 66);
 
-		buttonSound = new Sound("/res/sound/buttonOver.wav");
-		intro = new Sound("/res/sound/intro.wav");
+		buttonSound = new Sound("sound/buttonOver.wav");
+		intro = new Sound("sound/intro.wav");
 	}
 
 	@Override
