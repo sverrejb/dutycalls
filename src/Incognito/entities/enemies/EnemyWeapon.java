@@ -17,39 +17,26 @@ public class EnemyWeapon extends Entity{
 	private boolean canShoot = false;
 	
 	private EnemyObject enemy;
-	
-	private final float gunCenterX = 0f;
-	private final float gunCenterY = -20f;
 
-	private float playerGunStartPosY = 75f;
-	
-	private final float enemyGunPosX = 50f;
-	
-	private float enemyGunPosY = playerGunStartPosY;
 	private static Image gun;
 	
 	private float aimX = 0f;
 	private float aimY = 0f;
 	
-	private Vector2f bulletExit;
+	private Vector2f trajectory;
 	
 	private boolean shootingAlarmActive = false;
 
 	public EnemyWeapon(EnemyObject player) throws SlickException{
 		super(player.x, player.y);
 		
-		if(gun == null)
-			gun = new Image("img/anim/gun.png");
+		gun = new Image("img/anim/gun.png");
 		
 		setGraphic(gun);
-		
-		gun.setCenterOfRotation(400, 400);
 		this.centered = true;
-		
 		depth = 12;
 		
 		this.enemy = player;
-		
 		collidable = false;
 		
 		/* An alarm wich will be fires each time the player shoots */
@@ -64,30 +51,17 @@ public class EnemyWeapon extends Entity{
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {	
 				
-		float centerX = enemy.x + enemyGunPosX;
-		float centerY = enemy.y + enemyGunPosY;
+		this.x = enemy.x;
+		this.y = enemy.y -10;
 		
 		
-		// + Fixes for Camera movement
-		aimX += 7;
-		aimY += 7;
+		trajectory = new Vector2f(aimX - x, aimY - y);
+		trajectory.normalise();
 		
-		bulletExit = new Vector2f(aimX - x, aimY - y);
-		bulletExit.normalise();
-		
-		
-		//Position gun in the middle
-		centerX += gunCenterX;
-		centerY += gunCenterY;
-		
-		this.x = centerX;
-		this.y = centerY;
-		
-		gun.setCenterOfRotation(400, 400);
-		setAngle((int)bulletExit.getTheta());
+		setAngle((int)trajectory.getTheta());
 
 		if(!enemy.isDirectionRight()){
-			setGraphic(gun.getFlippedCopy(true, false));
+			setGraphic(gun.getFlippedCopy(false, true));
 		}
 		else{
 			setGraphic(gun);
@@ -99,10 +73,10 @@ public class EnemyWeapon extends Entity{
 			canShoot = false;
 			
 			if(ammo > 0){
-				Bullet bullet = new Bullet(((this.width/2)* bulletExit.getX() + x)+ (bulletExit.getY()),
-						((this.width/2) * bulletExit.getY() + y)+ (bulletExit.getX()));	
+				Bullet bullet = new Bullet(((this.width/2)* trajectory.getX() + x)+ (trajectory.getY()),
+						((this.width/2) * trajectory.getY() + y)+ (trajectory.getX()));	
 				
-				bullet.shoot(bulletExit);
+				bullet.shoot(trajectory);
 				
 				ME.world.add(bullet);
 				ammo--;
