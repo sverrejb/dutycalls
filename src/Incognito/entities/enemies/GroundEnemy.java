@@ -6,9 +6,6 @@ import it.marteEngine.entity.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.JAXBElement.GlobalScope;
-
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -34,7 +31,6 @@ public class GroundEnemy extends EnemyObject {
 
 	public GroundEnemy(int x, int y, SpriteSheet spriteSheet) throws SlickException {
 		super(x, y, spriteSheet);
-		// TODO Auto-generated constructor stub
 		addType(Entity.ENEMY);
 	}
 	
@@ -45,43 +41,25 @@ public class GroundEnemy extends EnemyObject {
 	
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
-		//colPoints = new ArrayList<Point>();
 		super.update(gameContainer, delta);
-		
-		
 		/*
 		 * Checks if the player is seen by our eyes
 		 */
 		if(playerSeen())
 		{
 			//Stops the enemmy
-			speed.x = 0;
-			
-			/*
-			 * find the angle that we can give to the enemys weapon and bullets
-			 */
-			//Player vector position
-			//Vector2f playerCenter = new Vector2f(Globals.player.x + (Globals.player.width/2), Globals.player.y + (Globals.player.height/2));
-				
-			//Angle from enemy to player according to centerpos
-			//Vector2f diff = playerCenter.sub(new Vector2f(x + (width/2), y - (height/2)));
-			//int relativeAngle = (((int) diff.getTheta()) + 90) % 360;
-			
-			
+			speed.x = 0;			
 			
 			/*
 			 * Attack the player
 			 * 
 			 */
 			if(weapon != null){
-				weapon.setAimX(Globals.player.x); //+ (Globals.player.width/2));
-				weapon.setAimY(Globals.player.y); // + (Globals.player.height/2));
+				weapon.setAimX(Globals.player.x);
+				weapon.setAimY(Globals.player.y);
 				
 				weapon.tryShoot();
 			}
-			
-			
-			
 		}
 		else{
 			weapon.setAimDir((int)(x + (width/2) + 20),(int)(y + (height/2)));
@@ -93,7 +71,6 @@ public class GroundEnemy extends EnemyObject {
 		 * Go in wayPoint direction
 		 */
 		if(waypoints != null){
-
 			//Are we close to the waypoint?
 			if(this.x > waypoints.get(currentWaypoint).x - 10 && x < waypoints.get(currentWaypoint).x + 10){
 				currentWaypoint += direction;
@@ -131,22 +108,16 @@ public class GroundEnemy extends EnemyObject {
 					currentAnim = ME.WALK_RIGHT;
 			}
 		}
-		
-		
-		//float playerPosX = ((PlayerObject)ME.world.getEntities(PLAYER)).x;
-		//float playerPosY = ((PlayerObject)ME.world.getEntities(PLAYER)).y;
 	}
 	
 	private boolean playerSeen(){
-		int playerCenterX = (int)(Globals.player.x);//(int)((Globals.player.x + (Globals.player.width/2)));
-		int playerCenterY = (int)(Globals.player.y);//(int)((Globals.player.y + (Globals.player.height/2)));
-		int centerX = (int)((x));
-		int centerY = (int)((y));
-		
+		int playerCenterX = (int)Globals.player.x;
+		int playerCenterY = (int)Globals.player.y;
+		int centerX = (int)x;
+		int centerY = (int)y;	
 		//Is the enemy even in the screen?
 		//Avoid that he waits for us
 		//INSERT CODE
-		
 		
 		/*
 		 * Check if player is near
@@ -159,27 +130,24 @@ public class GroundEnemy extends EnemyObject {
 		else if(centerX < playerCenterX)
 			if(!isRight)
 				return false;
-		
+
 		//uses Bresenhams algorithm to plot a line
 		//And check if he is within eyesight
-		//can this be optimized? Use maptiles insted of pixels?
 		if(bresenham.plot(centerX/Globals.mapTileWidth, centerY/Globals.mapTileHeight, playerCenterX/Globals.mapTileWidth, playerCenterY/Globals.mapTileHeight) > eyeRange/Globals.mapTileWidth)
 			return false;
-		
-		
+	
 		/*
 		 * Traces the ray and checks for wall collision
 		 */
 		while(bresenham.next()){
 			Entity wall = ME.world.find(bresenham.getX() * Globals.mapTileWidth, bresenham.getY() * Globals.mapTileHeight, Entity.GROUND); //Make it possible to find different entities?
-
 			/*
 			 * We have collided with a wall, and the player is therefore not seen
 			 */
 			if(wall != null)
 				return false;
 		}
-		
+
 		/*
 		 * The player has been found
 		 */
