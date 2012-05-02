@@ -5,6 +5,8 @@ import java.util.List;
 
 import it.marteEngine.Camera;
 import it.marteEngine.World;
+import it.marteEngine.entity.Entity;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -71,9 +73,9 @@ public class Gameplay extends World{
 		/* List containing every waypoint for each enemy */
 		List<List<Vector2f>> enemyWaypoints = null;
 		
-		if(ground.getLayerCount() > 3){
+		if(ground.getLayerCount() > 4){
 			enemyWaypoints = new ArrayList<List<Vector2f>>();
-			for(int i = 4; i < ground.getLayerCount(); i++){
+			for(int i = 5; i < ground.getLayerCount(); i++){
 				enemyWaypoints.add(new ArrayList<Vector2f>());
 			}
 		}
@@ -85,7 +87,8 @@ public class Gameplay extends World{
 				//layer 1 : ground blocked
 				//layer 2 : extra blocked properties not visible
 				//layer 3 : foreground not blocked
-				//layer 4 -> n:  enemies 
+				//layer 4 : Random stuff
+				//layer 5 -> n:  enemies 
 				
 				/* Render not collideable images */
 				Image temp = ground.getTileImage(x, y, 0);
@@ -125,20 +128,30 @@ public class Gameplay extends World{
 					add(groundObject);
 				}
 				
+				/* Extra properties */
+				temp = ground.getTileImage(x, y, 4);
+				int ID = ground.getTileId(x, y, 4);
+				String value = ground.getTileProperty(ID, "property", "null");
+				
+				if("won".equals(value)){
+					groundObject = new GroundObject(x * Globals.mapTileWidth, (y * Globals.mapTileHeight) - temp.getHeight() + Globals.mapTileHeight, temp.getWidth(), temp.getHeight());
+					groundObject.depth = 2;
+					groundObject.addType(Entity.WIN_OBJECT);
+					add(groundObject);					
+				}
 				
 				/* Spawn enemies*/
-				for(int i = 4; i < ground.getLayerCount(); i++){
-					int ID = ground.getTileId(x, y, i);
+				for(int i = 5; i < ground.getLayerCount(); i++){
+					ID = ground.getTileId(x, y, i);
 					
 					//ID == 0 ==> no tile, nothing to do here... move on sir.
 					if(ID == 0)
 						continue;
 					
-					String value = ground.getTileProperty(ID, "enemy", "null");
+					value = ground.getTileProperty(ID, "enemy", "null");
 					
-					if("ground".equals(value)){ 
-						
-						enemyWaypoints.get(i-4).add(new Vector2f(x * Globals.mapTileWidth, (y * Globals.mapTileHeight) - 160 + Globals.mapTileHeight));
+					if("ground".equals(value)){ 						
+						enemyWaypoints.get(i-5).add(new Vector2f(x * Globals.mapTileWidth, (y * Globals.mapTileHeight) - 160 + Globals.mapTileHeight));
 					}
 					else if("flying".equals(value)){
 						

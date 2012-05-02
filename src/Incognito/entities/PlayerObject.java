@@ -152,4 +152,14 @@ public class PlayerObject extends PlatformerEntity {
 	public boolean isDead() {
 		return dead;
 	}
+	
+	@Override
+	public void collisionResponse(Entity other) {
+		/*
+		 * WIN! :D
+		 */
+		if(other.isType(Entity.WIN_OBJECT)){
+			Globals.game.enterState(Constants.GAME_WON_STATE);
+		}
+	}
 }
