@@ -219,7 +219,7 @@ public class Gameplay extends World{
 		this.removeAll();
 		init(container, game);
 		
-		Globals.ac.setMouseCursor(("/img/cursor.gif"), 0, 0);
+		Globals.ac.setMouseCursor(("img/cursor.gif"), 0, 0);
 		super.enter(container, game);
 	}
 
