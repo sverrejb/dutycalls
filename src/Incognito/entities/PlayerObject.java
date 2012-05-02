@@ -39,6 +39,7 @@ public class PlayerObject extends PlatformerEntity {
 		//mage test = new Image("img/anim/r1.png");
 		SpriteSheet test = new SpriteSheet("img/anim/playerRightTest.png", pixelsPerPicX, pixelsPerPicY);
 		setGraphic(test);
+		this.centered = true;
 		
 		/* Each frame duration for animation */
 		duration = Constants.PLAYER_ANIMATION_SPEED;		
@@ -55,7 +56,7 @@ public class PlayerObject extends PlatformerEntity {
 		
 		lastDirection = ME.WALK_RIGHT;
 		
-		setHitBox(20, 0, pixelsPerPicX - 37, pixelsPerPicY, true);
+		setHitBox(20 - pixelsPerPicX/2, -pixelsPerPicY/2, pixelsPerPicX - 37, pixelsPerPicY, true);
 		
 		this.addType(Entity.PLAYER);
 		
