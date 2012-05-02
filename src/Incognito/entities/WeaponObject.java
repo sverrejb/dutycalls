@@ -19,13 +19,14 @@ public class WeaponObject extends Entity{
 	private Vector2f trajectory;
 	
 	private static PlayerObject player;
-	private Image gun = new Image("img/anim/gun.png");
+	private Image gun;
 	private Sound shoot = null;
 
 	public WeaponObject(PlayerObject player) throws SlickException{
-		
 		super(player.x, player.y);
 		
+		gun = new Image("img/anim/gun.png");
+
 		setGraphic(gun);
 		this.centered = true;
 		depth = 12;
@@ -49,7 +50,7 @@ public class WeaponObject extends Entity{
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
 		
 		Input input = gameContainer.getInput();
-		this.x= player.x;
+		this.x = player.x;
 		this.y = player.y - 10;
 		
 		// MousePos + CameraPos

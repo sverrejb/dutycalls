@@ -21,6 +21,8 @@ public class EnemyObject extends PhysicsEntity{
 	private enum STATES {KILL_MODE, WANDER, DEAD}
 	
 	private int health = 20;
+	private int picWidth = 103;
+	private int picHight = 150;
 	
 	protected boolean isRight = true;
 	
@@ -31,8 +33,9 @@ public class EnemyObject extends PhysicsEntity{
 		
 		setGraphic(spriteSheet);
 		collidable = true;
-		setHitBox(0, 0, 103, 150, true);
-		
+		this.centered = true;
+		setHitBox(-picWidth/2, -picHight/2, picWidth, picHight, true);
+		//setHitBox(0, 0, picWidth, picHight, true)
 		duration = Constants.PLAYER_ANIMATION_SPEED;
 		
 		addAnimation(Constants.STAND_STILL_RIGHT, false, 0, 1);
