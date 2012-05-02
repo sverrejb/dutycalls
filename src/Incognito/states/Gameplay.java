@@ -46,12 +46,13 @@ public class Gameplay extends World{
 		
 		fx = new Sound("sound/fortunate_son.wav");
 		
-		player = new PlayerObject(100, 300);
+		player = new PlayerObject(100, 900);
 		Globals.player = player;
 		
 		weapon = new WeaponObject(player);
 		
-		backGround = new BackgroundObject(0, 0, new Image("img/jungle.png"));
+
+		backGround = new BackgroundObject(0, 0, new Image("res/img/jungle2.png"));
 		
 		/*
 		 * Add to MarteEngine world
@@ -152,7 +153,7 @@ public class Gameplay extends World{
 		 * Add enmies
 		 */
 		for (int i = 0; i < enemyWaypoints.size(); i++) {
-			GroundEnemy groundEnemy = new GroundEnemy((int)enemyWaypoints.get(i).get(0).x, (int)enemyWaypoints.get(i).get(0).y, new SpriteSheet(("img/anim/enemywalk.png"), 103, 160));
+			GroundEnemy groundEnemy = new GroundEnemy((int)enemyWaypoints.get(i).get(0).x, (int)enemyWaypoints.get(i).get(0).y + 80, new SpriteSheet(("img/anim/enemywalk.png"), 103, 160));
 			groundEnemy.depth = 2;
 			for (int j = 0; j < enemyWaypoints.get(i).size(); j++) {
 				groundEnemy.addWaypoints(enemyWaypoints.get(i).get(j));
