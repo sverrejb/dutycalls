@@ -50,7 +50,7 @@ public class Bullet extends PhysicsEntity {
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
 		super.update(gameContainer, delta);
-		if(y < ME.world.camera.camraCenterY - Constants.BULLET_BOUNDRY || y > ME.world.camera.camraCenterY +Constants.BULLET_BOUNDRY
+		if(y < ME.world.camera.camraCenterY - Constants.BULLET_BOUNDRY || y > ME.world.camera.camraCenterY + Constants.BULLET_BOUNDRY
 				|| x > ME.world.camera.camraCenterX + Constants.BULLET_BOUNDRY || x < ME.world.camera.camraCenterX -Constants.BULLET_BOUNDRY)
 			destroy();
 	}

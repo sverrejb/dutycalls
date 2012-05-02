@@ -68,8 +68,8 @@ public class Camera {
 	public void update(GameContainer container, int delta)
 			throws SlickException {
 		setCamera();
-		camraCenterX = Constants.GAME_WIDTH/2;
-		camraCenterY = Constants.GAME_HEIGHT/2;
+		camraCenterX = cameraX + Constants.GAME_WIDTH/2;
+		camraCenterY = cameraY + Constants.GAME_HEIGHT/2;
 	}
 
 	private void setCamera() {
