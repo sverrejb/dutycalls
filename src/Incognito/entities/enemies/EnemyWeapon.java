@@ -66,8 +66,6 @@ public class EnemyWeapon extends Entity{
 		else{
 			setGraphic(gun);
 		}
-		
-
 				
 		if(canShoot){
 			canShoot = false;

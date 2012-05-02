@@ -138,8 +138,8 @@ public class GroundEnemy extends EnemyObject {
 	private boolean playerSeen(){
 		int playerCenterX = (int)(Globals.player.x);//(int)((Globals.player.x + (Globals.player.width/2)));
 		int playerCenterY = (int)(Globals.player.y);//(int)((Globals.player.y + (Globals.player.height/2)));
-		int centerX = (int)((x + (width/2)));
-		int centerY = (int)((y + (height/2)));
+		int centerX = (int)((x));
+		int centerY = (int)((y));
 		
 		//Is the enemy even in the screen?
 		//Avoid that he waits for us
@@ -163,13 +163,14 @@ public class GroundEnemy extends EnemyObject {
 		//can this be optimized? Use maptiles insted of pixels?
 		if(bresenham.plot(centerX, centerY, playerCenterX, playerCenterY) > eyeRange)
 			return false;
-			
+		
+		
 		/*
 		 * Traces the ray and checks for wall collision
 		 */
 		while(bresenham.next()){
 			Entity wall = ME.world.find(bresenham.getX() , bresenham.getY(), Entity.GROUND); //Make it possible to find different entities?
-				
+
 			/*
 			 * We have collided with a wall, and the player is therefore not seen
 			 */
