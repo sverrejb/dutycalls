@@ -1,6 +1,6 @@
 package Incognito.entities;
 
-import it.marteEngine.ME;
+
 import it.marteEngine.entity.Entity;
 
 import org.newdawn.slick.Image;
