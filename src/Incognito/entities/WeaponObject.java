@@ -15,7 +15,7 @@ import it.marteEngine.entity.Entity;
 public class WeaponObject extends Entity{
 	
 	private boolean canShoot = true;
-	private Vector2f bulletVector;
+	private Vector2f trajectory;
 	
 	private static PlayerObject player;
 	private Image gun = new Image("img/anim/gun.png");
@@ -52,31 +52,23 @@ public class WeaponObject extends Entity{
 		// MousePos + CameraPos
 		float mouseX = input.getMouseX() + ME.world.camera.cameraX +7;
 		float mouseY = input.getMouseY() + ME.world.camera.cameraY +7;
-		
-		bulletVector = new Vector2f(mouseX - x, mouseY - y);
-		bulletVector.normalise();
-
-		double angle = Math.toDegrees(Math.atan2((mouseY)- (this.y), mouseX - this.x));
-		
-		setAngle((int)angle);
-
-		if(!player.isDirectionRight()){
+		//vector for bullet and weapon 
+		trajectory = new Vector2f(mouseX - x, mouseY - y);
+		trajectory.normalise();
+		//sets angle of weapon
+		setAngle((int)trajectory.getTheta());
+		//sets animation
+		if(!player.isDirectionRight())
 			setGraphic(gun.getFlippedCopy(false, true));
-		}
-		else{
+		else
 			setGraphic(gun);
-		}
-		
-
 				
-		if(check("SHOOT") && canShoot){
-			
-			
+		if(check("SHOOT") && canShoot){	
 			if(player.getAmmo() > 0){
-				Bullet bullet = new Bullet(((this.width/2)* bulletVector.getX() + x)+ (bulletVector.getY()),
-						((this.width/2) * bulletVector.getY() + y)+ (bulletVector.getX()));	
+				Bullet bullet = new Bullet(((this.width/2)* trajectory.getX() + x)+ (trajectory.getY()),
+						((this.width/2) * trajectory.getY() + y)+ (trajectory.getX()));		
 				
-				bullet.shoot(bulletVector);
+				bullet.shoot(trajectory);
 				
 				/* Makes the player unable to fire and start the FIRE_RATE alarm*/
 				canShoot = false;
@@ -86,7 +78,6 @@ public class WeaponObject extends Entity{
 				player.setAmmo(player.getAmmo()-1);
 			}	
 		}
-		
 		super.update(gameContainer, delta);		
 	}
 	
