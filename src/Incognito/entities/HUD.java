@@ -1,6 +1,5 @@
 package Incognito.entities;
 
-import it.marteEngine.ME;
 import it.marteEngine.entity.Entity;
 
 public class HUD extends Entity {

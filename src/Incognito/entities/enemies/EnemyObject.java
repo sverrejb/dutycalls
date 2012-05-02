@@ -17,9 +17,6 @@ import it.marteEngine.entity.Entity;
 import it.marteEngine.entity.PhysicsEntity;
 
 public class EnemyObject extends PhysicsEntity{
-	
-	private enum STATES {KILL_MODE, WANDER, DEAD}
-	
 	private int health = 20;
 	private int picWidth = 103;
 	private int picHight = 160;

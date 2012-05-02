@@ -11,9 +11,6 @@ import it.marteEngine.entity.Entity;
 
 public class BackgroundObject extends Entity {
 	
-	private float fixPosX = 0f;
-	private float fixPosY = 0f;
-	
 	public BackgroundObject(int x, int y, Image image){
 		super(x,y);
 		

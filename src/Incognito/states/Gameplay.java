@@ -5,8 +5,6 @@ import java.util.List;
 
 import it.marteEngine.Camera;
 import it.marteEngine.World;
-
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -16,8 +14,6 @@ import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.state.transition.FadeInTransition;
-import org.newdawn.slick.state.transition.FadeOutTransition;
 import org.newdawn.slick.tiled.TiledMap;
 
 import Incognito.entities.BackgroundObject;
@@ -71,9 +67,6 @@ public class Gameplay extends World{
 		
 		Globals.mapTileWidth = ground.getTileWidth();
 		Globals.mapTileHeight = ground.getTileHeight();
-		
-		int tileFixWidth;
-		int tileFixHeight;
 		
 		/* List containing every waypoint for each enemy */
 		List<List<Vector2f>> enemyWaypoints = null;
@@ -184,6 +177,7 @@ public class Gameplay extends World{
 		setHeight(ground.getHeight() * Globals.mapTileHeight);
 		
 		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * Globals.mapTileWidth, ground.getHeight() * Globals.mapTileHeight, new Vector2f(8,3)));
+	
 	}
 
 	@Override
