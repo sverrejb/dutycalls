@@ -16,7 +16,7 @@ import Incognito.utils.Globals;
 import it.marteEngine.World;
 
 public class GameWonState extends World{
-	private Image gameOver = new Image("img/gameover.png");
+	private Image gameOver = new Image("img/win.png");
 
 	public GameWonState(int id) throws SlickException {
 		super(id);
