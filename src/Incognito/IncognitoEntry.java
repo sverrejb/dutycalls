@@ -1,7 +1,6 @@
 package Incognito;
 
 import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import Incognito.utils.Constants;
@@ -9,15 +8,12 @@ import Incognito.utils.Globals;
 
 import org.lwjgl.LWJGLUtil;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
-
-import java.awt.Cursor;
 import java.io.File;
 
 import Incognito.states.GameState;
 
 
-public class Incognito{
+public class IncognitoEntry{
 	
 	
 	public static void main(String[] args) throws SlickException {
@@ -30,6 +26,5 @@ public class Incognito{
 		app.setTargetFrameRate(Constants.FPS);
 		app.setVSync(true);
 		app.start();
-		
 	}
 }

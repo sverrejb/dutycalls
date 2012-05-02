@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Vector2f;
@@ -60,11 +59,11 @@ public class GroundEnemy extends EnemyObject {
 			 * find the angle that we can give to the enemys weapon and bullets
 			 */
 			//Player vector position
-			Vector2f playerCenter = new Vector2f(Globals.player.x + (Globals.player.width/2), Globals.player.y + (Globals.player.height/2));
+			//Vector2f playerCenter = new Vector2f(Globals.player.x + (Globals.player.width/2), Globals.player.y + (Globals.player.height/2));
 				
 			//Angle from enemy to player according to centerpos
-			Vector2f diff = playerCenter.sub(new Vector2f(x + (width/2), y - (height/2)));
-			int relativeAngle = (((int) diff.getTheta()) + 90) % 360;
+			//Vector2f diff = playerCenter.sub(new Vector2f(x + (width/2), y - (height/2)));
+			//int relativeAngle = (((int) diff.getTheta()) + 90) % 360;
 			
 			
 			
@@ -73,8 +72,10 @@ public class GroundEnemy extends EnemyObject {
 			 * 
 			 */
 			if(weapon != null){
-				weapon.setAimX(Globals.player.x + (Globals.player.width/2));
-				weapon.setAimY(Globals.player.y + (Globals.player.height/2));
+				weapon.setAimX(Globals.player.x); //+ (Globals.player.width/2));
+				weapon.setAimY(Globals.player.y); // + (Globals.player.height/2));
+				
+				weapon.tryShoot();
 			}
 			
 			
@@ -82,6 +83,7 @@ public class GroundEnemy extends EnemyObject {
 		}
 		else{
 			weapon.setAimDir((int)(x + (width/2) + 20),(int)(y + (height/2)));
+			weapon.stopShoot();
 		}
 		
 		/*
@@ -134,8 +136,8 @@ public class GroundEnemy extends EnemyObject {
 	}
 	
 	private boolean playerSeen(){
-		int playerCenterX = (int)((Globals.player.x + (Globals.player.width/2)));
-		int playerCenterY = (int)((Globals.player.y + (Globals.player.height/2)));
+		int playerCenterX = (int)(Globals.player.x);//(int)((Globals.player.x + (Globals.player.width/2)));
+		int playerCenterY = (int)(Globals.player.y);//(int)((Globals.player.y + (Globals.player.height/2)));
 		int centerX = (int)((x + (width/2)));
 		int centerY = (int)((y + (height/2)));
 		
@@ -156,7 +158,6 @@ public class GroundEnemy extends EnemyObject {
 			if(!isRight)
 				return false;
 		
-			
 		//uses Bresenhams algorithm to plot a line
 		//And check if he is within eyesight
 		//can this be optimized? Use maptiles insted of pixels?

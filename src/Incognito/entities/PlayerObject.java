@@ -4,6 +4,7 @@ import it.marteEngine.entity.Entity;
 import it.marteEngine.entity.PlatformerEntity;
 import it.marteEngine.ME;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,6 +33,8 @@ public class PlayerObject extends PlatformerEntity {
 	private int health = maxHealth;
 	private int maxAmmo = 100;
 	private int ammo = maxAmmo;
+	
+	List<Entity> bulletHits = new ArrayList<Entity>();
 
 	
 	public PlayerObject(int pointX, int pointY ) throws SlickException{
@@ -77,6 +80,9 @@ public class PlayerObject extends PlatformerEntity {
 		if(y > Constants.GAME_HEIGHT)
 			Globals.game.enterState(Constants.LOST_STATE,  new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
 		
+		if(health <= 0)
+			Globals.game.enterState(Constants.LOST_STATE,  new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+		
 		super.update(gameContainer, delta);		
 	}
 	
@@ -84,7 +90,14 @@ public class PlayerObject extends PlatformerEntity {
 	public void unLoad() {
 		
 	}
-
+	
+	public void shot(int damage, Entity bullet){
+		//Herp derp løsning
+		if(!bulletHits.contains(bullet)){
+			bulletHits.add(bullet);
+			health -= damage;
+		}
+	}
 
 
 	public void addHealth(int i) {
