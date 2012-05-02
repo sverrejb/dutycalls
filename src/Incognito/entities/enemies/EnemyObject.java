@@ -6,6 +6,7 @@ import java.util.List;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 
 import Incognito.entities.AmmoEntity;
@@ -20,12 +21,13 @@ public class EnemyObject extends PhysicsEntity{
 	private int health = 20;
 	private int picWidth = 103;
 	private int picHight = 160;
+	private Sound shoot = null;
 	
 	protected boolean isRight = true;
 	
 	List<Entity> bulletHits = new ArrayList<Entity>();
 	
-	public EnemyObject(int x, int y, SpriteSheet spriteSheet){
+	public EnemyObject(int x, int y, SpriteSheet spriteSheet) throws SlickException{
 		super(x, y);		
 		
 		setGraphic(spriteSheet);
@@ -41,6 +43,8 @@ public class EnemyObject extends PhysicsEntity{
 		addFlippedAnimation(ME.WALK_LEFT, true, true, false, 0, 0, 1, 2);
 		
 		addType(Entity.ENEMY);
+		
+		shoot = new Sound("sound/pain.wav");
 	}
 	
 	@Override
@@ -59,7 +63,7 @@ public class EnemyObject extends PhysicsEntity{
 				ME.world.add(new MedpackEntity(this.x, this.y));
 			else if(dice >= Constants.HEALTH_PACK_SPAWNCHANCE && dice < Constants.HEALTH_PACK_SPAWNCHANCE + Constants.AMMO_PACK_SPAWNCHANCE)
 				ME.world.add(new AmmoEntity(this.x, this.y));
-			
+			shoot.play(1f, Constants.EFFECTS_VOLUM);
 			destroy();			
 			
 			if(this instanceof GroundEnemy)
