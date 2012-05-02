@@ -23,7 +23,7 @@ public class EnemyWeapon extends Entity{
 	private float aimX = 0f;
 	private float aimY = 0f;
 	
-	private Vector2f trajectory;
+	private Vector2f trajectory = new Vector2f(0,0);
 	
 	private boolean shootingAlarmActive = false;
 
@@ -55,17 +55,18 @@ public class EnemyWeapon extends Entity{
 		this.y = enemy.y -10;
 		
 		
-		trajectory = new Vector2f(aimX - x, aimY - y);
+		trajectory.set(aimX - x, aimY - y);
 		trajectory.normalise();
-		
-		setAngle((int)trajectory.getTheta());
 
 		if(!enemy.isDirectionRight()){
 			setGraphic(gun.getFlippedCopy(false, true));
+			trajectory.set((Math.abs(trajectory.getX()))* -1 , trajectory.getY());
 		}
 		else{
 			setGraphic(gun);
 		}
+		
+		setAngle((int)trajectory.getTheta());
 				
 		if(canShoot){
 			canShoot = false;

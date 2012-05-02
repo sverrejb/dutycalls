@@ -33,7 +33,7 @@ public class PlayerObject extends PlatformerEntity {
 	private int pixelsPerPicY = 150;
 	private int maxHealth = 100;
 	private int health = maxHealth;
-	private int maxAmmo = 100;
+	private int maxAmmo = 20;
 	private int ammo = maxAmmo;
 	private int count = 0;
 	private boolean dead = false;

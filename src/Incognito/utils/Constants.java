@@ -48,8 +48,8 @@ public class Constants {
 	// Item constants
 	public static final int HEALTH_PACK_AMOUNT = 10;
 	public static final int HEALTH_PACK_BONUSAMOUNT = 10;
-	public static final int AMMO_PACK_AMOUNT = 10;
-	public static final int AMMO_PACK_BONUSAMOUNT = 10;
+	public static final int AMMO_PACK_AMOUNT = 5;
+	public static final int AMMO_PACK_BONUSAMOUNT = 5;
 	public static final int HEALTH_PACK_SPAWNCHANCE = 50;
 	public static final int AMMO_PACK_SPAWNCHANCE = 50;
 }
