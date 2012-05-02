@@ -22,6 +22,8 @@ public class MainMenu extends World {
 	private Image title = null;
 	private Image startGameOption = null;
 	private Image exitOption = null;
+	private Sound buttonSound = null;
+	private Sound intro = null;
 
 	private final String versionName = "Incognito InDev";
 
@@ -32,9 +34,9 @@ public class MainMenu extends World {
 	private int buttonSpace = 80;
 	private float StartbuttonScale = 1;
 	private float ExitbuttonScale = 1;
-	private Sound buttonSound = null;
 	private boolean soundPlayed1 = false;
 	private boolean soundPlayed2 = false;
+	private boolean introPlaying = false;
 
 	public MainMenu(int stateID) {
 		super(stateID);
@@ -51,6 +53,7 @@ public class MainMenu extends World {
 		exitOption = menuOptions.getSubImage(290, 246, 150, 66);
 
 		buttonSound = new Sound("/res/sound/buttonOver.wav");
+		intro = new Sound("/res/sound/intro.wav");
 	}
 
 	@Override
@@ -66,6 +69,10 @@ public class MainMenu extends World {
 	@Override
 	public void update(GameContainer gameContainer,
 			StateBasedGame stateBasedGame, int delta) throws SlickException {
+		if(!introPlaying ){
+			intro.loop(1f, Constants.MUSIC_VOLUM);
+			introPlaying = true;
+		}
 
 		Input input = gameContainer.getInput();
 
@@ -95,7 +102,9 @@ public class MainMenu extends World {
 				StartbuttonScale += scaleStep * delta;
 
 			if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)) {
-
+				
+				intro.stop();
+				introPlaying = false;
 				// This will run init on Gameplay state
 				Globals.game.enterState(Constants.INGAME_STATE,new FadeOutTransition(Color.black),new FadeInTransition(Color.black));
 
