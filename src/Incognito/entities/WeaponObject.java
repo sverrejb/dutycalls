@@ -46,7 +46,7 @@ public class WeaponObject extends Entity{
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
 		
 		Input input = gameContainer.getInput();
-		this.x= player.x;
+		this.x = player.x;
 		this.y = player.y - 10;
 		
 		// MousePos + CameraPos
