@@ -6,6 +6,8 @@ import it.marteEngine.entity.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.JAXBElement.GlobalScope;
+
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -161,7 +163,7 @@ public class GroundEnemy extends EnemyObject {
 		//uses Bresenhams algorithm to plot a line
 		//And check if he is within eyesight
 		//can this be optimized? Use maptiles insted of pixels?
-		if(bresenham.plot(centerX, centerY, playerCenterX, playerCenterY) > eyeRange)
+		if(bresenham.plot(centerX/Globals.mapTileWidth, centerY/Globals.mapTileHeight, playerCenterX/Globals.mapTileWidth, playerCenterY/Globals.mapTileHeight) > eyeRange/Globals.mapTileWidth)
 			return false;
 		
 		
@@ -169,7 +171,7 @@ public class GroundEnemy extends EnemyObject {
 		 * Traces the ray and checks for wall collision
 		 */
 		while(bresenham.next()){
-			Entity wall = ME.world.find(bresenham.getX() , bresenham.getY(), Entity.GROUND); //Make it possible to find different entities?
+			Entity wall = ME.world.find(bresenham.getX() * Globals.mapTileWidth, bresenham.getY() * Globals.mapTileHeight, Entity.GROUND); //Make it possible to find different entities?
 
 			/*
 			 * We have collided with a wall, and the player is therefore not seen
