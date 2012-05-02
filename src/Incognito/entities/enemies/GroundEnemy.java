@@ -11,6 +11,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Vector2f;
 
 
@@ -30,8 +31,8 @@ public class GroundEnemy extends EnemyObject {
 	
 	protected EnemyWeapon weapon;
 
-	public GroundEnemy(int x, int y, Image image) throws SlickException {
-		super(x, y, image);
+	public GroundEnemy(int x, int y, SpriteSheet spriteSheet) throws SlickException {
+		super(x, y, spriteSheet);
 		// TODO Auto-generated constructor stub
 		addType(Entity.ENEMY);
 	}
@@ -107,11 +108,23 @@ public class GroundEnemy extends EnemyObject {
 			//Go correct direction
 			if(x > waypoints.get(currentWaypoint).x  && speed.x > -maxSpeed.x){
 				acceleration.x += Constants.ENEMY_MOVE_SPEED * -1;
+				
 				isRight = false;
+				
+				if(speed.x == 0)
+					currentAnim = Constants.STAND_STILL_LEFT;
+				else
+					currentAnim = ME.WALK_LEFT;
 			}
 			else if (x < waypoints.get(currentWaypoint).x && speed.x < maxSpeed.x){
 				acceleration.x += Constants.ENEMY_MOVE_SPEED;
+				
 				isRight = true;
+				
+				if(speed.x == 0)
+					currentAnim = Constants.STAND_STILL_RIGHT;
+				else
+					currentAnim = ME.WALK_RIGHT;
 			}
 		}
 		

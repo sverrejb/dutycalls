@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 
 import Incognito.entities.AmmoEntity;
 import Incognito.entities.MedpackEntity;
@@ -26,12 +26,19 @@ public class EnemyObject extends PhysicsEntity{
 	
 	List<Entity> bulletHits = new ArrayList<Entity>();
 	
-	public EnemyObject(int x, int y, Image image){
+	public EnemyObject(int x, int y, SpriteSheet spriteSheet){
 		super(x, y);		
 		
-		setGraphic(image);
+		setGraphic(spriteSheet);
 		collidable = true;
-		setHitBox(0, 0, image.getWidth(), image.getHeight(), true);
+		setHitBox(0, 0, 103, 150, true);
+		
+		duration = Constants.PLAYER_ANIMATION_SPEED;
+		
+		addAnimation(Constants.STAND_STILL_RIGHT, false, 0, 1);
+		addFlippedAnimation(Constants.STAND_STILL_LEFT, true, true, false, 0, 1);
+		addAnimation(ME.WALK_RIGHT, true, 0, 0, 1, 2);
+		addFlippedAnimation(ME.WALK_LEFT, true, true, false, 0, 0, 1, 2);
 		
 		addType(Entity.ENEMY);
 	}

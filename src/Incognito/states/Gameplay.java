@@ -11,6 +11,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
@@ -150,7 +151,7 @@ public class Gameplay extends World{
 		 * Add enmies
 		 */
 		for (int i = 0; i < enemyWaypoints.size(); i++) {
-			GroundEnemy groundEnemy = new GroundEnemy((int)enemyWaypoints.get(i).get(0).x, (int)enemyWaypoints.get(i).get(0).y, new Image("img/anim/r1.png"));
+			GroundEnemy groundEnemy = new GroundEnemy((int)enemyWaypoints.get(i).get(0).x, (int)enemyWaypoints.get(i).get(0).y, new SpriteSheet(("img/anim/enemywalk.png"), 103, 150));
 			groundEnemy.depth = 2;
 			for (int j = 0; j < enemyWaypoints.get(i).size(); j++) {
 				groundEnemy.addWaypoints(enemyWaypoints.get(i).get(j));
