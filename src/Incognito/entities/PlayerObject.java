@@ -77,8 +77,12 @@ public class PlayerObject extends PlatformerEntity {
 	@Override
 	public void render(GameContainer gameContainer, Graphics g) throws SlickException{
 		super.render(gameContainer, g);
-		g.drawString("Ammo:    "+ ammo, ME.world.camera.cameraX + 10, 35);
-		g.drawString("Health:    "+ health, ME.world.camera.cameraX + 160, 35);
+		//hard coded HUD :S 
+		g.setColor(Color.lightGray);
+		g.fillRoundRect(ME.world.camera.cameraX, ME.world.camera.cameraY, Constants.GAME_WIDTH, 30, 10);
+		g.setColor(Color.white);
+		g.drawString("Ammo: "+ ammo, ME.world.camera.cameraX + 30, 0);
+		g.drawString("Health: "+ health, ME.world.camera.cameraX + 160, 0);
 	}
 	
 	@Override
@@ -128,8 +132,11 @@ public class PlayerObject extends PlatformerEntity {
 	public int getAmmo() {
 		return ammo;
 	}
+	
 
-
+	public int getHealth() {
+		return health;
+	}
 
 	public void setAmmo(int i) {
 		ammo = i;
