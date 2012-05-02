@@ -22,7 +22,7 @@ public class EnemyObject extends PhysicsEntity{
 	
 	private int health = 20;
 	private int picWidth = 103;
-	private int picHight = 150;
+	private int picHight = 160;
 	
 	protected boolean isRight = true;
 	
