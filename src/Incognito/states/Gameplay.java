@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.marteEngine.Camera;
-import it.marteEngine.ME;
 import it.marteEngine.World;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

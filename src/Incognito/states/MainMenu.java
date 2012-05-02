@@ -60,7 +60,7 @@ public class MainMenu extends World {
 	public void render(GameContainer gameContainer,
 			StateBasedGame stateBasedGame, Graphics g) throws SlickException {
 		background.draw(0, 0);
-		g.drawString(versionName, 600, 10);
+		//g.drawString(versionName, 600, 10);
 		title.draw(menuX - 20, 150);
 		startGameOption.draw(menuX, menuY, StartbuttonScale);
 		exitOption.draw(menuX, menuY + buttonSpace, ExitbuttonScale);
