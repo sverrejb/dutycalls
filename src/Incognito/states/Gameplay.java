@@ -215,7 +215,7 @@ public class Gameplay extends World{
 			fx.stop();
 			soundPlaying = false;
 			this.removeAll();
-			Globals.game.enterState(Constants.LOST_STATE,  new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+			Globals.game.enterState(Constants.LOST_STATE);
 		}
 	}
 	

@@ -35,8 +35,10 @@ public class PlayerObject extends PlatformerEntity {
 	private int health = maxHealth;
 	private int maxAmmo = 100;
 	private int ammo = maxAmmo;
+	private int count = 0;
 	private boolean dead = false;
 	private Sound death = null;
+	private boolean soundPlayed = false;
 	
 	List<Entity> bulletHits = new ArrayList<Entity>();
 	
@@ -82,8 +84,13 @@ public class PlayerObject extends PlatformerEntity {
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
 		if(y > Constants.GAME_HEIGHT || health <= 0){
-			death.play(1f, Constants.EFFECTS_VOLUM);
-			dead = true;
+			if(!soundPlayed){
+				death.play(1f, Constants.EFFECTS_VOLUM);
+				soundPlayed = true;
+			}
+			count ++;
+			if(count > Constants.DEATH_WAIT)
+				dead = true;
 		}
 		super.update(gameContainer, delta);		
 	}
