@@ -38,7 +38,7 @@ public class Constants {
 	public static final int ENEMY_MOVE_SPEED = 1;
 	public static final int ENEMY_ANIMATION_SPEED = 100;
 	public static final int ENEMY_EYE_RANGE = 500;
-	public static final int ENEMY_TRIGGER_TIME = 60;
+	public static final int ENEMY_TRIGGER_TIME = 30;
 	
 	/* Weapon constants*/
 	public static final float BULLET_SPEED = 40f;
