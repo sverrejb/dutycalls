@@ -49,10 +49,10 @@ public class Constants {
 	public static final int WEAPON_FIRE_RATE = 20; //halvt sek
 	
 	// Item constants
-	public static final int HEALTH_PACK_AMOUNT = 30;
+	public static final int HEALTH_PACK_AMOUNT = 10;
 	public static final int HEALTH_PACK_BONUSAMOUNT = 20;
 	public static final int AMMO_PACK_AMOUNT = 5;
 	public static final int AMMO_PACK_BONUSAMOUNT = 5;
-	public static final int HEALTH_PACK_SPAWNCHANCE = 30;
-	public static final int AMMO_PACK_SPAWNCHANCE = 30;
+	public static final int HEALTH_PACK_SPAWNCHANCE = 20;
+	public static final int AMMO_PACK_SPAWNCHANCE = 20;
 }
