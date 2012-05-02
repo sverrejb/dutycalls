@@ -16,6 +16,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.MouseListener;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
@@ -35,6 +36,7 @@ public class PlayerObject extends PlatformerEntity {
 	private int maxAmmo = 100;
 	private int ammo = maxAmmo;
 	private boolean dead = false;
+	private Sound death = null;
 	
 	List<Entity> bulletHits = new ArrayList<Entity>();
 	
@@ -44,6 +46,7 @@ public class PlayerObject extends PlatformerEntity {
 		SpriteSheet test = new SpriteSheet("img/anim/playerRightTest.png", pixelsPerPicX, pixelsPerPicY);
 		setGraphic(test);
 		this.centered = true;
+		death = new Sound("/res/sound/wilhelmScream.wav");
 		
 		/* Each frame duration for animation */
 		duration = Constants.PLAYER_ANIMATION_SPEED;		
@@ -78,9 +81,10 @@ public class PlayerObject extends PlatformerEntity {
 	
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
-		if(y > Constants.GAME_HEIGHT || health <= 0)
-			dead =true;
-		
+		if(y > Constants.GAME_HEIGHT || health <= 0){
+			death.play(1f, Constants.EFFECTS_VOLUM);
+			dead = true;
+		}
 		super.update(gameContainer, delta);		
 	}
 	

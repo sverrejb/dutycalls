@@ -5,6 +5,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.geom.Vector2f;
 
 import Incognito.utils.Constants;
@@ -19,6 +20,7 @@ public class WeaponObject extends Entity{
 	
 	private static PlayerObject player;
 	private Image gun = new Image("img/anim/gun.png");
+	private Sound shoot = null;
 
 	public WeaponObject(PlayerObject player) throws SlickException{
 		
@@ -32,6 +34,7 @@ public class WeaponObject extends Entity{
 		collidable = false;
 		
 		define("SHOOT", Input.MOUSE_LEFT_BUTTON);
+		shoot = new Sound("/res/sound/M4A1_Single.wav");
 		
 		/* An alarm which will be fired each time the player shoots */
 		setAlarm("FIRE_RATE", Constants.WEAPON_FIRE_RATE, true, false);
@@ -68,6 +71,7 @@ public class WeaponObject extends Entity{
 				Bullet bullet = new Bullet(((this.width/2)* trajectory.getX() + x)+ (trajectory.getY()),
 						((this.width/2) * trajectory.getY() + y)+ (trajectory.getX()));		
 				
+				shoot.play(1f, Constants.EFFECTS_VOLUM);
 				bullet.shoot(trajectory);
 				
 				/* Makes the player unable to fire and start the FIRE_RATE alarm*/
