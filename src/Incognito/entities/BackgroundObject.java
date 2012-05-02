@@ -11,11 +11,13 @@ import it.marteEngine.entity.Entity;
 
 public class BackgroundObject extends Entity {
 	
+	
+	
 	public BackgroundObject(int x, int y, Image image){
 		super(x,y);
 		
+		image.bind();
 		setGraphic(image);
-		
 		addType("BACKGROUND");
 		
 		depth = 1;
@@ -30,7 +32,7 @@ public class BackgroundObject extends Entity {
 	
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
-		x = (float) (ME.world.camera.cameraX/1.3);		
+		x = (float) (ME.world.camera.cameraX/1.3);
 			
 		super.update(gameContainer, delta);
 	}
