@@ -105,7 +105,7 @@ public class EnemyWeapon extends Entity{
 						((this.width/2) * bulletExit.getY() + y)+ (bulletExit.getX()));	
 				
 				bullet.shoot(bulletExit);
-				System.out.println("pewpew");
+				
 				ME.world.add(bullet);
 				ammo--;
 			}	
