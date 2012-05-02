@@ -43,7 +43,7 @@ public class Gameplay extends World{
 			throws SlickException {
 		super.init(gameContainer, stateBasedGame);
 		
-		fx = new Sound("sound/fortunate_son.wav");
+		fx = new Sound("sound/fortunate_son.ogg");
 		
 		player = new PlayerObject(100, 900);
 		Globals.player = player;
@@ -51,7 +51,7 @@ public class Gameplay extends World{
 		weapon = new WeaponObject(player);
 		
 
-		backGround = new BackgroundObject(0, 0, new Image("res/img/jungle2.png"));
+		backGround = new BackgroundObject(0, 0, new Image("img/jungle2.png"));
 		
 		/*
 		 * Add to MarteEngine world
