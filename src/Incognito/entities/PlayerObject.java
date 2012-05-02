@@ -83,7 +83,7 @@ public class PlayerObject extends PlatformerEntity {
 	
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
-		if(y > Constants.GAME_HEIGHT || health <= 0){
+		if(y > Constants.GAME_HEIGHT){
 			if(!soundPlayed){
 				death.play(1f, Constants.EFFECTS_VOLUM);
 				soundPlayed = true;
@@ -91,6 +91,13 @@ public class PlayerObject extends PlatformerEntity {
 			count ++;
 			if(count > Constants.DEATH_WAIT)
 				dead = true;
+		}
+		if(health <= 0){
+			if(!soundPlayed){
+				death.play(1f, Constants.EFFECTS_VOLUM);
+				soundPlayed = true;
+			}
+			dead = true;
 		}
 		super.update(gameContainer, delta);		
 	}
