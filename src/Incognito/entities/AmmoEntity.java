@@ -13,7 +13,7 @@ public class AmmoEntity extends ItemEntity{
 	
 
 	public AmmoEntity(float x, float y) throws SlickException {
-		super(x, y, new Image("img/ammo.png"), new Sound("res/sound/ammoPickup.wav"));
+		super(x, y, new Image("img/ammo.png"), new Sound("sound/ammoPickup.wav"));
 		}
 	
 	@Override
