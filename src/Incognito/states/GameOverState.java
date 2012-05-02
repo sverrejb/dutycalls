@@ -17,7 +17,7 @@ import it.marteEngine.World;
 
 public class GameOverState extends World{
 	
-	private Image gameOver = new Image("res/img/gameover.png");
+	private Image gameOver = new Image("img/gameover.png");
 
 	public GameOverState(int id) throws SlickException {
 		super(id);
