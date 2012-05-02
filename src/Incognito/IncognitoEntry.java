@@ -26,6 +26,5 @@ public class IncognitoEntry{
 		app.setTargetFrameRate(Constants.FPS);
 		app.setVSync(true);
 		app.start();
-		
 	}
 }

@@ -80,6 +80,9 @@ public class PlayerObject extends PlatformerEntity {
 		if(y > Constants.GAME_HEIGHT)
 			Globals.game.enterState(Constants.LOST_STATE,  new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
 		
+		if(health <= 0)
+			Globals.game.enterState(Constants.LOST_STATE,  new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+		
 		super.update(gameContainer, delta);		
 	}
 	
