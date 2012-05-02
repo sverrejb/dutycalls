@@ -20,6 +20,7 @@ import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
+import Incognito.states.Gameplay;
 import Incognito.utils.Constants;
 import Incognito.utils.Globals;
 
@@ -33,9 +34,9 @@ public class PlayerObject extends PlatformerEntity {
 	private int health = maxHealth;
 	private int maxAmmo = 100;
 	private int ammo = maxAmmo;
+	private boolean dead = false;
 	
 	List<Entity> bulletHits = new ArrayList<Entity>();
-
 	
 	public PlayerObject(int pointX, int pointY ) throws SlickException{
 		super(pointX, pointY);
@@ -77,11 +78,8 @@ public class PlayerObject extends PlatformerEntity {
 	
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
-		if(y > Constants.GAME_HEIGHT)
-			Globals.game.enterState(Constants.LOST_STATE,  new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-		
-		if(health <= 0)
-			Globals.game.enterState(Constants.LOST_STATE,  new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+		if(y > Constants.GAME_HEIGHT || health <= 0)
+			dead =true;
 		
 		super.update(gameContainer, delta);		
 	}
@@ -126,5 +124,11 @@ public class PlayerObject extends PlatformerEntity {
 			ammo  += i;
 		else
 			ammo = maxAmmo;
+	}
+
+
+
+	public boolean isDead() {
+		return dead;
 	}
 }

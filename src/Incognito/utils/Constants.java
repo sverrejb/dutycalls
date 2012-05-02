@@ -17,6 +17,10 @@ public class Constants {
 	public static final boolean DEBUG = false;
 	public static final int FPS = 60;
 	
+	/* Volum */
+	public static final float MUSIC_VOLUM = 0.4f;
+	public static final float EFFECTS_VOLUM = 1f;
+	
 	/*Physics constants*/
 	public static final float GRAVITY = 0.2f;
 	public static final Vector2f FRICTION = new Vector2f(0.5f, 0.5f);
