@@ -25,6 +25,7 @@ public class GameState extends StateBasedGame{
 		addState(new GameOverState(Constants.LOST_STATE));
 		addState(new AboutState(Constants.ABOUT_STATE));
 		addState(new HighScoreState(Constants.HIGHSCORE_STATE));
+		addState(new GameWonState(Constants.GAME_WON_STATE));
 		//this.getState(Constants.MAINMENU_STATE).init(gameContainer, this);
 		
 		
