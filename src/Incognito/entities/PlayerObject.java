@@ -16,10 +16,12 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.MouseListener;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
+import Incognito.states.Gameplay;
 import Incognito.utils.Constants;
 import Incognito.utils.Globals;
 
@@ -33,9 +35,12 @@ public class PlayerObject extends PlatformerEntity {
 	private int health = maxHealth;
 	private int maxAmmo = 100;
 	private int ammo = maxAmmo;
+	private int count = 0;
+	private boolean dead = false;
+	private Sound death = null;
+	private boolean soundPlayed = false;
 	
 	List<Entity> bulletHits = new ArrayList<Entity>();
-
 	
 	public PlayerObject(int pointX, int pointY ) throws SlickException{
 		super(pointX, pointY);
@@ -43,6 +48,7 @@ public class PlayerObject extends PlatformerEntity {
 		SpriteSheet test = new SpriteSheet("img/anim/playerRightTest.png", pixelsPerPicX, pixelsPerPicY);
 		setGraphic(test);
 		this.centered = true;
+		death = new Sound("/res/sound/wilhelmScream.wav");
 		
 		/* Each frame duration for animation */
 		duration = Constants.PLAYER_ANIMATION_SPEED;		
@@ -77,12 +83,22 @@ public class PlayerObject extends PlatformerEntity {
 	
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
-		if(y > Constants.GAME_HEIGHT)
-			Globals.game.enterState(Constants.LOST_STATE,  new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-		
-		if(health <= 0)
-			Globals.game.enterState(Constants.LOST_STATE,  new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-		
+		if(y > Constants.GAME_HEIGHT){
+			if(!soundPlayed){
+				death.play(1f, Constants.EFFECTS_VOLUM);
+				soundPlayed = true;
+			}
+			count ++;
+			if(count > Constants.DEATH_WAIT)
+				dead = true;
+		}
+		if(health <= 0){
+			if(!soundPlayed){
+				death.play(1f, Constants.EFFECTS_VOLUM);
+				soundPlayed = true;
+			}
+			dead = true;
+		}
 		super.update(gameContainer, delta);		
 	}
 	
@@ -126,5 +142,11 @@ public class PlayerObject extends PlatformerEntity {
 			ammo  += i;
 		else
 			ammo = maxAmmo;
+	}
+
+
+
+	public boolean isDead() {
+		return dead;
 	}
 }

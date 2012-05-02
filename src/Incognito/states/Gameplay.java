@@ -6,14 +6,18 @@ import java.util.List;
 import it.marteEngine.Camera;
 import it.marteEngine.World;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 import org.newdawn.slick.tiled.TiledMap;
 
 import Incognito.entities.BackgroundObject;
@@ -31,6 +35,8 @@ public class Gameplay extends World{
 	private PlayerObject player;
 	private WeaponObject weapon;
 	private BackgroundObject backGround;
+	private Sound fx = null;
+	private boolean soundPlaying = false;
 	
 	public Gameplay(int id) throws SlickException{
 		super(id);
@@ -39,7 +45,9 @@ public class Gameplay extends World{
 	@Override
 	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
 			throws SlickException {
-		super.init(gameContainer, stateBasedGame);		
+		super.init(gameContainer, stateBasedGame);
+		
+		fx = new Sound("res/sound/fortunate_son.wav");
 		
 		player = new PlayerObject(100, 300);
 		Globals.player = player;
@@ -188,13 +196,27 @@ public class Gameplay extends World{
 	@Override
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta)
 			throws SlickException {
+		if(!soundPlaying ){
+			fx.loop(1f, Constants.MUSIC_VOLUM);
+			soundPlaying = true;
+		}
 		super.update(gameContainer, stateBasedGame, delta);
 		
 		Input input = gameContainer.getInput();
 		
 		//tilbake til mainmenu
-		if(input.isKeyDown(input.KEY_ESCAPE))
-			stateBasedGame.enterState(Constants.MAINMENU_STATE);		
+		if(input.isKeyDown(input.KEY_ESCAPE)){			
+			fx.stop();
+			soundPlaying = false;
+			this.removeAll();
+			stateBasedGame.enterState(Constants.MAINMENU_STATE);	
+		}
+		if(player.isDead()){
+			fx.stop();
+			soundPlaying = false;
+			this.removeAll();
+			Globals.game.enterState(Constants.LOST_STATE);
+		}
 	}
 	
 	@Override

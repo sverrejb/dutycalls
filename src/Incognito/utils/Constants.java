@@ -16,6 +16,11 @@ public class Constants {
 	public static final boolean FULL_SCREEN = false;
 	public static final boolean DEBUG = false;
 	public static final int FPS = 60;
+	public static final int DEATH_WAIT = 100;
+	
+	/* Volum */
+	public static final float MUSIC_VOLUM = 0.3f;
+	public static final float EFFECTS_VOLUM = 1f;
 	
 	/*Physics constants*/
 	public static final float GRAVITY = 0.2f;

@@ -74,9 +74,7 @@ public class EnemyWeapon extends Entity{
 		
 		bulletExit = new Vector2f(aimX - x, aimY - y);
 		bulletExit.normalise();
-		//2. Find out their position relative to each other (angle)
-		//arctan(Y/X) - arctan(Y/X)	
-		double angle = Math.toDegrees(Math.atan2((aimY)- (centerY), aimX - centerX));
+		
 		
 		//Position gun in the middle
 		centerX += gunCenterX;
@@ -86,10 +84,10 @@ public class EnemyWeapon extends Entity{
 		this.y = centerY;
 		
 		gun.setCenterOfRotation(400, 400);
-		setAngle((int)angle);
+		setAngle((int)bulletExit.getTheta());
 
 		if(!enemy.isDirectionRight()){
-			setGraphic(gun.getFlippedCopy(false, true));
+			setGraphic(gun.getFlippedCopy(true, false));
 		}
 		else{
 			setGraphic(gun);
