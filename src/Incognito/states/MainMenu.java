@@ -53,7 +53,7 @@ public class MainMenu extends World {
 		exitOption = menuOptions.getSubImage(290, 246, 150, 66);
 
 		buttonSound = new Sound("sound/buttonOver.wav");
-		intro = new Sound("sound/intro.wav");
+		intro = new Sound("sound/intro.ogg");
 	}
 
 	@Override
