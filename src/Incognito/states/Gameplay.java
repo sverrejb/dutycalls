@@ -50,7 +50,6 @@ public class Gameplay extends World{
 		
 		weapon = new WeaponObject(player);
 		
-
 		backGround = new BackgroundObject(0, 0, new Image("img/jungle2.png"));
 		
 		/*
@@ -177,7 +176,7 @@ public class Gameplay extends World{
 		setWidth(ground.getWidth() * Globals.mapTileWidth);
 		setHeight(ground.getHeight() * Globals.mapTileHeight);
 		
-		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * Globals.mapTileWidth, ground.getHeight() * Globals.mapTileHeight, new Vector2f(8,3)));
+		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * Globals.mapTileWidth, ground.getHeight() * Globals.mapTileHeight, new Vector2f(16,128)));
 	
 	}
 
@@ -219,7 +218,7 @@ public class Gameplay extends World{
 		this.removeAll();
 		init(container, game);
 		
-		Globals.ac.setMouseCursor(("/img/cursor.gif"), 0, 0);
+		Globals.ac.setMouseCursor(("img/cursor.gif"), 0, 0);
 		super.enter(container, game);
 	}
 
