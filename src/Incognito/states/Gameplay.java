@@ -44,14 +44,14 @@ public class Gameplay extends World{
 			throws SlickException {
 		super.init(gameContainer, stateBasedGame);
 		
-		fx = new Sound("res/sound/fortunate_son.wav");
+		fx = new Sound("sound/fortunate_son.wav");
 		
 		player = new PlayerObject(100, 300);
 		Globals.player = player;
 		
 		weapon = new WeaponObject(player);
 		
-		backGround = new BackgroundObject(0, 0, new Image("res/img/jungle.png"));
+		backGround = new BackgroundObject(0, 0, new Image("img/jungle.png"));
 		
 		/*
 		 * Add to MarteEngine world
@@ -219,7 +219,7 @@ public class Gameplay extends World{
 		this.removeAll();
 		init(container, game);
 		
-		Globals.ac.setMouseCursor(("/res/img/cursor.gif"), 0, 0);
+		Globals.ac.setMouseCursor(("/img/cursor.gif"), 0, 0);
 		super.enter(container, game);
 	}
 

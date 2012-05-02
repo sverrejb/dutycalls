@@ -35,7 +35,7 @@ public class WeaponObject extends Entity{
 		collidable = false;
 		
 		define("SHOOT", Input.MOUSE_LEFT_BUTTON);
-		shoot = new Sound("/res/sound/M4A1_Single.wav");
+		shoot = new Sound("sound/M4A1_Single.wav");
 		
 		/* An alarm which will be fired each time the player shoots */
 		setAlarm("FIRE_RATE", Constants.WEAPON_FIRE_RATE, true, false);
