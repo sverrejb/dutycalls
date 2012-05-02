@@ -14,7 +14,7 @@ public class Constants {
 	public static final int GAME_WIDTH = 800;
 	public static final int GAME_HEIGHT = 600;
 	public static final boolean FULL_SCREEN = false;
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = false;
 	public static final int FPS = 60;
 	public static final int DEATH_WAIT = 100;
 	

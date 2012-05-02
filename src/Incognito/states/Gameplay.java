@@ -176,7 +176,7 @@ public class Gameplay extends World{
 		setWidth(ground.getWidth() * Globals.mapTileWidth);
 		setHeight(ground.getHeight() * Globals.mapTileHeight);
 		
-		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * Globals.mapTileWidth, ground.getHeight() * Globals.mapTileHeight, new Vector2f(16,128)));
+		setCamera(new Camera(this, player, container.getWidth(), container.getHeight(), ground.getWidth() * Globals.mapTileWidth, ground.getHeight() * Globals.mapTileHeight, new Vector2f(8,128)));
 	
 	}
 
