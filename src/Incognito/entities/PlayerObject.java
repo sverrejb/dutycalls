@@ -15,6 +15,7 @@ import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 
 import Incognito.utils.Constants;
+import Incognito.utils.Globals;
 
 
 public class PlayerObject extends PlatformerEntity {
@@ -78,7 +79,7 @@ public class PlayerObject extends PlatformerEntity {
 	
 	@Override
 	public void update(GameContainer gameContainer, int delta) throws SlickException {
-		if(y > Constants.GAME_HEIGHT){
+		if(y > 1200){
 			if(!soundPlayed){
 				death.play(1f, Constants.EFFECTS_VOLUM);
 				soundPlayed = true;

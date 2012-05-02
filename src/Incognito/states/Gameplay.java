@@ -46,12 +46,12 @@ public class Gameplay extends World{
 		
 		fx = new Sound("res/sound/fortunate_son.wav");
 		
-		player = new PlayerObject(100, 300);
+		player = new PlayerObject(100, 900);
 		Globals.player = player;
 		
 		weapon = new WeaponObject(player);
 		
-		backGround = new BackgroundObject(0, 0, new Image("res/img/jungle.png"));
+		backGround = new BackgroundObject(0, 0, new Image("res/img/jungle2.png"));
 		
 		/*
 		 * Add to MarteEngine world
