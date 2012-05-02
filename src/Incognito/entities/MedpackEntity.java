@@ -11,7 +11,7 @@ import Incognito.utils.Constants;
 public class MedpackEntity extends ItemEntity {
 
 	public MedpackEntity(float x, float y) throws SlickException {
-		super(x, y, new Image("img/healthpack.png"), new Sound("res/sound/ammoPickup.wav"));
+		super(x, y, new Image("img/healthpack.png"), new Sound("sound/ammoPickup.wav"));
 		collidable = true;
 	}
 	
