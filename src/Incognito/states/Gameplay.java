@@ -11,6 +11,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
@@ -31,6 +32,8 @@ public class Gameplay extends World{
 	private PlayerObject player;
 	private WeaponObject weapon;
 	private BackgroundObject backGround;
+	private Sound fx = null;
+	private boolean soundisplaying = false;
 	
 	public Gameplay(int id) throws SlickException{
 		super(id);
@@ -39,7 +42,9 @@ public class Gameplay extends World{
 	@Override
 	public void init(GameContainer gameContainer, StateBasedGame stateBasedGame)
 			throws SlickException {
-		super.init(gameContainer, stateBasedGame);		
+		super.init(gameContainer, stateBasedGame);
+		
+		fx = new Sound("res/sound/fortunate_son.wav");
 		
 		player = new PlayerObject(100, 300);
 		Globals.player = player;
@@ -188,6 +193,10 @@ public class Gameplay extends World{
 	@Override
 	public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta)
 			throws SlickException {
+		if(!soundisplaying ){
+			fx.play();
+			soundisplaying = true;
+		}
 		super.update(gameContainer, stateBasedGame, delta);
 		
 		Input input = gameContainer.getInput();
