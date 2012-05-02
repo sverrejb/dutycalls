@@ -24,9 +24,9 @@ public class PlayerObject extends PlatformerEntity {
 	private int pixelsPerPicX = 103;
 	private int pixelsPerPicY = 150;
 	private int maxHealth = 100;
-	private int health = maxHealth;
-	private int maxAmmo = 20;
-	private int ammo = maxAmmo;
+	private int health = maxHealth - Constants.WONDED;
+	private int maxAmmo = 60;
+	private int ammo = maxAmmo - Constants.MISSING_AMMO;
 	private int count = 0;
 	private boolean dead = false;
 	private Sound death = null;
@@ -70,11 +70,15 @@ public class PlayerObject extends PlatformerEntity {
 	public void render(GameContainer gameContainer, Graphics g) throws SlickException{
 		super.render(gameContainer, g);
 		//hard coded HUD :S 
+		g.setColor(Color.black);
+		g.fillRoundRect(ME.world.camera.cameraX, ME.world.camera.cameraY, Constants.GAME_WIDTH, 36, 10);
+		
 		g.setColor(Color.lightGray);
-		g.fillRoundRect(ME.world.camera.cameraX, ME.world.camera.cameraY, Constants.GAME_WIDTH, 30, 10);
+		g.fillRoundRect(ME.world.camera.cameraX + 3, ME.world.camera.cameraY + 3, Constants.GAME_WIDTH -6, 30, 10);
+		
 		g.setColor(Color.white);
-		g.drawString("Ammo: "+ ammo, ME.world.camera.cameraX + 30, 0);
-		g.drawString("Health: "+ health, ME.world.camera.cameraX + 160, 0);
+		g.drawString("Ammo: "+ ammo, ME.world.camera.cameraX + 30,  ME.world.camera.cameraY + 8);
+		g.drawString("Health: "+ health, ME.world.camera.cameraX + 160,  ME.world.camera.cameraY + 8);
 	}
 	
 	@Override
