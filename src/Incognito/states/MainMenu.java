@@ -28,7 +28,7 @@ public class MainMenu extends World {
 	private final String versionName = "Incognito InDev";
 
 	private int stateID = -1;
-	private float menuX = Constants.GAME_WIDTH / 2 - 300;
+	private float menuX = Constants.GAME_WIDTH / 2 - 250;
 	private float menuY = 250;
 	private float scaleStep = 0.001f;
 	private int buttonSpace = 80;

@@ -7,6 +7,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.geom.Vector2f;
 
 import Incognito.entities.Bullet;
@@ -19,6 +20,7 @@ public class EnemyWeapon extends Entity{
 	private EnemyObject enemy;
 
 	private static Image gun;
+	private Sound shoot = null;
 	
 	private float aimX = 0f;
 	private float aimY = 0f;
@@ -31,6 +33,7 @@ public class EnemyWeapon extends Entity{
 		super(player.x, player.y);
 		
 		gun = new Image("img/anim/gun.png");
+		shoot = new Sound("sound/M4A1_Single.wav");
 		
 		setGraphic(gun);
 		this.centered = true;
@@ -72,6 +75,7 @@ public class EnemyWeapon extends Entity{
 			canShoot = false;
 			
 			if(ammo > 0){
+				shoot.play(1f, Constants.EFFECTS_VOLUM);
 				Bullet bullet = new Bullet(((this.width/2)* trajectory.getX() + x)+ (trajectory.getY()),
 						((this.width/2) * trajectory.getY() + y)+ (trajectory.getX()));	
 				
